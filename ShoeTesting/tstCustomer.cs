@@ -1,5 +1,4 @@
 ﻿using System;
-using ClassLibrary1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ShoeTesting
@@ -8,10 +7,11 @@ namespace ShoeTesting
     public class tstCustomer
     {
         [TestMethod]
-        public void InstanceOk()
+        public void TestMethod1()
         {
-            clsCustomer AnCustomer = new clsCustomer();
-            Assert.IsNotNull(AnCustomer);
+            clsCustomer ACustomer = new clsCustomer();
+
+            Assert.IsNotNull(ACustomer);
         }
     }
 }
