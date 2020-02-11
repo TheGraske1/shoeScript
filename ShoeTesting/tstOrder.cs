@@ -1,4 +1,5 @@
 ﻿using System;
+using ClassLibrary1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ShoeTesting
@@ -7,8 +8,10 @@ namespace ShoeTesting
     public class UnitTest1
     {
         [TestMethod]
-        public void TestMethod1()
+        public void IstanceOK()
         {
+            clsOrder AnOrder = new clsOrder();
+            Assert.IsNotNull(AnOrder);
         }
     }
 }
