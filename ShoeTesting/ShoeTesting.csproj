@@ -51,12 +51,7 @@
   <ItemGroup>
     <Compile Include="tstCustomer.cs" />
     <Compile Include="tstStaff.cs" />
-<<<<<<< HEAD
-    <Compile Include="tstStock.cs" />
-    <Compile Include="UnitTest1.cs" />
-=======
     <Compile Include="tstOrder.cs" />
->>>>>>> fd559b342cf75bfa6015cbbc966c320f93c7c242
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="tstOrderLine.cs" />
   </ItemGroup>
