@@ -4,13 +4,30 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Your basket</title>
+    <title>Testing inputs</title>
 </head>
 <body style="height: 532px; margin-bottom: 27px">
     <form id="form1" runat="server">
         <div>
-            <p>Order number:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size ="20px"  /></p>
-            <p>Product selected:&nbsp; <input type="text" size="20px" /></p>
+            <p>OrderID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size ="20px" id="txtOrderID"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; </p>
+            <p>CustomerID:&nbsp; <input type="text" size="20px" /></p>
+            <p>StaffID: <input type="text" size="20px" /></p>
+            <p>Total Price: <input type="text" size="20px" /></p>
+            <p>
+                Delivery Address: <input type="text" size="20px" /></p>
+            <p>
+                Date Ordered: <input type="text" size="20px" /></p>
+            <p>
+                OrderLineID: <input type="text" size="20px" /></p>
+            <p>
+                ProductID: <input type="text" size="20px" /></p>
+            <p>
+                Price per unit: <input type="text" size="20px" /></p>
+            <p>
+                SelectionDescription: <input type="text" size="20px" /></p>
+            <p>
+                <asp:CheckBox ID="Paid" runat="server" />
+            </p>
             <p>Quantity:&nbsp;
                 <select ammount="orders" name="D1">
                     <option value ="1">1</option>
@@ -18,7 +35,7 @@
                     <option value ="3">3</option>
                 </select><p>
 >
-            <asp:Button ID="OK" runat="server" Text="OK" />
+            <asp:Button ID="OK" runat="server" Text="OK" style="width: 33px" />
         
             <p>&nbsp;&nbsp;
                 </div>

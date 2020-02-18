@@ -1,6 +1,7 @@
 ﻿using System;
 
-namespace ClassLibrary1
+namespace ShoeClasses
+
 {
     public class clsOrder
     {
