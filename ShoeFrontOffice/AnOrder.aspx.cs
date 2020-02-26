@@ -17,7 +17,7 @@ public partial class OKButton : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsOrder AnOrder = new clsOrder();
-        AnOrder.orderID = txtOrderId.Text;
+        AnOrder.orderID = txtOrderID.Text;
         Session["AnOrder"] = AnOrder;
         Response.Redirect("OrderViewer.aspx");
     }
