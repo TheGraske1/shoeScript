@@ -10,9 +10,9 @@
     <form id="form1" runat="server">
         <div>
             <p>OrderID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size ="20px" id="txtOrderID"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; </p>
-            <p>CustomerID:&nbsp; <input type="text" size="20px" /></p>
-            <p>StaffID: <input type="text" size="20px" /></p>
-            <p>Total Price: <input type="text" size="20px" /></p>
+            <p>CustomerID:&nbsp; <input type="text" size="20px" name ="txtOrderID" id="CustomerID" /></p>
+            <p>StaffID: <input type="text" size="20px" id="StaffID" /></p>
+            <p>Total Price: <input type="text" size="20px" id="TotalPrice" /></p>
             <p>
                 Delivery Address: <input type="text" size="20px" /></p>
             <p>

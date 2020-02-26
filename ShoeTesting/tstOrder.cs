@@ -1,5 +1,5 @@
 ﻿using System;
-using ClassLibrary1;
+using ShoeClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ShoeTesting
@@ -44,7 +44,7 @@ namespace ShoeTesting
             clsOrder AnOrder = new clsOrder();
             int TestData = 2;
             AnOrder.orderID = TestData;
-            Assert.Equals(AnOrder.orderID, TestData);
+            Assert.AreEqual(AnOrder.orderID, TestData);
         }
         public void CustomerIDPropertyOK()
         {
