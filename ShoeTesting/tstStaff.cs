@@ -60,5 +60,112 @@ namespace ShoeTesting
             AnStaff.admin = testAdminPriv;
             Assert.AreEqual(AnStaff.admin, testAdminPriv);
         }
+
+        [TestMethod]
+
+        public void FindMethodOK()
+        {
+            clsStaff AnStaff = new clsStaff();
+            Boolean Found = false;
+            Int32 StaffId = 1;
+            Found = AnStaff.Find(StaffId);
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+
+        public void TestStaffNoFound()
+        {
+            clsStaff AnStaff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 StaffId = 21;
+            Found = AnStaff.Find(StaffId);
+            if(AnStaff.staffid != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestStaffNameFound()
+        {
+            clsStaff AnStaff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            int StaffId = 1;
+            Found = AnStaff.Find(StaffId);
+            if(AnStaff.name != "John Smith")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestPhoneNumberFound()
+        {
+            clsStaff AnStaff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            int StaffId = 1;
+            Found = AnStaff.Find(StaffId);
+            if(AnStaff.phoneNumber != "01234567891")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestSalaryFound()
+        {
+            clsStaff AnStaff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            int StaffId = 1;
+            Found = AnStaff.Find(StaffId);
+            if (AnStaff.salary != 25000)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestJoinedDateFound()
+        {
+            clsStaff AnStaff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            int StaffId = 1;
+            Found = AnStaff.Find(StaffId);
+            if(AnStaff.joinedDate != Convert.ToDateTime("01/04/1995"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestAdminFound()
+        {
+            clsStaff AnStaff = new clsStaff();
+            Boolean Found = false;
+            Boolean OK = true;
+            int StaffId = 1;
+            Found = AnStaff.Find(StaffId);
+            if(AnStaff.admin != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }
