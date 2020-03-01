@@ -14,5 +14,10 @@ namespace ShoeClasses
         public int customerID { get; set; }
         public int staffID { get; set; }
         public double totalPrice { get; set; }
+
+        public bool Find(int orderID)
+        {
+            return true;
+        }
     }
 }

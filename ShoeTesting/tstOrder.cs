@@ -67,6 +67,31 @@ namespace ShoeTesting
             AnOrder.totalPrice = TestData;
             Assert.Equals(AnOrder.totalPrice, TestData);
         }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Int32 orderID = 1;
+            Found = AnOrder.Find(orderID);
+            Assert.IsTrue(Found);
 
+        }
+
+        [TestMethod]
+        public void TestOrderNotFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 TestData = 12;
+            Found = AnOrder.Find(TestData);
+            if (AnOrder.TestData != 12)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
     }
 }
