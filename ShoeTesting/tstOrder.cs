@@ -1,11 +1,11 @@
 ﻿using System;
-using ShoeClasses;
+
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ShoeTesting
 {
     [TestClass]
-    public class UnitTest1
+    public class ShoeTesting
     {
         [TestMethod]
         public void IstanceOK()
@@ -93,5 +93,107 @@ namespace ShoeTesting
             Assert.IsTrue(OK);
 
         }
+        [TestMethod]
+        public void TestDateAddedFound()
+        {
+            clsOrder anOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 orderID = 12;
+            Found = anOrder.Find(orderID);
+            if(anOrder.dateOrdered != Convert.ToDateTime("16/02/2020"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustomerIDFound()
+        {
+            clsOrder anOrder = new clsOrder();
+            Boolean found = false;
+            Boolean OK = true;
+            Int32 orderID = 12;
+            found = anOrder.Find(orderID);
+            if(anOrder.customerID != 3)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestStaffIDFound()
+        {
+            clsOrder anOrder = new clsOrder();
+            Boolean found = false;
+            Boolean OK = true;
+            Int32 orderID = 12;
+            found = anOrder.Find(orderID);
+            if (anOrder.staffID != 4)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestTotalPriceFound()
+        {
+            clsOrder anOrder = new clsOrder();
+            Boolean found = false;
+            Boolean OK = true;
+            Int32 orderID = 12;
+            found = anOrder.Find(orderID);
+            if (anOrder.staffID != 10.50)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestDeliveryAddressFound()
+        {
+            clsOrder anOrder = new clsOrder();
+            Boolean found = false;
+            Boolean OK = true;
+            Int32 orderID = 12;
+            found = anOrder.Find(orderID);
+            if (anOrder.deliveryAddress != "Test address")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestDeliveryAddressFound()
+        {
+            clsOrder anOrder = new clsOrder();
+            Boolean found = false;
+            Boolean OK = true;
+            Int32 orderID = 12;
+            found = anOrder.Find(orderID);
+            if (anOrder.deliveryAddress != "Test address")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestPaidFound()
+        {
+            clsOrder anOrder = new clsOrder();
+            Boolean found = false;
+            Boolean OK = true;
+            Int32 orderID = 12;
+            found = anOrder.Find(orderID);
+            if (anOrder.paid != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+
+
+
     }
 }

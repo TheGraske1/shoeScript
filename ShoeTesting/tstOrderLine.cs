@@ -68,6 +68,101 @@ namespace ShoeTesting
             Assert.Equals(anOrderLine.selectionDescription, TestData);
 
         }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Int32 TestData = 3;
+            Found = AnOrderLine.Find(TestData);
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestOrderLineNotFound()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 orderLineID = 4;
+            Found = AnOrderLine.Find(orderLineID);
+            if (AnOrderLine.orderLineID != 3)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestOrderIDFound()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 orderLineID = 4;
+            Found = AnOrderLine.Find(orderLineID);
+            if (AnOrderLine.orderID != 3)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestProductIDFound()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 orderLineID = 4;
+            Found = AnOrderLine.Find(orderLineID);
+            if (AnOrderLine.productID != 5)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestQuantityFound()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 orderLineID = 4;
+            Found = AnOrderLine.Find(orderLineID);
+            if (AnOrderLine.quantity != 2)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestPricePerUnitFound()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 orderLineID = 4;
+            Found = AnOrderLine.Find(orderLineID);
+            if (AnOrderLine.pricePerUnit != 5.99)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestSelectionDescriptionFound()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 orderLineID = 4;
+            Found = AnOrderLine.Find(orderLineID);
+            if (AnOrderLine.selectionDescription != "Testing description")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+
 
     }
 }
