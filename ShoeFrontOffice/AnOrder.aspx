@@ -1,6 +1,14 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AnOrder.aspx.cs" Inherits="Default2" %>
 
 <!DOCTYPE html>
+<script runat="server">
+
+    protected void OK_Click(object sender, EventArgs e)
+    {
+
+    }
+</script>
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -35,7 +43,7 @@
                     <option value ="3">3</option>
                 </select><p>
 >
-            <asp:Button ID="OK" runat="server" Text="OK" style="width: 33px" />
+            <asp:Button ID="OK" runat="server" Text="OK" style="width: 33px" OnClick="OK_Click" />
         
             <p>&nbsp;&nbsp;
                 </div>

@@ -40,4 +40,9 @@ public partial class AnStaff : System.Web.UI.Page
             txtJoinedDate.Text = AnStaff.joinedDate.ToString();
         }
     }
+
+    protected void btnOk_Click1(object sender, EventArgs e)
+    {
+
+    }
 }
