@@ -52,7 +52,7 @@ namespace ShoeTesting
         }
 
         [TestMethod]
-        public void Account()
+        public void Registered()
         {
             clsCustomer ACustomer = new clsCustomer();
             Boolean testCustomerAccount = true;
