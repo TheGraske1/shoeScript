@@ -4,9 +4,14 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ShoeTesting
 {
+
+    
     [TestClass]
     public class tstCustomer
     {
+
+      
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -29,17 +34,17 @@ namespace ShoeTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             string testName = "Jay Patel";
-            ACustomer.name = testName;
-            Assert.AreEqual(ACustomer.name, testName);
+            ACustomer.Name = testName;
+            Assert.AreEqual(ACustomer.Name, testName);
         }
 
         [TestMethod]
         public void Address()
         {
             clsCustomer ACustomer = new clsCustomer();
-            string TestAddress = "41 Rope Walk";
+            string TestAddress = "48 Apple Street LE4 1AS";
             ACustomer.Address = TestAddress;
-            Assert.AreEqual(ACustomer, TestAddress);
+            Assert.AreEqual(ACustomer.Address, TestAddress);
         }
 
         [TestMethod]
@@ -47,12 +52,12 @@ namespace ShoeTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             DateTime testDate = DateTime.Now.Date;
-            ACustomer.createdDate = testDate;
-            Assert.AreEqual(ACustomer.createdDate, testDate);
+            ACustomer.DateCreated = testDate;
+            Assert.AreEqual(ACustomer.DateCreated, testDate);
         }
 
         [TestMethod]
-        public void Account()
+        public void Registered()
         {
             clsCustomer ACustomer = new clsCustomer();
             Boolean testCustomerAccount = true;
@@ -65,8 +70,8 @@ namespace ShoeTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             double testBalance = 250.00;
-            ACustomer.balance = testBalance;
-            Assert.AreEqual(ACustomer.balance, testBalance);
+            ACustomer.Balance = testBalance;
+            Assert.AreEqual(ACustomer.Balance, testBalance);
         }
 
         [TestMethod]
@@ -110,7 +115,7 @@ namespace ShoeTesting
 
             Found = ACustomer.Find(CustomerID);
 
-            if (ACustomer.createdDate != Convert.ToDateTime("02/03/2020"))
+            if (ACustomer.DateCreated != Convert.ToDateTime("02/03/2020"))
             {
                 OK = false;
             }
@@ -130,7 +135,7 @@ namespace ShoeTesting
 
             Found = ACustomer.Find(CustomerID);
 
-            if (ACustomer.name != "Joe")
+            if (ACustomer.Name != "Joe")
             {
                 OK = false;
             }
@@ -186,13 +191,26 @@ namespace ShoeTesting
 
             Found = ACustomer.Find(CustomerID);
 
-            if (ACustomer.balance != 250.00)
+            if (ACustomer.Balance != 250.00)
             {
                 OK = false;
             }
 
             Assert.IsTrue(OK);
 
+        }
+
+        [TestMethod]
+
+        [TestMethod]
+
+        public void ValidMethodOK()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+            Assert.AreEqual(Error, "");
         }
 
 

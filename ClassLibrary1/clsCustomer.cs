@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShoeClasses;
+using System;
 
 namespace ClassLibrary1
 {
@@ -15,7 +16,7 @@ namespace ClassLibrary1
         {
         }
 
-        public string name
+        public string Name
         {
             get
             {
@@ -37,7 +38,7 @@ namespace ClassLibrary1
                 mAddress = value;
             }
         }
-        public DateTime createdDate
+        public DateTime DateCreated
         {
             get
             {
@@ -60,7 +61,7 @@ namespace ClassLibrary1
             }
         }
 
-        public double balance
+        public double Balance
         {
             get
             {
@@ -87,13 +88,45 @@ namespace ClassLibrary1
 
         public bool Find(int customerID)
         {
-            mCustomerID = 6;
+
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@CustomerID", CustomerID);
+
+            DB.Execute("sproc_tblCustomer_FilterByCustomerID");
+
+            if (DB.Count == 1)
+            {
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mName = Convert.ToString(DB.DataTable.Rows[0]["Name"]);
+                mAddress = Convert.ToString(DB.DataTable.Rows[0]["Address"]);
+                mDateCreated = Convert.ToDateTime(DB.DataTable.Rows[0]["DateCreated"]);
+                mRegistered = Convert.ToBoolean(DB.DataTable.Rows[0]["Registered"]);
+                mBalance = Convert.ToDouble(DB.DataTable.Rows[0]["Balance"]);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+
+            /*mCustomerID = 6;
             mDateCreated = Convert.ToDateTime("02/03/2020");
             mName = "Joe";
-            mAddress = "3 Apple Street LE1 8DS";
+            mAddress = "48 Apple Street LE1 8DS";
             mRegistered = false;
             mBalance = 250.00;
-            return true;
+            return true;*/
         }
+
+        public string Valid(string Name,
+                            String Address,
+                            DateTime DateCreated,
+                            Boolean Registered,
+                            double Balance);
+
     }
 }
