@@ -94,7 +94,8 @@ namespace ClassLibrary1
                 mJoinedDate = Convert.ToDateTime(DB.DataTable.Rows[0]["JoinedDate"]);
                 mAdmin = Convert.ToBoolean(DB.DataTable.Rows[0]["AdminPriviligies"]);
                 return true;
-            }
+                
+    }
             else
             {
                 return false;
