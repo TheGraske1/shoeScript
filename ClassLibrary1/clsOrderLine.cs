@@ -7,7 +7,7 @@ namespace ShoeClasses
         private int mOrderID;
         private int mProductID;
         private int mQuantity;
-        private float mPricePerUnit;
+        private double mPricePerUnit;
         private string mselectionDescription;
        
         public int orderLineID
@@ -55,7 +55,7 @@ namespace ShoeClasses
                 mQuantity = value;
             }
         }
-        public float pricePerUnit
+        public double pricePerUnit
         {
             get
             {
@@ -83,7 +83,7 @@ namespace ShoeClasses
             mOrderID = 3;
             mProductID = 5;
             mQuantity = 2;
-            mPricePerUnit = Convert.ToInt32(5.99);
+            mPricePerUnit = 5.99;
             mselectionDescription = "Testing description";
 
             return true;

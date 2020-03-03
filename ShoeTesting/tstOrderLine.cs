@@ -20,7 +20,7 @@ namespace ShoeTesting
             clsOrderLine anOrderLine = new clsOrderLine();
             int TestData = 234;
             anOrderLine.orderLineID = TestData;
-            Assert.Equals(anOrderLine.orderLineID, TestData);
+            Assert.AreEqual(anOrderLine.orderLineID, TestData);
 
         }
         [TestMethod]
@@ -29,7 +29,7 @@ namespace ShoeTesting
             clsOrderLine anOrderLine = new clsOrderLine();
             int TestData = 1234;
             anOrderLine.orderID = TestData;
-            Assert.Equals(anOrderLine.orderID, TestData);
+            Assert.AreEqual(anOrderLine.orderID, TestData);
 
         }
         [TestMethod]
@@ -38,7 +38,7 @@ namespace ShoeTesting
             clsOrderLine anOrderLine = new clsOrderLine();
             int TestData = 6234;
             anOrderLine.productID = TestData;
-            Assert.Equals(anOrderLine.productID, TestData);
+            Assert.AreEqual(anOrderLine.productID, TestData);
 
         }
         [TestMethod]
@@ -47,7 +47,7 @@ namespace ShoeTesting
             clsOrderLine anOrderLine = new clsOrderLine();
             int TestData = 2;
             anOrderLine.quantity = TestData;
-            Assert.Equals(anOrderLine.quantity, TestData);
+            Assert.AreEqual(anOrderLine.quantity, TestData);
 
         }
         [TestMethod]
@@ -56,7 +56,7 @@ namespace ShoeTesting
             clsOrderLine anOrderLine = new clsOrderLine();
              float TestData = Convert.ToInt32(234.23);
             anOrderLine.pricePerUnit = TestData;
-            Assert.Equals(anOrderLine.pricePerUnit, TestData);
+            Assert.AreEqual(anOrderLine.pricePerUnit, TestData);
 
         }
         [TestMethod]
@@ -65,7 +65,7 @@ namespace ShoeTesting
             clsOrderLine anOrderLine = new clsOrderLine();
             String TestData = "This is the selection";
             anOrderLine.selectionDescription = TestData;
-            Assert.Equals(anOrderLine.selectionDescription, TestData);
+            Assert.AreEqual(anOrderLine.selectionDescription, TestData);
 
         }
         [TestMethod]
@@ -85,7 +85,7 @@ namespace ShoeTesting
             Boolean OK = true;
             Int32 orderLineID = 4;
             Found = AnOrderLine.Find(orderLineID);
-            if (AnOrderLine.orderLineID != 3)
+            if (AnOrderLine.orderLineID != 4)
             {
                 OK = false;
             }

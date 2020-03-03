@@ -11,7 +11,7 @@ namespace ShoeClasses
         private String mDeliveryAddress;
         private Int32 mCustomerID;
         private Int32 mStaffID;
-        private float mTotalPrice;
+        private double mTotalPrice;
         public DateTime dateOrdered
         {
             get
@@ -97,7 +97,7 @@ namespace ShoeClasses
         {
             morderID = 12;
             mDateOrdered = Convert.ToDateTime("16/02/2020");
-            mTotalPrice = Convert.ToInt32(10.50);
+            mTotalPrice = 10.50;
             mStaffID = 4;
             mCustomerID = 3;
             mPaid = true;

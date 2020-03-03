@@ -143,7 +143,7 @@ namespace ShoeTesting
             Boolean OK = true;
             Int32 orderID = 12;
             found = anOrder.Find(orderID);
-            if (anOrder.staffID != 10.50)
+            if (anOrder.totalPrice != 10.50)
             {
                 OK = false;
             }
