@@ -9,6 +9,9 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <p>CustomerID:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:TextBox ID="txtCustomerID" runat="server"></asp:TextBox>
+                </p>
             <p>Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtName" runat="server"></asp:TextBox>
                 </p>
@@ -25,7 +28,8 @@
             <asp:TextBox ID="txtBalance" runat="server"></asp:TextBox>
                 </p>
             <p>
-                <asp:Button ID="BtnOk" runat="server" Text="OK" Width="50px" />
+                <asp:Button ID="btnOk" runat="server" Text="OK" Width="50px" />
+                <asp:Button ID="btnFind" runat="server" Text="Find" Width="50px" />
                 <asp:Button ID="btnCancel" runat="server" Text="Cancel" Width="50px" />
             </p>
 
