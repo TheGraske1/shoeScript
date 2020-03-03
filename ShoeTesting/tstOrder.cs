@@ -1,5 +1,5 @@
 ﻿using System;
-
+using ShoeClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ShoeTesting
@@ -18,8 +18,8 @@ namespace ShoeTesting
         {
             clsOrder AnOrder = new clsOrder();
             Boolean TestData = true;
-            AnOrder.Paid = TestData;
-            Assert.AreEqual(AnOrder.Paid, TestData);
+            AnOrder.paid = TestData;
+            Assert.AreEqual(AnOrder.paid, TestData);
         }
         [TestMethod]
         public void DateAddedPropertyOK()
@@ -84,9 +84,9 @@ namespace ShoeTesting
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 TestData = 12;
-            Found = AnOrder.Find(TestData);
-            if (AnOrder.TestData != 12)
+            Int32 orderID = 12;
+            Found = AnOrder.Find(orderID);
+            if (AnOrder.orderID != 12)
             {
                 OK = false;
             }
@@ -163,20 +163,7 @@ namespace ShoeTesting
             }
             Assert.IsTrue(OK);
         }
-        [TestMethod]
-        public void TestDeliveryAddressFound()
-        {
-            clsOrder anOrder = new clsOrder();
-            Boolean found = false;
-            Boolean OK = true;
-            Int32 orderID = 12;
-            found = anOrder.Find(orderID);
-            if (anOrder.deliveryAddress != "Test address")
-            {
-                OK = false;
-            }
-            Assert.IsTrue(OK);
-        }
+        
         [TestMethod]
         public void TestPaidFound()
         {

@@ -1,5 +1,5 @@
 ﻿using System;
-using ClassLibrary1;
+using ShoeClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ShoeTesting
@@ -54,7 +54,7 @@ namespace ShoeTesting
         public void pricePerUnitPropertyOK()
         {
             clsOrderLine anOrderLine = new clsOrderLine();
-            double TestData = 234.23;
+             float TestData = Convert.ToInt32(234.23);
             anOrderLine.pricePerUnit = TestData;
             Assert.Equals(anOrderLine.pricePerUnit, TestData);
 

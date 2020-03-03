@@ -46,7 +46,7 @@ namespace ShoeClasses
             }
         }
   
-        public object orderID {
+        public int orderID {
 
             get
             {
