@@ -3,10 +3,9 @@
 <!DOCTYPE html>
 <script runat="server">
 
-    protected void OK_Click(object sender, EventArgs e)
-    {
 
-    }
+
+
 </script>
 
 
@@ -17,35 +16,53 @@
 <body style="height: 532px; margin-bottom: 27px">
     <form id="form1" runat="server">
         <div>
-            <p>OrderID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" size ="20px" id="txtOrderID"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; </p>
-            <p>CustomerID:&nbsp; <input type="text" size="20px" name ="txtOrderID" id="CustomerID" /></p>
-            <p>StaffID: <input type="text" size="20px" id="StaffID" /></p>
-            <p>Total Price: <input type="text" size="20px" id="TotalPrice" /></p>
+            <p>OrderID 
+                <asp:TextBox ID="intOrderID" runat="server"></asp:TextBox>
+            </p>
+            <p>StaffID: 
+                <asp:TextBox ID="intStaffID" runat="server"></asp:TextBox>
+            </p>
+            <p>Total Price: 
+                <asp:TextBox ID="floatPrice" runat="server"></asp:TextBox>
+            </p>
             <p>
-                Delivery Address: <input type="text" size="20px" /></p>
+                Delivery Address: 
+                <asp:TextBox ID="stringAddress" runat="server"></asp:TextBox>
+            </p>
             <p>
-                Date Ordered: <input type="text" size="20px" /></p>
+                Date Ordered: 
+                <asp:TextBox ID="dateOrdered" runat="server"></asp:TextBox>
+            </p>
             <p>
-                OrderLineID: <input type="text" size="20px" /></p>
+                OrderLineID: 
+                <asp:TextBox ID="intOrderLine" runat="server"></asp:TextBox>
+            </p>
             <p>
-                ProductID: <input type="text" size="20px" /></p>
+                ProductID: 
+                <asp:TextBox ID="intProduct" runat="server"></asp:TextBox>
+            </p>
             <p>
-                Price per unit: <input type="text" size="20px" /></p>
+                Price per unit: 
+                <asp:TextBox ID="floatPriceUnit" runat="server"></asp:TextBox>
+            </p>
             <p>
-                SelectionDescription: <input type="text" size="20px" /></p>
+                SelectionDescription: 
+                <asp:TextBox ID="stringSelection" runat="server"></asp:TextBox>
+            </p>
             <p>
-                <asp:CheckBox ID="Paid" runat="server" />
+                <asp:CheckBox ID="boolPaid" runat="server" />
             </p>
             <p>Quantity:&nbsp;
-                <select ammount="orders" name="D1">
-                    <option value ="1">1</option>
-                    <option value ="2">2</option>
-                    <option value ="3">3</option>
-                </select><p>
+                <asp:DropDownList ID="DropDownList1" runat="server" >
+                    <asp:ListItem Value="1"></asp:ListItem>
+                    <asp:ListItem Value="2"></asp:ListItem>
+                    <asp:ListItem Value="3"></asp:ListItem>
+                </asp:DropDownList>
+            
 >
-            <asp:Button ID="OK" runat="server" Text="OK" style="width: 33px" OnClick="OK_Click" />
+                <asp:Button ID="Button1" runat="server" OnClick="btnOK_Click" Text="OK" />
         
-            <p>&nbsp;&nbsp;
+         </p>
                 </div>
     </form>
 </body>
