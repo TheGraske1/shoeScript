@@ -7,6 +7,12 @@ namespace ShoeTesting
     [TestClass]
     public class tstStaff
     {
+
+        string Name = "John Doe";
+        string PhoneNum = "012345678912";
+        int Salary = 25000;
+        string JoinedDate = DateTime.Now.Date.ToString();
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -167,5 +173,15 @@ namespace ShoeTesting
             }
             Assert.IsTrue(OK);
         }
+
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreEqual(Error, "");
+        }
+
     }
 }
