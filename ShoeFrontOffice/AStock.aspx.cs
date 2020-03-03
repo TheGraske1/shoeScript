@@ -21,10 +21,15 @@ public partial class AStock : System.Web.UI.Page
         clsStock AProduct = new clsStock();
         AProduct.ProductId = Convert.ToInt32(txtProductId);
         AProduct.StyleName = txtStyleName.Text;
-        AProduct.QuantityAvailable = txtQuantityAvailable.Text;
-        AProduct.Price = txtPrice.Text;
-
+        AProduct.QuantityAvailable = Convert.ToInt32(txtQuantityAvailable.Text);
+        AProduct.Price = Convert.ToDouble(txtPrice.Text);
+        AProduct.BackInStockDate = Convert.ToDateTime(txtBackInStockDate.Text);
+        AProduct.LimitedEdition = Yes.Checked;
+        Session["AProduct"] = AProduct;
         Response.Redirect("StockViewer.aspx");
 
     }
+
+   
+    
 }
