@@ -41,8 +41,4 @@ public partial class AnStaff : System.Web.UI.Page
         }
     }
 
-    protected void btnOk_Click1(object sender, EventArgs e)
-    {
-
-    }
 }

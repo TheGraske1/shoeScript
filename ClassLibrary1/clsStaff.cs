@@ -100,5 +100,10 @@ namespace ClassLibrary1
                 return false;
             }
         }
+
+        public string Valid(string name, string phoneNum, int salary, string joinedDate)
+        {
+            return "";
+        }
     }
 }
