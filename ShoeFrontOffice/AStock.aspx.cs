@@ -27,7 +27,7 @@ public partial class AStock : System.Web.UI.Page
         AProduct.LimitedEdition = Yes.Checked;
         Session["AProduct"] = AProduct;
         Response.Redirect("StockViewer.aspx");
-
+        
     }
 
    
