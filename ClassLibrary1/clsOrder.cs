@@ -95,15 +95,25 @@ namespace ShoeClasses
         }
         public bool Find(int orderID)
         {
-            morderID = 12;
-            mDateOrdered = Convert.ToDateTime("16/02/2020");
-            mTotalPrice = 10.50;
-            mStaffID = 4;
-            mCustomerID = 3;
-            mPaid = true;
-            mDeliveryAddress = "Test address";
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@orderID", orderID);
+            DB.Execute("sproc_tblOrder_FilterByOrderID");
+            if (DB.Count == 1)
+            {
+                morderID = Convert.ToInt32(DB.DataTable.Rows[0]["orderID"]);
+                mDateOrdered = Convert.ToDateTime(DB.DataTable.Rows[0]["Date Added"]);
+                mTotalPrice = Convert.ToDouble(DB.DataTable.Rows[0]["Total Price"]);
+                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["Staff ID"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["Customer ID"]);
+                mPaid = Convert.ToBoolean(DB.DataTable.Rows[0]["Paid"]);
+                mDeliveryAddress = Convert.ToString(DB.DataTable.Rows[0]["Delivery Address"]);
 
-            return true;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }
