@@ -66,15 +66,30 @@ namespace ShoeClasses
                 mselectionDescription = value;
             }
         }
-        public bool Find(int orderID)
+        public bool Find(int orderLineID)
         {
-            mOrderLineID = 4;
-            mOrderID = 3;
-            mProductID = 5;
-            mQuantity = 2;
-            mselectionDescription = "Testing description";
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@orderLineID", orderLineID);
+            DB.Execute("sproc_tblOrderLine_FilterByOrderLineID");
+            if (DB.Count == 1)
+            {
+                mOrderLineID = Convert.ToInt32(DB.DataTable.Rows[0]["orderLineID"]);
+                mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["orderID"]);
+                mProductID = Convert.ToInt32(DB.DataTable.Rows[0]["productID"]);
+                mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["quantity"]);
+                mselectionDescription = Convert.ToString(DB.DataTable.Rows[0]["selectionDescription"]);
+                
 
-            return true;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public string Valid(string orderID, string product, string quantity, string selection)
+        {
+            return "";
         }
     }
     }

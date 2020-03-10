@@ -101,12 +101,12 @@ namespace ShoeClasses
             if (DB.Count == 1)
             {
                 morderID = Convert.ToInt32(DB.DataTable.Rows[0]["orderID"]);
-                mDateOrdered = Convert.ToDateTime(DB.DataTable.Rows[0]["Date Added"]);
-                mTotalPrice = Convert.ToDouble(DB.DataTable.Rows[0]["Total Price"]);
-                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["Staff ID"]);
-                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["Customer ID"]);
-                mPaid = Convert.ToBoolean(DB.DataTable.Rows[0]["Paid"]);
-                mDeliveryAddress = Convert.ToString(DB.DataTable.Rows[0]["Delivery Address"]);
+                mDateOrdered = Convert.ToDateTime(DB.DataTable.Rows[0]["dateOrdered"]);
+                mTotalPrice = Convert.ToDouble(DB.DataTable.Rows[0]["totalPrice"]);
+                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["staffID"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["customerID"]);
+                mPaid = Convert.ToBoolean(DB.DataTable.Rows[0]["paid"]);
+                mDeliveryAddress = Convert.ToString(DB.DataTable.Rows[0]["deliveryAddress"]);
 
                 return true;
             }

@@ -65,7 +65,7 @@ namespace ShoeTesting
         {
             clsOrderLine AnOrderLine = new clsOrderLine();
             Boolean Found = false;
-            Int32 TestData = 3;
+            Int32 TestData = 4;
             Found = AnOrderLine.Find(TestData);
             Assert.IsTrue(Found);
         }
@@ -91,7 +91,7 @@ namespace ShoeTesting
             Boolean OK = true;
             Int32 orderLineID = 4;
             Found = AnOrderLine.Find(orderLineID);
-            if (AnOrderLine.orderID != 3)
+            if (AnOrderLine.orderID != 12)
             {
                 OK = false;
             }
@@ -105,7 +105,7 @@ namespace ShoeTesting
             Boolean OK = true;
             Int32 orderLineID = 4;
             Found = AnOrderLine.Find(orderLineID);
-            if (AnOrderLine.productID != 5)
+            if (AnOrderLine.productID != 1)
             {
                 OK = false;
             }
@@ -140,7 +140,19 @@ namespace ShoeTesting
             }
             Assert.IsTrue(OK);
         }
-
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsOrderLine AnOrderLine = new clsOrderLine();
+            string error = "";
+            string orderID = "2";
+            string product = "4";
+            string quantity = "15";
+            string selection = "Nike Air style";
+            error = AnOrderLine.Valid(orderID, product, quantity, selection);
+            Assert.AreEqual(error, "");
+        }
+        
 
 
     }

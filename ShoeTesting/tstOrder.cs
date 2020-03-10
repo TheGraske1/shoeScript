@@ -72,7 +72,7 @@ namespace ShoeTesting
         {
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
-            Int32 orderID = 1;
+            Int32 orderID = 12;
             Found = AnOrder.Find(orderID);
             Assert.IsTrue(Found);
 
