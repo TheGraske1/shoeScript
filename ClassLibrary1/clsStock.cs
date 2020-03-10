@@ -68,7 +68,7 @@ namespace ClassLibrary1
                 mStyleName = value;
             }
         }
-        //public int ProductId { get; set; }
+     
         
 
         public Int32 ProductId
@@ -83,7 +83,7 @@ namespace ClassLibrary1
             }
         }
 
-        public bool Find(int productId)
+        public bool Find(int ProductId)
         {
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@ProductId", ProductId);
@@ -93,7 +93,7 @@ namespace ClassLibrary1
                 mProductId = Convert.ToInt32(DB.DataTable.Rows[0]["ProductId"]);
                 mStyleName = Convert.ToString(DB.DataTable.Rows[0]["StyleName"]);
                 mBackInStockDate = Convert.ToDateTime(DB.DataTable.Rows[0]["BackInStockDate"]);
-                mLimitedEdition = Convert.ToBoolean(DB.DataTable.Rows[0]["LimitedEddition"]);
+                mLimitedEdition = Convert.ToBoolean(DB.DataTable.Rows[0]["LimitedEdition"]);
                 mPrice = Convert.ToDouble(DB.DataTable.Rows[0]["Price"]);
                 mQuantityAvailable = Convert.ToInt32(DB.DataTable.Rows[0]["QuantityAvailable"]);
                 return true;

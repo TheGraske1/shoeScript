@@ -100,7 +100,7 @@ namespace ShoeTesting
             Boolean OK = true;
             Int32 ProductId = 1;
             Found = AProduct.Find(ProductId);
-            if (AProduct.StyleName != "Test Style Name")
+            if (AProduct.StyleName != "TestStyleName")
             {
                 OK = false;
             
@@ -141,7 +141,7 @@ namespace ShoeTesting
         }
 
         [TestMethod]
-        public void TestLimitedAdditionFounr()
+        public void TestLimitedEditionFound()
         {
             clsStock AProduct = new clsStock();
             Boolean Found = false;
@@ -157,7 +157,7 @@ namespace ShoeTesting
         }
 
         [TestMethod]
-       public void TestBackInStockDateFounf()
+       public void TestBackInStockDateFound()
         {
             clsStock AProduct = new clsStock();
             Boolean Found = false;
