@@ -50,15 +50,7 @@ namespace ShoeTesting
             Assert.AreEqual(anOrderLine.quantity, TestData);
 
         }
-        [TestMethod]
-        public void pricePerUnitPropertyOK()
-        {
-            clsOrderLine anOrderLine = new clsOrderLine();
-             float TestData = Convert.ToInt32(234.23);
-            anOrderLine.pricePerUnit = TestData;
-            Assert.AreEqual(anOrderLine.pricePerUnit, TestData);
-
-        }
+        
         [TestMethod]
         public void selectionDescriptionPropertyOK()
         {
@@ -133,20 +125,7 @@ namespace ShoeTesting
             }
             Assert.IsTrue(OK);
         }
-        [TestMethod]
-        public void TestPricePerUnitFound()
-        {
-            clsOrderLine AnOrderLine = new clsOrderLine();
-            Boolean Found = false;
-            Boolean OK = true;
-            Int32 orderLineID = 4;
-            Found = AnOrderLine.Find(orderLineID);
-            if (AnOrderLine.pricePerUnit != 5.99)
-            {
-                OK = false;
-            }
-            Assert.IsTrue(OK);
-        }
+       
         [TestMethod]
         public void TestSelectionDescriptionFound()
         {

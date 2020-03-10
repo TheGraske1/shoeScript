@@ -17,13 +17,14 @@
     <form id="form1" runat="server">
         <div>
             <p>OrderID 
-                <asp:TextBox ID="intOrderID" runat="server"></asp:TextBox>
+                <asp:TextBox ID="intOrderID" runat="server" Width="80px"></asp:TextBox>
+                <asp:Button ID="Find" runat="server" OnClick="Find_Click" Text="Find" />
             </p>
             <p>StaffID: 
                 <asp:TextBox ID="intStaffID" runat="server"></asp:TextBox>
             </p>
             <p>Total Price: 
-                <asp:TextBox ID="floatPrice" runat="server"></asp:TextBox>
+                <asp:TextBox ID="floatPrice" runat="server" Width="127px"></asp:TextBox>
             </p>
             <p>
                 Delivery Address: 
@@ -40,10 +41,6 @@
             <p>
                 ProductID: 
                 <asp:TextBox ID="intProduct" runat="server"></asp:TextBox>
-            </p>
-            <p>
-                Price per unit: 
-                <asp:TextBox ID="floatPriceUnit" runat="server"></asp:TextBox>
             </p>
             <p>
                 SelectionDescription: 
