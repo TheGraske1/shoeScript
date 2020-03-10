@@ -178,6 +178,20 @@ namespace ShoeTesting
             }
             Assert.IsTrue(OK);
         }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String error = "";
+            string date = "02/03/2020";
+            string paid = "True";
+            string price = "20.99";
+            string staff = "3";
+            string customer = "2";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            error = AnOrder.Valid(date, paid, price, staff, customer, address);
+               Assert.AreEqual(error, "");
+        }
 
 
 

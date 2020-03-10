@@ -7,7 +7,6 @@ namespace ShoeClasses
         private int mOrderID;
         private int mProductID;
         private int mQuantity;
-        private double mPricePerUnit;
         private string mselectionDescription;
        
         public int orderLineID
@@ -55,17 +54,7 @@ namespace ShoeClasses
                 mQuantity = value;
             }
         }
-        public double pricePerUnit
-        {
-            get
-            {
-                return mPricePerUnit;
-            }
-            set
-            {
-                mPricePerUnit = value;
-            }
-        }
+       
         public string selectionDescription
         {
             get
@@ -83,7 +72,6 @@ namespace ShoeClasses
             mOrderID = 3;
             mProductID = 5;
             mQuantity = 2;
-            mPricePerUnit = 5.99;
             mselectionDescription = "Testing description";
 
             return true;

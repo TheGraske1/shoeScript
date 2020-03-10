@@ -115,5 +115,9 @@ namespace ShoeClasses
                 return false;
             }
         }
+        public string Valid(string date, string paid, string price, string staff, string customer,string address)
+        {
+            return "";
+        }
     }
 }
