@@ -83,9 +83,10 @@ namespace ShoeTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
-            Int32 CustomerID = 1;
+            Int32 CustomerID = 3;
             Found = ACustomer.Find(CustomerID);
             Assert.IsTrue(Found);
+           
         } 
 
         [TestMethod]
@@ -98,9 +99,9 @@ namespace ShoeTesting
             Int32 CustomerID = 6;
             Found = ACustomer.Find(CustomerID);
 
-            if (ACustomer.CustomerID != 6 )
+            if (ACustomer.CustomerID !=6 )
             {
-                OK = false;
+                OK = true;
             }
 
             Assert.IsTrue(OK);
@@ -114,11 +115,11 @@ namespace ShoeTesting
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 6;
+            Int32 CustomerID = 3;
 
             Found = ACustomer.Find(CustomerID);
 
-            if (ACustomer.DateCreated != Convert.ToDateTime("02/03/2020"))
+            if (ACustomer.DateCreated != Convert.ToDateTime("04/02/2020"))
             {
                 OK = false;
             }
@@ -140,6 +141,7 @@ namespace ShoeTesting
 
             if (ACustomer.Name != "Joe")
             {
+                
                 OK = false;
             }
 
@@ -152,12 +154,13 @@ namespace ShoeTesting
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 6;
+            Int32 CustomerID = 3;
 
             Found = ACustomer.Find(CustomerID);
 
-            if (ACustomer.Address != "3 Apple Street LE1 8DS")
+            if (ACustomer.Address != "48 Apple Street LE4 1AS")
             {
+
                 OK = false;
             }
 
@@ -171,7 +174,7 @@ namespace ShoeTesting
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 6;
+            Int32 CustomerID = 3;
 
             Found = ACustomer.Find(CustomerID);
 
@@ -190,11 +193,11 @@ namespace ShoeTesting
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 6;
+            Int32 CustomerID = 3;
 
             Found = ACustomer.Find(CustomerID);
 
-            if (ACustomer.Balance != 250.00)
+            if (ACustomer.Balance != 200.00)
             {
                 OK = false;
             }

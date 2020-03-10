@@ -87,7 +87,7 @@ namespace ClassLibrary1
             }
         }
 
-        public bool Find(int customerID)
+        public bool Find(int CustomerID)
         {
 
             clsDataConnection DB = new clsDataConnection();

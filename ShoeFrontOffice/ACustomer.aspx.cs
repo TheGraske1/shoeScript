@@ -23,18 +23,19 @@ public partial class Customer : System.Web.UI.Page
     {
         clsCustomer ACustomer = new clsCustomer();
 
-        ACustomer.CustomerID = txtCustomerID.text;
+        ACustomer.CustomerID = txtCustomerID.Text;
 
 
         ACustomer.Name = txtName.Text;
 
         ACustomer.Address = txtAddress.Text;
 
-        ACustomer.DateCreated = Convert.ToDateTime(txtDatecreated.text);
+        ACustomer.DateCreated = Convert.ToDateTime(txtDatecreated.Text);
 
-        ACustomer.Registered = txtRegistered.text;
+        ACustomer.Registered = txtRegistered.Text;
 
-        ACustomer.Balance = txtBalance.text;
+        ACustomer.Balance = txtBalance.Text;
+
 
 
 
@@ -48,17 +49,17 @@ public partial class Customer : System.Web.UI.Page
         clsCustomer ACustomer = new clsCustomer();
         Int32 CustomerID;
         Boolean Found = false;
-        CustomerID = Convert.ToInt32(txtCustomerID.text);
+        CustomerID = Convert.ToInt32(txtCustomerID.Text);
         Found = ACustomer.Find(Customer);
 
         if (Found == true)
         {
-            txtCustomerID.text = ACustomer.CustomerID;
-            txtName.text = ACustomer.Name;
-            txtAddress = ACustomer.Address;
-            txtDatecreated = ACustomer.DateCreated;
-            txtRegistered = ACustomer.Registered;
-            txtBalance = ACustomer.Balance;
+            txtCustomerID.Text = ACustomer.CustomerID;
+            txtName.Text = ACustomer.Name;
+            txtAddress.Text = ACustomer.Address;
+            txtDatecreated.Text = ACustomer.DateCreated;
+            txtRegistered.Text = ACustomer.Registered;
+            txtBalance.Text = ACustomer.Balance;
         }
     }
 
