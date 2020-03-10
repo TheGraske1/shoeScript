@@ -5,6 +5,9 @@ namespace ClassLibrary1
 {
     public class clsCustomer
     {
+        public clsCustomer()
+        {
+        }
         private Int32 mCustomerID;
         private DateTime mDateCreated;
         private string mName;
@@ -12,9 +15,7 @@ namespace ClassLibrary1
         private bool mRegistered;
         private double mBalance;
 
-        public clsCustomer()
-        {
-        }
+
 
         public string Name
         {
@@ -123,10 +124,15 @@ namespace ClassLibrary1
         }
 
         public string Valid(string Name,
-                            String Address,
+                            string Address,
                             DateTime DateCreated,
                             Boolean Registered,
-                            double Balance);
+                            double Balance)
+        {
+            return "";
+        }
+
+
 
     }
 }
