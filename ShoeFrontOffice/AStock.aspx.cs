@@ -30,6 +30,11 @@ public partial class AStock : System.Web.UI.Page
         
     }
 
-   
-    
+
+
+
+    protected void Find_Click(object sender, EventArgs e)
+    {
+
+    }
 }
