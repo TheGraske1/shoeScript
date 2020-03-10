@@ -66,7 +66,111 @@ namespace ShoeTesting
             Assert.AreEqual(Aproduct.ProductId, TestData);
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsStock AProduct = new clsStock();
+            Boolean Found = false;
+            Int32 ProductId = 1;
+            Found = AProduct.Find(ProductId);
+            Assert.IsTrue(Found);
+        }
 
+        [TestMethod]
+        public void TestProductIdFound()
+        {
+            clsStock AProduct = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductId = 1;
+            Found = AProduct.Find(ProductId);
+            if (AProduct.ProductId != 1)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestStyleNameFound()
+        {
+            clsStock AProduct = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductId = 1;
+            Found = AProduct.Find(ProductId);
+            if (AProduct.StyleName != "Test Style Name")
+            {
+                OK = false;
+            
+            }
+            Assert.IsTrue(OK);
+
+        }
+        
+        [TestMethod]
+        public void TestQuantityAvailableFound()
+        {
+            clsStock AProduct = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductId = 1;
+            Found = AProduct.Find(ProductId);
+            if (AProduct.QuantityAvailable != 10)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestPriceFound()
+        {
+            clsStock AProduct = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductId = 1;
+            Found = AProduct.Find(ProductId);
+            if (AProduct.Price != 49.99)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+ 
+        }
+
+        [TestMethod]
+        public void TestLimitedAdditionFounr()
+        {
+            clsStock AProduct = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductId = 1;
+            Found = AProduct.Find(ProductId);
+            if (AProduct.LimitedEdition != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+       public void TestBackInStockDateFounf()
+        {
+            clsStock AProduct = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductId = 1;
+            Found = AProduct.Find(ProductId);
+            if (AProduct.BackInStockDate != Convert.ToDateTime("17/05/2020"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
 
 
     }
