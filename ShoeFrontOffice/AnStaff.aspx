@@ -30,9 +30,10 @@
                 <asp:CheckBox ID="chckAdmin" runat="server" Text="Admin Privilages" />
             </p>
             <p>
-                <asp:Button ID="btnOk" runat="server" Text="OK" Width="50px" OnClick="btnOk_Click1" />
+                <asp:Button ID="btnOk" runat="server" Text="OK" Width="50px" OnClick="btnOk_Click" />
                 <asp:Button ID="btnCancel" runat="server" Text="Cancel" Width="50px" />
             </p>
+            <asp:Label ID="lblError" runat="server"></asp:Label>
         </div>
     </form>
 </body>

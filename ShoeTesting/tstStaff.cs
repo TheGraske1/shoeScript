@@ -1,5 +1,5 @@
 ﻿using System;
-using ClassLibrary1;
+using ShoeClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ShoeTesting
@@ -85,9 +85,9 @@ namespace ShoeTesting
             clsStaff AnStaff = new clsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             Found = AnStaff.Find(StaffId);
-            if(AnStaff.staffid != 21)
+            if(AnStaff.staffid != 1)
             {
                 OK = false;
             }
