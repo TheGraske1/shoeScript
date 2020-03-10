@@ -1,4 +1,5 @@
 ﻿using System;
+using ShoeClasses;
 
 namespace ClassLibrary1
 {
@@ -84,11 +85,23 @@ namespace ClassLibrary1
 
         public bool Find(int productId)
         {
-            mProductId = 1;
-            mStyleName = "Test Style Name";
-            mQuantityAvailable = 10;
-
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductId", ProductId);
+            DB.Execute("sproc_ProductTable_FilterByProductId");
+            if (DB.Count == 1)
+            {
+                mProductId = Convert.ToInt32(DB.DataTable.Rows[0]["ProductId"]);
+                mStyleName = Convert.ToString(DB.DataTable.Rows[0]["StyleName"]);
+                mBackInStockDate = Convert.ToDateTime(DB.DataTable.Rows[0]["BackInStockDate"]);
+                mLimitedEdition = Convert.ToBoolean(DB.DataTable.Rows[0]["LimitedEddition"]);
+                mPrice = Convert.ToDouble(DB.DataTable.Rows[0]["Price"]);
+                mQuantityAvailable = Convert.ToInt32(DB.DataTable.Rows[0]["QuantityAvailable"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }
