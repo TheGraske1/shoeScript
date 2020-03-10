@@ -1,7 +1,7 @@
 ﻿using ShoeClasses;
 using System;
 
-namespace ClassLibrary1
+namespace ShoeClasses
 {
     public class clsStaff
     {
@@ -94,7 +94,6 @@ namespace ClassLibrary1
                 mJoinedDate = Convert.ToDateTime(DB.DataTable.Rows[0]["JoinedDate"]);
                 mAdmin = Convert.ToBoolean(DB.DataTable.Rows[0]["AdminPriviligies"]);
                 return true;
-                
     }
             else
             {
@@ -102,7 +101,7 @@ namespace ClassLibrary1
             }
         }
 
-        public string Valid(string name, string phoneNum, int salary, string joinedDate)
+        public string Valid(string name, string phoneNum, double salary, string joinedDate)
         {
             return "";
         }
