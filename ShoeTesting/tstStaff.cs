@@ -85,9 +85,9 @@ namespace ShoeTesting
             clsStaff AnStaff = new clsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffId = 1;
+            Int32 StaffId = 21;
             Found = AnStaff.Find(StaffId);
-            if(AnStaff.staffid != 1)
+            if(AnStaff.staffid != 21)
             {
                 OK = false;
             }
