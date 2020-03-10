@@ -4,11 +4,92 @@ namespace ClassLibrary1
 {
     public class clsStock
     {
-        public bool LimitedEdition { get; set; }
-        public DateTime BackInStockDate { get; set; }
-        public int QuantityAvailable { get; set; }
-        public double Price { get; set; }
-        public string StyleName { get; set; }
-        public int ProductId { get; set; }
+        private Int32 mProductId;
+        private string mStyleName;
+        private Int32 mQuantityAvailable;
+        private Boolean mLimitedEdition;
+        private DateTime mBackInStockDate;
+        private double mPrice;
+
+        public bool LimitedEdition
+        {
+            get
+            {
+                return mLimitedEdition;
+            }
+            set
+            {
+                mLimitedEdition = value;
+            }
+        }
+        public DateTime BackInStockDate
+        {
+            get
+            {
+                return mBackInStockDate;
+            }
+            set
+            {
+                mBackInStockDate = value;
+            }
+        }
+        public Int32 QuantityAvailable
+        {
+            get
+            {
+                return mQuantityAvailable;
+
+            }
+            set
+            {
+                mQuantityAvailable = value;
+            }
+        }
+        public double Price
+        {
+            get
+            {
+                return mPrice;
+            }
+            set
+            {
+                mPrice = value; 
+            }
+        }
+        public string StyleName
+        {
+            get
+            {
+                return mStyleName;
+            }
+            set
+            {
+                mStyleName = value;
+            }
+        }
+        //public int ProductId { get; set; }
+        
+
+        public Int32 ProductId
+        {
+            get
+            {
+                return mProductId;
+            }
+            set
+            {
+                mProductId = value;
+            }
+        }
+
+        public bool Find(int productId)
+        {
+            mProductId = 1;
+            mStyleName = "Test Style Name";
+            mQuantityAvailable = 10;
+
+            return true;
+        }
+
     }
 }
