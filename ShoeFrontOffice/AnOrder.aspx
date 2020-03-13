@@ -47,6 +47,10 @@
                 <asp:TextBox ID="stringSelection" runat="server"></asp:TextBox>
             </p>
             <p>
+                CustomerID:<asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+&nbsp;<asp:TextBox ID="CustomerID" runat="server" BorderStyle="Double"></asp:TextBox>
+            </p>
+            <p>
                 <asp:CheckBox ID="boolPaid" runat="server" />
             </p>
             <p>Quantity:&nbsp;
@@ -58,6 +62,10 @@
             
 >
                 <asp:Button ID="Button1" runat="server" OnClick="btnOK_Click" Text="OK" />
+        
+         </p>
+            <p id="errorShow">
+                <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
         
          </p>
                 </div>
