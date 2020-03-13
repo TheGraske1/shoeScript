@@ -89,7 +89,41 @@ namespace ShoeClasses
         }
         public string Valid(string orderID, string product, string quantity, string selection)
         {
-            return "";
+            String Error = "";
+            if(Convert.ToInt32(orderID) == 0)
+            {
+                Error = Error + "OrderID cannot be a 0 : ";
+            }
+            if (Convert.ToInt32(orderID) > 999999)
+            {
+                Error = Error + "OrderID cannot be a million and over : ";
+            }
+            if(Convert.ToInt32(product) == 0)
+            {
+                Error = Error + "ProductID cannot be a 0 : ";
+            }
+            if(Convert.ToInt32(product) > 999999)
+            {
+                Error = Error + "ProductID cannot be a million and over : ";
+            }
+            if (Convert.ToInt32(quantity) == 0)
+            {
+                Error = Error + "Quantity has to be more than 0 : ";
+            }
+            if (Convert.ToInt32(quantity) > 50)
+            {
+                Error = Error + "Quantity cannot be more than 50 : ";
+            }
+            if(selection.Length == 0)
+            {
+                Error = Error + "SelectionDescription cannot be blank : ";
+            }
+            if (selection.Length > 50)
+            {
+                Error = Error + "SelectionDescription is over limit (cannot be more than 50 characters) :  ";
+            }
+
+            return Error;
         }
     }
     }

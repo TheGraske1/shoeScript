@@ -18,18 +18,37 @@ public partial class Default2 : System.Web.UI.Page
     {
         clsOrder AnOrder = new clsOrder();
         clsOrderLine AnOrderLine = new clsOrderLine();
-        AnOrder.orderID = Convert.ToInt32(intOrderID.Text);
-        AnOrder.staffID = Convert.ToInt32(intStaffID.Text);
-        AnOrder.totalPrice = Convert.ToDouble(floatPrice.Text);
-        AnOrder.deliveryAddress = stringAddress.Text;
-        AnOrder.dateOrdered = Convert.ToDateTime(dateOrdered.Text);
-        AnOrderLine.orderLineID = Convert.ToInt32(intOrderLine.Text);
-        AnOrderLine.productID = Convert.ToInt32(intProduct.Text);
-        AnOrderLine.selectionDescription = stringSelection.Text;
-        AnOrder.paid = boolPaid.Checked;
-        AnOrderLine.quantity = Convert.ToInt32(DropDownList1.Text);
-        Session["AnOrder"] = AnOrder;
-        Response.Redirect("OrderViewer.aspx");
+        string StaffID = intStaffID.Text;
+        string CustomerId = CustomerID.Text;
+        string Price = floatPrice.Text;
+        string Address = stringAddress.Text;
+        string OrderID = intOrderID.Text;
+        string Date = dateOrdered.Text;
+        string ProductID = intProduct.Text;
+        string Selection = stringSelection.Text;
+        string Paid = boolPaid.Text;
+        string QuantitySelection = DropDownList1.Text;
+        string Error = "";
+        Error = AnOrder.Valid(Date, Paid, Price, StaffID, CustomerId, Address);
+        if (Error == "")
+        {
+            AnOrder.orderID = Convert.ToInt32(intOrderID.Text);
+            AnOrder.staffID = Convert.ToInt32(intStaffID.Text);
+            AnOrder.totalPrice = Convert.ToDouble(floatPrice.Text);
+            AnOrder.deliveryAddress = stringAddress.Text;
+            AnOrder.dateOrdered = Convert.ToDateTime(dateOrdered.Text);
+            AnOrderLine.orderLineID = Convert.ToInt32(intOrderLine.Text);
+            AnOrderLine.productID = Convert.ToInt32(intProduct.Text);
+            AnOrderLine.selectionDescription = stringSelection.Text;
+            AnOrder.paid = boolPaid.Checked;
+            AnOrderLine.quantity = Convert.ToInt32(DropDownList1.Text);
+            Session["AnOrder"] = AnOrder;
+            Response.Redirect("OrderViewer.aspx");
+        }
+        else
+        {
+            Label2.Text = Error;
+        }
     }
 
     protected void Find_Click(object sender, EventArgs e)

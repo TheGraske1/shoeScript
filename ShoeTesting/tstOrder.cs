@@ -193,8 +193,585 @@ namespace ShoeTesting
                Assert.AreEqual(error, "");
         }
 
+        [TestMethod]
+        public void CustomerIDMinLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string date = "02/03/2020";
+            string paid = "True";
+            string price = "20.99";
+            string staff = "3";
+            string customer = "0";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreNotEqual(Error, "0");
+
+        }
+        [TestMethod]
+        public void CustomerIDMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string date = "02/03/2020";
+            string paid = "True";
+            string price = "20.99";
+            string staff = "3";
+            string customer = "1";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerIDMinPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string date = "02/03/2020";
+            string paid = "True";
+            string price = "20.99";
+            string staff = "3";
+            string customer = "2";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void CustomerIDMaxLessOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string date = "02/03/2020";
+            string paid = "True";
+            string price = "20.99";
+            string staff = "3";
+            string customer = "99998";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustomerIDMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string date = "02/03/2020";
+            string paid = "True";
+            string price = "20.99";
+            string staff = "3";
+            string customer = "99999";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustomerIDMid()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string date = "02/03/2020";
+            string paid = "True";
+            string price = "20.99";
+            string staff = "3";
+            string customer = "50000";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustomerIDMaxPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string date = "02/03/2020";
+            string paid = "True";
+            string price = "20.99";
+            string staff = "3";
+            string customer = "100000";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void CustomerIDExtremeMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string date = "02/03/2020";
+            string paid = "True";
+            string price = "20.99";
+            string staff = "3";
+            string customer = "500000";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void DateOrderedExtremeMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "3";
+            string customer = "1";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreNotEqual(Error, "");
+        }
+        
+        [TestMethod]
+        public void DateOrderedMinOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "3";
+            string customer = "1";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOrderedMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "3";
+            string customer = "1";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreEqual(Error, "");
+        }
+        
+        [TestMethod]
+        public void DateOrderedMinPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "3";
+            string customer = "1";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateOrderedExtremeMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "3";
+            string customer = "1";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreNotEqual(Error, "");
+        }
 
 
+        [TestMethod]
+        public void DateOrderedInvalidData()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            string date = "This is not a date!";
+            string paid = "True";
+            string price = "20.99";
+            string staff = "3";
+            string customer = "1";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StaffIDMinMinusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            string Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "0";
+            string customer = "1";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreNotEqual(Error, "");
+        }
 
+        [TestMethod]
+        public void StaffIDMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            string Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "1";
+            string customer = "1";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StaffIDMinPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            string Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "2";
+            string customer = "1";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffIDMaxMinusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            string Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "49";
+            string customer = "1";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void StaffIDMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            string Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "50";
+            string customer = "1";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffIDMaxPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            string Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "51";
+            string customer = "1";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StaffIDMid()
+        {
+            clsOrder AnOrder = new clsOrder();
+            string Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "25";
+            string customer = "1";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StaffIDExtremeMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            string Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "100";
+            string customer = "1";
+            string address = "14 Emerald, Leicester, LE3 5GA";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DeliveryAddressMinOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "20";
+            string customer = "1";
+            string address = "";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DeliveryAddressMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "20";
+            string customer = "1";
+            string address = "a";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DeliveryAddressMinPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "20";
+            string customer = "1";
+            string address = "aa";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DeliveryAddressMaxMinOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "20";
+            string customer = "1";
+            string address = "";
+            address = address.PadRight(99, 'a');
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreEqual(Error, "");
+        }
+       
+        [TestMethod]
+        public void DeliveryAddressMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "20";
+            string customer = "1";
+            string address = "";
+            address = address.PadRight(100, 'a');
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DeliveryAddressMaxPlusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "20";
+            string customer = "1";
+            string address = "";
+            address = address.PadRight(101, 'a');
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DeliveryAddressMid()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "20";
+            string customer = "1";
+            string address = "";
+            address = address.PadRight(50, 'a');
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void DeliveryAddressExtremeMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "20";
+            string customer = "1";
+            string address = "";
+            address = address.PadRight(200, 'a');
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PaidMinMinusOne()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "";
+            string price = "20.99";
+            string staff = "20";
+            string customer = "1";
+            string address = "";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PaidMin()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "True";
+            string price = "20.99";
+            string staff = "20";
+            string customer = "1";
+            string address = "a";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PaidMax()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "False";
+            string price = "20.99";
+            string staff = "20";
+            string customer = "1";
+            string address = "a";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PaidInvalidStringData()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "a";
+            string price = "20.99";
+            string staff = "20";
+            string customer = "1";
+            string address = "a";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PaidInvalidData()
+        {
+            clsOrder AnOrder = new clsOrder();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
+            string paid = "I want to go home 52";
+            string price = "20.99";
+            string staff = "20";
+            string customer = "1";
+            string address = "a";
+            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Assert.AreNotEqual(Error, "");
+        }
     }
 }
