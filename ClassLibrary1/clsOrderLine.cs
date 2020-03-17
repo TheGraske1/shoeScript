@@ -7,7 +7,6 @@ namespace ShoeClasses
         private int mOrderID;
         private int mProductID;
         private int mQuantity;
-        private double mPricePerUnit;
         private string mselectionDescription;
        
         public int orderLineID
@@ -55,17 +54,7 @@ namespace ShoeClasses
                 mQuantity = value;
             }
         }
-        public double pricePerUnit
-        {
-            get
-            {
-                return mPricePerUnit;
-            }
-            set
-            {
-                mPricePerUnit = value;
-            }
-        }
+       
         public string selectionDescription
         {
             get
@@ -77,16 +66,64 @@ namespace ShoeClasses
                 mselectionDescription = value;
             }
         }
-        public bool Find(int orderID)
+        public bool Find(int orderLineID)
         {
-            mOrderLineID = 4;
-            mOrderID = 3;
-            mProductID = 5;
-            mQuantity = 2;
-            mPricePerUnit = 5.99;
-            mselectionDescription = "Testing description";
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@orderLineID", orderLineID);
+            DB.Execute("sproc_tblOrderLine_FilterByOrderLineID");
+            if (DB.Count == 1)
+            {
+                mOrderLineID = Convert.ToInt32(DB.DataTable.Rows[0]["orderLineID"]);
+                mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["orderID"]);
+                mProductID = Convert.ToInt32(DB.DataTable.Rows[0]["productID"]);
+                mQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["quantity"]);
+                mselectionDescription = Convert.ToString(DB.DataTable.Rows[0]["selectionDescription"]);
+                
 
-            return true;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public string Valid(string orderID, string product, string quantity, string selection)
+        {
+            String Error = "";
+            if(Convert.ToInt32(orderID) == 0)
+            {
+                Error = Error + "OrderID cannot be a 0 : ";
+            }
+            if (Convert.ToInt32(orderID) > 999999)
+            {
+                Error = Error + "OrderID cannot be a million and over : ";
+            }
+            if(Convert.ToInt32(product) == 0)
+            {
+                Error = Error + "ProductID cannot be a 0 : ";
+            }
+            if(Convert.ToInt32(product) > 999999)
+            {
+                Error = Error + "ProductID cannot be a million and over : ";
+            }
+            if (Convert.ToInt32(quantity) == 0)
+            {
+                Error = Error + "Quantity has to be more than 0 : ";
+            }
+            if (Convert.ToInt32(quantity) > 50)
+            {
+                Error = Error + "Quantity cannot be more than 50 : ";
+            }
+            if(selection.Length == 0)
+            {
+                Error = Error + "SelectionDescription cannot be blank : ";
+            }
+            if (selection.Length > 50)
+            {
+                Error = Error + "SelectionDescription is over limit (cannot be more than 50 characters) :  ";
+            }
+
+            return Error;
         }
     }
     }

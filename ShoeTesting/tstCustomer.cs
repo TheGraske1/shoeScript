@@ -4,13 +4,16 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ShoeTesting
 {
-
-    
     [TestClass]
     public class tstCustomer
     {
+        DateTime dateCreated = Convert.ToDateTime("02/03/2020");
+        string name = "Joe";
+        string address = "48 Apple Street LE1 8DS";
+        Boolean registered = false;
+        Double balance = 250.00;
 
-      
+
 
         [TestMethod]
         public void InstanceOK()
@@ -200,7 +203,7 @@ namespace ShoeTesting
 
         }
 
-        [TestMethod]
+
 
         [TestMethod]
 
@@ -209,10 +212,10 @@ namespace ShoeTesting
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
 
-            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
             Assert.AreEqual(Error, "");
         }
 
 
     }
-    }
+}

@@ -101,12 +101,12 @@ namespace ShoeClasses
             if (DB.Count == 1)
             {
                 morderID = Convert.ToInt32(DB.DataTable.Rows[0]["orderID"]);
-                mDateOrdered = Convert.ToDateTime(DB.DataTable.Rows[0]["Date Added"]);
-                mTotalPrice = Convert.ToDouble(DB.DataTable.Rows[0]["Total Price"]);
-                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["Staff ID"]);
-                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["Customer ID"]);
-                mPaid = Convert.ToBoolean(DB.DataTable.Rows[0]["Paid"]);
-                mDeliveryAddress = Convert.ToString(DB.DataTable.Rows[0]["Delivery Address"]);
+                mDateOrdered = Convert.ToDateTime(DB.DataTable.Rows[0]["dateOrdered"]);
+                mTotalPrice = Convert.ToDouble(DB.DataTable.Rows[0]["totalPrice"]);
+                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["staffID"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["customerID"]);
+                mPaid = Convert.ToBoolean(DB.DataTable.Rows[0]["paid"]);
+                mDeliveryAddress = Convert.ToString(DB.DataTable.Rows[0]["deliveryAddress"]);
 
                 return true;
             }
@@ -114,6 +114,68 @@ namespace ShoeClasses
             {
                 return false;
             }
+        }
+        public string Valid(string date, string paid, string price, string staff, string customer,string address)
+        {
+            String Error = "";
+            if(Convert.ToInt32(customer) == 0)
+            {
+                Error = Error + "CustomerID cannot be 0";
+            }
+            if (Convert.ToInt32(customer) > 99999)
+            {
+                Error = Error + "CustomerID cannot be over 100000";
+            }
+            try
+            {
+                DateTime DateTemp = Convert.ToDateTime(date);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date : ";
+            }
+
+            if(Convert.ToInt32(staff) < 1)
+            {
+                Error = Error + "StaffID cannot be 0";
+            }
+            if (Convert.ToInt32(staff) > 50)
+            {
+                Error = Error + "StaffID cannot be more than 50";
+            }
+            if(address == "")
+            {
+                Error = Error + "Address cannot be blank : ";
+            }
+            if(address.Length > 100)
+            {
+                Error = Error + "The address is too long : ";
+            }
+            try
+            {
+                bool Temp = Convert.ToBoolean(paid);
+                if (paid == "")
+                {
+                    Error = Error + "Paid cannot be blank : ";
+                }
+                if (paid != "True" || paid != "true" || paid != "TRUE" || paid != "False" || paid != "false" || paid != "FALSE")
+                {
+                    Error = Error + "Invalid string input : ";
+                }
+            }
+            catch
+            {
+                Error = Error + "Boolean has a wrong data type :  ";
+            }
+            return Error;
         }
     }
 }

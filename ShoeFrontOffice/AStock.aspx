@@ -28,6 +28,7 @@
         <asp:RadioButton ID="No" runat="server" style="z-index: 1; left: 269px; top: 311px; position: absolute" />
         <asp:Button ID="Submit" runat="server" OnClick="Submit_Click" style="z-index: 1; left: 27px; top: 364px; position: absolute" Text="Submit" />
         <asp:Button ID="Cancle" runat="server" style="z-index: 1; left: 143px; top: 364px; position: absolute" Text="Cancle" />
+        <asp:Button ID="Find" runat="server" OnClick="Find_Click" style="z-index: 1; left: 368px; top: 86px; position: absolute" Text="Find" />
     </form>
 </body>
 </html>

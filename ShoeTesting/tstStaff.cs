@@ -1,5 +1,5 @@
 ﻿using System;
-using ClassLibrary1;
+using ShoeClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ShoeTesting
