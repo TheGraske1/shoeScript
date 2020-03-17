@@ -123,13 +123,22 @@ namespace ClassLibrary1
             return true;*/
         }
 
-        public string Valid(string Name,
-                            string Address,
-                            DateTime DateCreated,
-                            Boolean Registered,
-                            double Balance)
+        public string Valid(string name,
+                            string address,
+                            DateTime dateCreated,
+                            Boolean registered,
+                            double balance)
         {
-            return "";
+            String Error = "";
+            if (name.Length == 0)
+            {
+                Error = Error + "The name no may not be blank :";
+            }
+            if (name.Length > 20)
+            {
+                Error = Error + "The name no must be less than 20 characters :"
+            }
+            return Error;
         }
 
 

@@ -219,6 +219,83 @@ namespace ShoeTesting
             Assert.AreEqual(Error, "");
         }
 
+        [TestMethod]
+
+        public void NameMinLessOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string name = "";
+            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void NameNoMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string name = "a";
+            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void NameNoMinPlusOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string name = "aa";
+            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void NameNoMaxLessOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string name = "aaaaaaaaaaaaaaaaaa";
+            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void NameNoMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string name = "aaaaaaaaaaaaaaaaaaa";
+            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void NameNoMid()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string name = "aaaaaaaaaa";
+            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void NameNoMaxPlusOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string name = "aaaaaaaaaaaaaaaaaaaa";
+            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Assert.AreNotEqual(Error, "");
+        }
+
 
     }
 }
