@@ -166,7 +166,7 @@ namespace ShoeClasses
                 {
                     Error = Error + "Paid cannot be blank : ";
                 }
-                if (paid != "True" || paid != "true" || paid != "TRUE" || paid != "False" || paid != "false" || paid != "FALSE")
+                else if (paid != "True" && paid != "true" && paid != "TRUE" && paid != "False" && paid != "false" && paid != "FALSE")
                 {
                     Error = Error + "Invalid string input : ";
                 }
