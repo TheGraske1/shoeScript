@@ -183,7 +183,8 @@ namespace ShoeTesting
         {
             clsOrder AnOrder = new clsOrder();
             String error = "";
-            string date = "02/03/2020";
+            DateTime dateToday = DateTime.Today.Date;
+            string date = Convert.ToString(dateToday);
             string paid = "True";
             string price = "20.99";
             string staff = "3";
@@ -198,7 +199,8 @@ namespace ShoeTesting
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            string date = "02/03/2020";
+            DateTime dateToday = DateTime.Today.Date;
+            string date = Convert.ToString(dateToday);
             string paid = "True";
             string price = "20.99";
             string staff = "3";
@@ -213,7 +215,8 @@ namespace ShoeTesting
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            string date = "02/03/2020";
+            DateTime dateToday = DateTime.Today.Date;
+            string date = Convert.ToString(dateToday);
             string paid = "True";
             string price = "20.99";
             string staff = "3";
@@ -229,7 +232,8 @@ namespace ShoeTesting
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            string date = "02/03/2020";
+            DateTime dateToday = DateTime.Today.Date;
+            string date = Convert.ToString(dateToday);
             string paid = "True";
             string price = "20.99";
             string staff = "3";
@@ -245,7 +249,9 @@ namespace ShoeTesting
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            string date = "02/03/2020";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
             string paid = "True";
             string price = "20.99";
             string staff = "3";
@@ -260,7 +266,9 @@ namespace ShoeTesting
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            string date = "02/03/2020";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
             string paid = "True";
             string price = "20.99";
             string staff = "3";
@@ -275,7 +283,9 @@ namespace ShoeTesting
         {
             clsOrder AnOrder = new clsOrder();
             String Error = "";
-            string date = "02/03/2020";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string date = TestDate.ToString();
             string paid = "True";
             string price = "20.99";
             string staff = "3";
