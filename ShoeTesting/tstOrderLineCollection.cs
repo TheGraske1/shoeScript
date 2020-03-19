@@ -8,7 +8,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
 namespace ShoeTesting
-{
+{   [TestClass]
     public class tstOrderLineCollection
     {
         [TestMethod]
