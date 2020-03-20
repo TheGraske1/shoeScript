@@ -25,4 +25,10 @@ public partial class OrderList : System.Web.UI.Page
 
     }
 
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["orderID"] = -1;
+        Response.Redirect("AnOrder.aspx");
+    }
 }
