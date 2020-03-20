@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using ClassLibrary1;
 
 
+
 public partial class Customer : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -24,7 +25,6 @@ public partial class Customer : System.Web.UI.Page
         clsCustomer ACustomer = new clsCustomer();
 
         ACustomer.CustomerID = txtCustomerID.Text;
-
 
         ACustomer.Name = txtName.Text;
 

@@ -7,11 +7,12 @@ namespace ShoeTesting
     [TestClass]
     public class tstCustomer
     {
-        DateTime dateCreated = Convert.ToDateTime("02/03/2020");
-        string name = "Joe";
+        
+        string name = "Jay";
         string address = "48 Apple Street LE1 8DS";
-        Boolean registered = false;
-        Double balance = 250.00;
+        DateTime dateCreated = Convert.ToDateTime("04/02/2020");
+        Boolean registered = true;
+        double balance = 200.0000;
 
 
 
@@ -83,7 +84,7 @@ namespace ShoeTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
-            Int32 CustomerID = 3;
+            Int32 CustomerID = 5;
             Found = ACustomer.Find(CustomerID);
             Assert.IsTrue(Found);
            
@@ -99,7 +100,7 @@ namespace ShoeTesting
             Int32 CustomerID = 6;
             Found = ACustomer.Find(CustomerID);
 
-            if (ACustomer.CustomerID !=6 )
+            if (ACustomer.CustomerID != 6 )
             {
                 OK = true;
             }
@@ -135,11 +136,11 @@ namespace ShoeTesting
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 CustomerID = 6;
+            Int32 CustomerID = 3;
 
             Found = ACustomer.Find(CustomerID);
 
-            if (ACustomer.Name != "Joe")
+            if (ACustomer.Name != "Jay")
             {
                 
                 OK = false;
@@ -178,9 +179,9 @@ namespace ShoeTesting
 
             Found = ACustomer.Find(CustomerID);
 
-            if (ACustomer.Registered != false)
+            if (ACustomer.Registered != true)
             {
-                OK = false;
+                OK = true;
             }
 
             Assert.IsTrue(OK);
@@ -214,6 +215,7 @@ namespace ShoeTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
+           
 
             Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
             Assert.AreEqual(Error, "");
@@ -296,6 +298,86 @@ namespace ShoeTesting
             Assert.AreNotEqual(Error, "");
         }
 
+        [TestMethod]
+
+        public void NameNoExtremeMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string name = "";
+            name = name.PadRight(500, 'a');
+            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void DataCreatedExtremeMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string DateCreated = TestDate.ToString();
+            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void DataCreatedMinLessOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string DateCreated = TestDate.ToString();
+            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void DataCreatedMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string DateCreated = TestDate.ToString();
+            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void DataCreatedMinPlusOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string DateCreated = TestDate.ToString();
+            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void DataCreatedExtremeMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string DateCreated = TestDate.ToString();
+            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Assert.AreNotEqual(Error, "");
+        }
 
     }
 }

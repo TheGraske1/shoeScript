@@ -130,13 +130,23 @@ namespace ClassLibrary1
                             double balance)
         {
             String Error = "";
+            DateTime DateTemp;
             if (name.Length == 0)
             {
                 Error = Error + "The name no may not be blank :";
             }
             if (name.Length > 20)
             {
-                Error = Error + "The name no must be less than 20 characters :"
+                Error = Error + "The name no must be less than 20 characters :";
+            }
+            DateTemp = Convert.ToDateTime(dateCreated);
+            if(DateTemp < DateTime.Now.Date)
+            {
+                Error = Error + "The date cannot be in the past : ";
+            }
+            if (DateTemp > DateTime.Now.Date)
+            {
+                Error = Error + "The date cannot be in the future :";
             }
             return Error;
         }
