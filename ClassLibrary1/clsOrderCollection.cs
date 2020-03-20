@@ -6,7 +6,9 @@ namespace ShoeClasses
 
     public class clsOrderCollection
     {
-      public clsOrderCollection()
+        List<clsOrder> mOrderList = new List<clsOrder>();
+        clsOrder mThisOrder = new clsOrder();
+        public clsOrderCollection()
         {
             Int32 Index = 0;
             Int32 RecordCount = 0;
@@ -27,10 +29,7 @@ namespace ShoeClasses
 
 
         }
-
-
-
-        List<clsOrder> mOrderList = new List<clsOrder>();
+        
         public List<clsOrder> OrderList { get 
             {
                 return mOrderList;
@@ -48,7 +47,36 @@ namespace ShoeClasses
             
             } 
         }
-        public clsOrder ThisOrder { get; set; }
+        public clsOrder ThisOrder
+        {
+            get
+            {
+                return mThisOrder;
+            }
+            set
+            {
+                mThisOrder = value;
+            }
+        }
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@orderID", mThisOrder.orderID);
+            DB.AddParameter("@customerID", mThisOrder.customerID);
+            DB.AddParameter("@staffID", mThisOrder.staffID);
+            DB.AddParameter("@totalPrice", mThisOrder.totalPrice);
+            DB.AddParameter("@paid", mThisOrder.paid);
+            DB.AddParameter("@deliveryAddress", mThisOrder.deliveryAddress);
+            DB.AddParameter("@dateOrdered", mThisOrder.dateOrdered);
+            return DB.Execute("sproc_OrderTable_Insert");
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@orderLineID", mThisOrder.orderID);
+            DB.Execute("sproc_tblOrderLine_Delete");
+        }
     }
     
    

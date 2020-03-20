@@ -58,32 +58,69 @@ namespace ShoeTesting
             Assert.AreEqual(AllOrderLines.ThisOrderLine, TestOrderLine);
         }
 
-            
-         /*REMOVED AS PER TUTORIAL!!
-          *
-          * public void ListAndCountOK()
-         {
-             clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
-             List<clsOrderLine> TestList = new List<clsOrderLine>();
-             clsOrderLine TestItem = new clsOrderLine();
-             TestItem.orderID = 3;
-            TestItem.orderLineID = 1;
-            TestItem.productID = 4;
-            TestItem.quantity = 2;
-            TestItem.selectionDescription = "Nike Ultra";
-             TestList.Add(TestItem);
-             AllOrderLines.OrderLineList = TestList;
-             Assert.AreEqual(AllOrderLines.Count, TestList.Count);
-         }
-        
-          [TestMethod]
-        public void TwoRecordsPresent()
+        public void AddMethodOK()
         {
             clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
-            Assert.AreEqual(AllOrderLines.Count, 2);
+            clsOrderLine TestItem = new clsOrderLine();
+            Int32 PrimaryKey = 0;
+            TestItem.orderLineID = 1;
+            TestItem.selectionDescription = "Nike Air";
+            TestItem.orderID = 1;
+            TestItem.productID = 1;
+            TestItem.quantity = 2;
+            AllOrderLines.ThisOrderLine = TestItem;
+            PrimaryKey = AllOrderLines.Add();
+            TestItem.orderLineID = PrimaryKey;
+            AllOrderLines.ThisOrderLine.Find(PrimaryKey);
+            Assert.AreEqual(AllOrderLines.ThisOrderLine, TestItem);
 
         }
-        */
+        public void DeleteMethodOK()
+        {
+            clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
+            clsOrderLine TestItem = new clsOrderLine();
+            Int32 PrimaryKey = 0;
+            TestItem.orderLineID = 1;
+            TestItem.selectionDescription = "Nike Air";
+            TestItem.orderID = 1;
+            TestItem.productID = 1;
+            TestItem.quantity = 2;
+            AllOrderLines.ThisOrderLine = TestItem;
+            PrimaryKey = AllOrderLines.Add();
+            TestItem.orderLineID = PrimaryKey;
+            AllOrderLines.ThisOrderLine.Find(PrimaryKey);
+            AllOrderLines.Delete();
+            Boolean Found = AllOrderLines.ThisOrderLine.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+
+        }
+
+
+        /*REMOVED AS PER TUTORIAL!!
+         *
+         * public void ListAndCountOK()
+        {
+            clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
+            List<clsOrderLine> TestList = new List<clsOrderLine>();
+            clsOrderLine TestItem = new clsOrderLine();
+            TestItem.orderID = 3;
+           TestItem.orderLineID = 1;
+           TestItem.productID = 4;
+           TestItem.quantity = 2;
+           TestItem.selectionDescription = "Nike Ultra";
+            TestList.Add(TestItem);
+            AllOrderLines.OrderLineList = TestList;
+            Assert.AreEqual(AllOrderLines.Count, TestList.Count);
+        }
+
+         [TestMethod]
+       public void TwoRecordsPresent()
+       {
+           clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
+           Assert.AreEqual(AllOrderLines.Count, 2);
+
+       }
+       */
 
     }
 }

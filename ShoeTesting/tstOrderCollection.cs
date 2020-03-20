@@ -3,9 +3,7 @@ using ShoeClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 
 namespace ShoeTesting
@@ -64,6 +62,50 @@ namespace ShoeTesting
             AllOrders.ThisOrder = TestOrder;
             Assert.AreEqual(AllOrders.ThisOrder, TestOrder);
         }
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrder TestItem = new clsOrder();
+            Int32 PrimaryKey = 0;
+            TestItem.customerID = 1;
+            TestItem.dateOrdered = DateTime.Today.Date;
+            TestItem.deliveryAddress = "LE30HH";
+            TestItem.orderID = 1;
+            TestItem.paid = true;
+            TestItem.staffID = 1;
+            TestItem.totalPrice = 12.50;
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.orderID = PrimaryKey;
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+
+        }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrder TestItem = new clsOrder();
+            Int32 PrimaryKey = 0;
+            TestItem.customerID = 1;
+            TestItem.dateOrdered = DateTime.Today.Date;
+            TestItem.deliveryAddress = "LE30HH";
+            TestItem.orderID = 1;
+            TestItem.paid = true;
+            TestItem.staffID = 1;
+            TestItem.totalPrice = 12.50;
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.orderID = PrimaryKey;
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            AllOrders.Delete();
+            Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+
+        }
+
+
 
         /*    REMOVED AS PER TUTORIAL !!
          * public void ListAndCountOK()

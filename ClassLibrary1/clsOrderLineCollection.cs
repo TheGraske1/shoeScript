@@ -4,6 +4,8 @@ namespace ShoeClasses
 {
     public class clsOrderLineCollection
     {
+        List<clsOrderLine> mOrderLineList = new List<clsOrderLine>();
+        clsOrderLine mThisOrderLine = new clsOrderLine();
         public clsOrderLineCollection()
         {
             Int32 Index = 0;
@@ -15,18 +17,14 @@ namespace ShoeClasses
             {
                 clsOrderLine AnOrderLine = new clsOrderLine();
                 AnOrderLine.orderLineID = Convert.ToInt32(DB.DataTable.Rows[0]["orderLineID"]);
-               AnOrderLine.orderID = Convert.ToInt32(DB.DataTable.Rows[0]["orderID"]);
+                AnOrderLine.orderID = Convert.ToInt32(DB.DataTable.Rows[0]["orderID"]);
                 AnOrderLine.productID = Convert.ToInt32(DB.DataTable.Rows[0]["productID"]);
                 AnOrderLine.quantity = Convert.ToInt32(DB.DataTable.Rows[0]["quantity"]);
-               AnOrderLine.selectionDescription = Convert.ToString(DB.DataTable.Rows[0]["selectionDescription"]);
+                AnOrderLine.selectionDescription = Convert.ToString(DB.DataTable.Rows[0]["selectionDescription"]);
             }
-
-
         }
 
 
-
-        List<clsOrderLine> mOrderLineList = new List<clsOrderLine>();
         public List<clsOrderLine> OrderLineList
         {
             get
@@ -50,7 +48,33 @@ namespace ShoeClasses
 
             }
         }
-        public clsOrderLine ThisOrderLine { get; set; }
+        public clsOrderLine ThisOrderLine
+        {
+            get
+            {
+                return mThisOrderLine;
+            }
+            set
+            {
+                mThisOrderLine = value;
+            }
+        }
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@orderLineID", mThisOrderLine.orderLineID);
+            DB.AddParameter("@orderID", mThisOrderLine.orderID);
+            DB.AddParameter("@productID", mThisOrderLine.productID);
+            DB.AddParameter("@quantity", mThisOrderLine.quantity);
+            DB.AddParameter("@selectionDescription", mThisOrderLine.selectionDescription);
+            return DB.Execute("sproc_OrderLineTable_Insert");
+        }
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@orderLineID", mThisOrderLine.orderLineID);
+            DB.Execute("sproc_tblOrderLine_Delete");
+        }
     }
 }
     
