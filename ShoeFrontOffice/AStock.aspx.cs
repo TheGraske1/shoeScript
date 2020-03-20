@@ -35,6 +35,19 @@ public partial class AStock : System.Web.UI.Page
 
     protected void Find_Click(object sender, EventArgs e)
     {
+        clsStock AProduct = new clsStock();
+        Int32 ProductId;
+        Boolean found = false;
+        ProductId = Convert.ToInt32(txtProductId.Text);
+        found = AProduct.Find(ProductId);
+        if(found == true)
+        {
+            txtStyleName.Text = AProduct.StyleName;
+            txtPrice.Text = AProduct.Price.ToString();
+            txtQuantityAvailable.Text = AProduct.QuantityAvailable.ToString();
+            txtBackInStockDate.Text = AProduct.BackInStockDate.ToString();
+           
 
+        }
     }
 }
