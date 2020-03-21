@@ -102,9 +102,45 @@ namespace ShoeClasses
             }
         }
 
-        public string Valid(string name, string phoneNum, double salary, string joinedDate)
+        public string Valid(string staffName, string phoneNum, string salary, string joinedDate)
         {
-            return "";
+            string Error = "";
+            DateTime TempDate;
+
+            if(staffName.Length == 0)
+            {
+                Error = Error + "The staff name may not be left blank";
+            }
+            if(staffName.Length > 25)
+            {
+                Error = Error + "The staff name must not be longer than 25 characters";
+            }
+
+            try
+            {
+                TempDate = Convert.ToDateTime(joinedDate);
+                if (TempDate < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past";
+                }
+                if (TempDate > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future";
+                }
+            }catch
+            {
+                Error = Error + "This date was not a valid date";
+            }
+
+            if(phoneNum.Length > 11)
+            {
+                Error = Error + "The phone number contains too many digits";
+            }
+            if (phoneNum.Length < 11)
+            {
+                Error = Error + "The phone number contains too few digits";
+            }
+            return Error;
         }
     }
 }

@@ -19,7 +19,7 @@ public partial class AnStaff : System.Web.UI.Page
         Int32 StaffId = Convert.ToInt32(txtStaffId.Text);
         string StaffName = txtStaffName.Text;
         string PhoneNumber = txtPhoneNum.Text;
-        Double Salary = Convert.ToDouble(txtSalary.Text);
+        string Salary = txtSalary.Text;
         string JoinedDate = txtJoinedDate.Text;
 
         string Error = "";
@@ -29,7 +29,7 @@ public partial class AnStaff : System.Web.UI.Page
             AnStaff.staffid = StaffId;
             AnStaff.name = StaffName;
             AnStaff.phoneNumber = PhoneNumber;
-            AnStaff.salary = Salary;
+            AnStaff.salary = Convert.ToDouble(Salary);
             AnStaff.joinedDate = Convert.ToDateTime(JoinedDate);
 
             Session["AnStaff"] = AnStaff;
