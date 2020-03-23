@@ -1,7 +1,7 @@
 ﻿using ShoeClasses;
 using System;
 
-namespace ClassLibrary1
+namespace ShoeClasses
 {
     public class clsCustomer
     {
@@ -125,15 +125,15 @@ namespace ClassLibrary1
 
         public string Valid(string name,
                             string address,
-                            DateTime dateCreated,
-                            Boolean registered,
-                            double balance)
+                            string dateCreated,
+                            string registered,
+                            string balance)
         {
             String Error = "";
             DateTime DateTemp;
             if (name.Length == 0)
             {
-                Error = Error + "The name no may not be blank :";
+                Error = Error + "The name no may not be blank : ";
             }
             if (name.Length > 20)
             {
@@ -151,7 +151,6 @@ namespace ClassLibrary1
             return Error;
         }
 
-
-
+       
     }
 }

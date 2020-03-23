@@ -5,8 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClassLibrary1;
-
-
+using ShoeClasses;
 
 public partial class Customer : System.Web.UI.Page
 {

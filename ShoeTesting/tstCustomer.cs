@@ -1,6 +1,7 @@
 ﻿using System;
 using ClassLibrary1;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ShoeClasses;
 
 namespace ShoeTesting
 {
@@ -8,11 +9,12 @@ namespace ShoeTesting
     public class tstCustomer
     {
         
-        string name = "Jay";
-        string address = "48 Apple Street LE1 8DS";
-        DateTime dateCreated = Convert.ToDateTime("04/02/2020");
-        Boolean registered = true;
-        double balance = 200.0000;
+
+        string Name = "Jay";
+        string Address = "48 Apple Street LE1 8DS";
+        string DateCreated = DateTime.Now.Date.ToString();
+        string Registered = true.ToString();
+        string Balance = 200.0000.ToString();
 
 
 
@@ -25,7 +27,7 @@ namespace ShoeTesting
         }
        
         [TestMethod]
-        public void CustomerID()
+        public void CustomerIDPropertyOK()
         {
             clsCustomer ACustomer = new clsCustomer();
             Int32 testID = 1;
@@ -34,7 +36,7 @@ namespace ShoeTesting
         }
 
         [TestMethod]
-        public void CustomerName()
+        public void CustomerNamePropertyOK()
         {
             clsCustomer ACustomer = new clsCustomer();
             string testName = "Jay Patel";
@@ -43,7 +45,7 @@ namespace ShoeTesting
         }
 
         [TestMethod]
-        public void Address()
+        public void AddressPropertyOK()
         {
             clsCustomer ACustomer = new clsCustomer();
             string TestAddress = "48 Apple Street LE4 1AS";
@@ -52,7 +54,7 @@ namespace ShoeTesting
         }
 
         [TestMethod]
-        public void DateCreated()
+        public void DateCreatedPropertyOK()
         {
             clsCustomer ACustomer = new clsCustomer();
             DateTime testDate = DateTime.Now.Date;
@@ -61,7 +63,7 @@ namespace ShoeTesting
         }
 
         [TestMethod]
-        public void Registered()
+        public void RegisteredPropertyOK()
         {
             clsCustomer ACustomer = new clsCustomer();
             Boolean testCustomerAccount = true;
@@ -70,7 +72,7 @@ namespace ShoeTesting
         }
 
         [TestMethod]
-        public void Balance()
+        public void BalancePropertyOK()
         {
             clsCustomer ACustomer = new clsCustomer();
             double testBalance = 250.00;
@@ -216,7 +218,7 @@ namespace ShoeTesting
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
 
-            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
             Assert.AreEqual(Error, "");
         }
 
@@ -226,8 +228,8 @@ namespace ShoeTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-            string name = "";
-            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            string Name = "";
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -237,9 +239,9 @@ namespace ShoeTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-            string name = "a";
-            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
-            Assert.AreNotEqual(Error, "");
+            string Name = "a";
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -248,9 +250,9 @@ namespace ShoeTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-            string name = "aa";
-            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
-            Assert.AreNotEqual(Error, "");
+            string Name = "a";
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -259,9 +261,9 @@ namespace ShoeTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-            string name = "aaaaaaaaaaaaaaaaaa";
-            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
-            Assert.AreNotEqual(Error, "");
+            string Name = "aaaaaaaaaaaaaaaaaa";
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -270,9 +272,9 @@ namespace ShoeTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-            string name = "aaaaaaaaaaaaaaaaaaa";
-            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
-            Assert.AreNotEqual(Error, "");
+            string Name = "aaaaaaaaaaaaaaaaaaa";
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -281,9 +283,9 @@ namespace ShoeTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-            string name = "aaaaaaaaaa";
-            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
-            Assert.AreNotEqual(Error, "");
+            string Name = "aaaaaaaaaa";
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -292,8 +294,8 @@ namespace ShoeTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-            string name = "aaaaaaaaaaaaaaaaaaaa";
-            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            string Name = "aaaaaaaaaaaaaaaaaaaaa";
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -303,9 +305,9 @@ namespace ShoeTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-            string name = "";
-            name = name.PadRight(500, 'a');
-            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            string Name = "";
+            Name = Name.PadRight(500, 'a');
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -319,7 +321,7 @@ namespace ShoeTesting
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(-100);
             string DateCreated = TestDate.ToString();
-            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -333,7 +335,7 @@ namespace ShoeTesting
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(-1);
             string DateCreated = TestDate.ToString();
-            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -346,8 +348,8 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string DateCreated = TestDate.ToString();
-            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
-            Assert.AreNotEqual(Error, "");
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -360,7 +362,7 @@ namespace ShoeTesting
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(1);
             string DateCreated = TestDate.ToString();
-            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -374,7 +376,7 @@ namespace ShoeTesting
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(100);
             string DateCreated = TestDate.ToString();
-            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -385,7 +387,7 @@ namespace ShoeTesting
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
             string DateCreated = "This is not a date";
-            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
             Assert.AreNotEqual(Error, "");
         }
 
