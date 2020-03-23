@@ -215,7 +215,6 @@ namespace ShoeTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             String Error = "";
-           
 
             Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
             Assert.AreEqual(Error, "");
@@ -375,6 +374,17 @@ namespace ShoeTesting
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(100);
             string DateCreated = TestDate.ToString();
+            Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void DateAddedInvalidData()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string DateCreated = "This is not a date";
             Error = ACustomer.Valid(name, address, dateCreated, registered, balance);
             Assert.AreNotEqual(Error, "");
         }
