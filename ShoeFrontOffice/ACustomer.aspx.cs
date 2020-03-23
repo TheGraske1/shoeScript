@@ -23,23 +23,36 @@ public partial class Customer : System.Web.UI.Page
     {
         clsCustomer ACustomer = new clsCustomer();
 
-        ACustomer.CustomerID = txtCustomerID.Text;
+        string CustomerID = txtCustomerID.Text;
 
-        ACustomer.Name = txtName.Text;
+        string Name = txtName.Text;
 
-        ACustomer.Address = txtAddress.Text;
+        string Address = txtAddress.Text;
 
-        ACustomer.DateCreated = Convert.ToDateTime(txtDatecreated.Text);
+        string DateCreated = Convert.ToDateTime(txtDatecreated.Text);
 
-        ACustomer.Registered = txtRegistered.Text;
+        string Registered = txtRegistered.Text;
 
-        ACustomer.Balance = txtBalance.Text;
+        string Balance = txtBalance.Text;
 
+        string Error = "";
+        Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+        if (Error == "")
+        {
+            ACustomer.Name = Name;
+            ACustomer.Address = Address;
+            ACustomer.DateCreated = Convert.ToDateTime(DateCreated);
+            ACustomer.Registered = Convert.ToBoolean(Registered);
+            ACustomer.Balance = Convert.ToDouble(Balance);
 
-
-
-        Session["ACustomer"] = ACustomer;
-        Response.Redirect("CustomerViewer.aspx");
+            Session["ACustomer"] = ACustomer;
+            Response.Write("CustomerViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+        
 
     }
 
@@ -49,16 +62,16 @@ public partial class Customer : System.Web.UI.Page
         Int32 CustomerID;
         Boolean Found = false;
         CustomerID = Convert.ToInt32(txtCustomerID.Text);
-        Found = ACustomer.Find(Customer);
+        Found = ACustomer.Find(CustomerID);
 
         if (Found == true)
         {
-            txtCustomerID.Text = ACustomer.CustomerID;
+            txtCustomerID.Text = Convert.ToString(ACustomer.CustomerID);
             txtName.Text = ACustomer.Name;
             txtAddress.Text = ACustomer.Address;
-            txtDatecreated.Text = ACustomer.DateCreated;
-            txtRegistered.Text = ACustomer.Registered;
-            txtBalance.Text = ACustomer.Balance;
+            txtDatecreated.Text = Convert.ToString(ACustomer.DateCreated);
+            txtRegistered.Text = Convert.ToString(ACustomer.Registered);
+            txtBalance.Text = Convert.ToString(ACustomer.Balance);
         }
     }
 
