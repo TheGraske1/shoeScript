@@ -172,6 +172,13 @@ namespace ShoeTesting
 
         }
 
+        public void ValidMethodOK()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
 
     }
 }
