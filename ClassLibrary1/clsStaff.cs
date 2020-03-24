@@ -106,12 +106,13 @@ namespace ShoeClasses
         {
             string Error = "";
             DateTime TempDate;
+            
 
             if(staffName.Length == 0)
             {
                 Error = Error + "The staff name may not be left blank";
             }
-            if(staffName.Length > 25)
+            if(staffName.Length > 26)
             {
                 Error = Error + "The staff name must not be longer than 25 characters";
             }
@@ -132,14 +133,21 @@ namespace ShoeClasses
                 Error = Error + "This date was not a valid date";
             }
 
-            if(phoneNum.Length > 11)
+            if(Convert.ToDouble(salary) == 0)
             {
-                Error = Error + "The phone number contains too many digits";
+                Error = Error + "The salary may not be left blank";
             }
-            if (phoneNum.Length < 11)
+
+            if(salary.Length > 10)
             {
-                Error = Error + "The phone number contains too few digits";
+                Error = Error + "The salary must not be longer than 10 characters";
             }
+            if(phoneNum.Length == 0)
+            {
+                Error = Error + "The phone number may not be left blank";
+            }
+
+ 
             return Error;
         }
     }

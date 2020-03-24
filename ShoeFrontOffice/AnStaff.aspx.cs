@@ -44,6 +44,27 @@ public partial class AnStaff : System.Web.UI.Page
     protected void btnFind_Click(object sender, EventArgs e)
     {
         clsStaff AnStaff = new clsStaff();
+        string staffName = txtStaffName.Text;
+        string phoneNum = txtPhoneNum.Text;
+        string salary = txtSalary.Text;
+        string joinedDate = txtJoinedDate.Text;
+        string Error = "";
+        Error = AnStaff.Valid(staffName, phoneNum, salary, joinedDate);
+        if(Error == "")
+        {
+            AnStaff.name = staffName;
+            AnStaff.phoneNumber = phoneNum;
+            AnStaff.salary = Convert.ToDouble(salary);
+            AnStaff.joinedDate = Convert.ToDateTime(joinedDate);
+            Session["AnStaff"] = AnStaff;
+            Response.Write("StaffView.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+
+
         int StaffId;
         Boolean Found = false;
         StaffId = Convert.ToInt32(txtStaffId.Text);
