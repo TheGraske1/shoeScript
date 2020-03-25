@@ -1,19 +1,16 @@
 ﻿using System;
-using ClassLibrary1;
+using ShoeClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ClassLibrary1;
 
 namespace ShoeTesting
 {
     [TestClass]
     public class tstStock
     {
-        string StyleName = "TestStyleName";
-        string BackInStockDate = DateTime.Now.Date.ToString();
-        double Price = 49.99;
-        Int32 QuantityAvailable = 10; 
         [TestMethod]
         public void InstanceOK()
-        { 
+        {
             //create an instance
             clsStock AProduct = new clsStock();
             //test is exists
@@ -107,12 +104,12 @@ namespace ShoeTesting
             if (AProduct.StyleName != "TestStyleName")
             {
                 OK = false;
-            
+
             }
             Assert.IsTrue(OK);
 
         }
-        
+
         [TestMethod]
         public void TestQuantityAvailableFound()
         {
@@ -141,7 +138,7 @@ namespace ShoeTesting
                 OK = false;
             }
             Assert.IsTrue(OK);
- 
+
         }
 
         [TestMethod]
@@ -161,7 +158,7 @@ namespace ShoeTesting
         }
 
         [TestMethod]
-       public void TestBackInStockDateFound()
+        public void TestBackInStockDateFound()
         {
             clsStock AProduct = new clsStock();
             Boolean Found = false;
@@ -175,6 +172,7 @@ namespace ShoeTesting
             Assert.IsTrue(OK);
 
         }
+
         [TestMethod]
         public void ValidMethodOK()
         {
@@ -183,6 +181,8 @@ namespace ShoeTesting
             Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
             Assert.AreEqual(Error, "");
         }
+
+         
 
     }
 }

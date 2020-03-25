@@ -10,7 +10,7 @@ namespace ShoeTesting
 
         string Name = "John Doe";
         string PhoneNum = "012345678912";
-        int Salary = 25000;
+        string Salary = "25000";
         string JoinedDate = DateTime.Now.Date.ToString();
 
         [TestMethod]
@@ -181,6 +181,304 @@ namespace ShoeTesting
             String Error = "";
             Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
             Assert.AreEqual(Error, "");
+        }
+        
+        [TestMethod]
+        public void StaffNameMinLessOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string StaffName = "";
+            Error = AnStaff.Valid(StaffName, PhoneNum, Salary, JoinedDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffNameMin()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string StaffName = "a";
+            Error = AnStaff.Valid(StaffName, PhoneNum, Salary, JoinedDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffNameMinPlusOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string StaffName = "a a";
+            Error = AnStaff.Valid(StaffName, PhoneNum, Salary, JoinedDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffNameMaxLessOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string StaffName = "aaaaaaaaaaaaaaaaaaaaa";
+            Error = AnStaff.Valid(StaffName, PhoneNum, Salary, JoinedDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffNameMax()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string StaffName = "";
+            StaffName = StaffName.PadRight(25, 'a');
+            Error = AnStaff.Valid(StaffName, PhoneNum, Salary, JoinedDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffNameMid()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string StaffName = "aaaaaaaaaaaa";
+            Error = AnStaff.Valid(StaffName, PhoneNum, Salary, JoinedDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffNameMaxPlusOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string StaffName = "";
+            StaffName = StaffName.PadRight(26, 'a');
+            Error = AnStaff.Valid(StaffName, PhoneNum, Salary, JoinedDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StaffNameExtremeMax()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string StaffName = "";
+            StaffName = StaffName.PadRight(500, 'a');
+            Error = AnStaff.Valid(StaffName, PhoneNum, Salary, JoinedDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void JoinedDateExtremeMin()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            DateTime TestJoinedDate;
+            TestJoinedDate = DateTime.Now.Date;
+            TestJoinedDate = TestJoinedDate.AddYears(-50);
+            string JoinedDate = TestJoinedDate.ToString();
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void JoinedDateMinLessOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            DateTime TestJoinedDate;
+            TestJoinedDate = DateTime.Now.Date;
+            TestJoinedDate = TestJoinedDate.AddDays(-1);
+            string JoinedDate = TestJoinedDate.ToString();
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void JoinedDateMin()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            DateTime TestJoinedDate;
+            TestJoinedDate = DateTime.Now.Date;
+            string JoinedDate = TestJoinedDate.ToString();
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void JoinedDateMinPlusOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            DateTime TestJoinedDate;
+            TestJoinedDate = DateTime.Now.Date;
+            TestJoinedDate = TestJoinedDate.AddDays(1);
+            string JoinedDate = TestJoinedDate.ToString();
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void JoinedDateExtrememMax()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            DateTime TestJoinedDate;
+            TestJoinedDate = DateTime.Now.Date;
+            TestJoinedDate = TestJoinedDate.AddYears(50);
+            string JoinedDate = TestJoinedDate.ToString();
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void JoinedDateInvalidDate()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string JoinedDate = "this is not a date";
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SalaryMinLessOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string Salary = "";
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreNotEqual(Error, "");
+        }
+        
+        [TestMethod]
+        public void SalaryMin()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string Salary = "1";
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SalaryMinPlusOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string Salary = "12";
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SalaryMaxLessOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string Salary = "123456.789";
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SalaryMax()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string Salary = "0123456789";
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SalaryMaxPlusOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string Salary = "01234567891";
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SalaryMid()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string Salary = "01234";
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void SalaryExtremeMax()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string Salary = "";
+            Salary.PadRight(500, '1');
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumMinLessOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string PhoneNum = "";
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumMin()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string PhoneNum = "01234567891";
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumMinPlusOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string PhoneNum = "012345678912";
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumMaxLessOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string PhoneNum = "0123456789";
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumMax()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string PhoneNum = "01234567891";
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PhoneNumMaxPlusOne()
+        {
+            clsStaff AnStaff = new clsStaff();
+            String Error = "";
+            string PhoneNum = "012345678912";
+            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            Assert.AreNotEqual(Error, "");
         }
 
     }

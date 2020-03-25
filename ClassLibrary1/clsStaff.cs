@@ -1,6 +1,7 @@
 ﻿using ShoeClasses;
 using System;
 
+
 namespace ShoeClasses
 {
     public class clsStaff
@@ -101,9 +102,53 @@ namespace ShoeClasses
             }
         }
 
-        public string Valid(string name, string phoneNum, double salary, string joinedDate)
+        public string Valid(string staffName, string phoneNum, string salary, string joinedDate)
         {
-            return "";
+            string Error = "";
+            DateTime TempDate;
+            
+
+            if(staffName.Length == 0)
+            {
+                Error = Error + "The staff name may not be left blank";
+            }
+            if(staffName.Length > 26)
+            {
+                Error = Error + "The staff name must not be longer than 25 characters";
+            }
+
+            try
+            {
+                TempDate = Convert.ToDateTime(joinedDate);
+                if (TempDate < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past";
+                }
+                if (TempDate > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future";
+                }
+            }catch
+            {
+                Error = Error + "This date was not a valid date";
+            }
+
+            if(Convert.ToDouble(salary) == 0)
+            {
+                Error = Error + "The salary may not be left blank";
+            }
+
+            if(salary.Length > 10)
+            {
+                Error = Error + "The salary must not be longer than 10 characters";
+            }
+            if(phoneNum.Length == 0)
+            {
+                Error = Error + "The phone number may not be left blank";
+            }
+
+ 
+            return Error;
         }
     }
 }
