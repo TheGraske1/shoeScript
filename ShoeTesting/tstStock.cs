@@ -175,7 +175,7 @@ namespace ShoeTesting
             Assert.IsTrue(OK);
 
         }
-
+        [TestMethod]
         public void ValidMethodOK()
         {
             clsStock AProduct = new clsStock();
