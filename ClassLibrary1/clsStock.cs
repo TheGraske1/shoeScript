@@ -104,5 +104,10 @@ namespace ClassLibrary1
             }
         }
 
+        public string Valid(string StyleName, string BackInStockDate,  double Price, Int32 QuantityAvailable)
+        {
+            return "";
+        }
+
     }
 }

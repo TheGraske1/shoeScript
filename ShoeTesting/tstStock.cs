@@ -7,6 +7,10 @@ namespace ShoeTesting
     [TestClass]
     public class tstStock
     {
+        string StyleName = "TestStyleName";
+        string BackInStockDate = DateTime.Now.Date.ToString();
+        double Price = 49.99;
+        Int32 QuantityAvailable = 10; 
         [TestMethod]
         public void InstanceOK()
         { 
@@ -172,6 +176,13 @@ namespace ShoeTesting
 
         }
 
+        public void ValidMethodOK()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
 
     }
 }
