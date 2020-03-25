@@ -19,6 +19,8 @@ public partial class Customer : System.Web.UI.Page
         
     }
 
+   
+
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsCustomer ACustomer = new clsCustomer();
@@ -29,11 +31,13 @@ public partial class Customer : System.Web.UI.Page
 
         string Address = txtAddress.Text;
 
-        string DateCreated = Convert.ToDateTime(txtDatecreated.Text);
+        string DateCreated = txtDatecreated.Text;
+
+        ACustomer.Registered = chkRegistered.Checked;
 
         string Registered = txtRegistered.Text;
 
-        string Balance = txtBalance.Text;
+        string Balance =txtBalance.Text;
 
         string Error = "";
         Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
@@ -52,7 +56,12 @@ public partial class Customer : System.Web.UI.Page
         {
             lblError.Text = Error;
         }
-        
+
+
+
+
+        Session["ACustomer"] = ACustomer;
+        Response.Redirect("CustomerViewer.aspx");
 
     }
 
@@ -66,12 +75,12 @@ public partial class Customer : System.Web.UI.Page
 
         if (Found == true)
         {
-            txtCustomerID.Text = Convert.ToString(ACustomer.CustomerID);
+            txtCustomerID.Text = ACustomer.CustomerID.ToString();
             txtName.Text = ACustomer.Name;
             txtAddress.Text = ACustomer.Address;
-            txtDatecreated.Text = Convert.ToString(ACustomer.DateCreated);
-            txtRegistered.Text = Convert.ToString(ACustomer.Registered);
-            txtBalance.Text = Convert.ToString(ACustomer.Balance);
+            txtDatecreated.Text = ACustomer.DateCreated.ToString();
+            txtRegistered.Text = ACustomer.Registered.ToString();
+            txtBalance.Text = ACustomer.Balance.ToString();
         }
     }
 

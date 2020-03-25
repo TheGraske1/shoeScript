@@ -21,6 +21,9 @@
             <p>DateCreated:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtDatecreated" runat="server"></asp:TextBox>
                 </p>
+            <p>
+                <asp:CheckBox ID="chkRegistered" runat="server" Text="Registered" />
+                </p>
             <p>Registered:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtRegistered" runat="server"></asp:TextBox>
                 </p>
@@ -32,7 +35,9 @@
                 <asp:Button ID="btnFind" runat="server" Text="Find" Width="50px" />
                 <asp:Button ID="btnCancel" runat="server" Text="Cancel" Width="50px" />
             </p>
-
+            <p>
+            <asp:Label ID="lblError" runat="server"></asp:Label>
+            </p>
 
 
 
