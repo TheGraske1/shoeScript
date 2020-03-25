@@ -7,11 +7,46 @@ using ShoeClasses;
 
 public partial class AnOrder : System.Web.UI.Page
 {
+    Int32 OrderID;
+    Int32 OrderLineID;
     protected void Page_Load(object sender, EventArgs e)
     {
-        clsOrder AnOrder = new clsOrder();
-        AnOrder = (clsOrder)Session["AnOrder"];
-        //Response.Write(AnOrder.orderID);
+        OrderID = Convert.ToInt32(Session["orderID"]);
+        OrderLineID = Convert.ToInt32(Session["orderLineID"]);
+        if (IsPostBack == false)
+        {
+            if(OrderID != -1)
+            {
+                DisplayOrder();
+            }
+            else if (OrderLineID != -1)
+            {
+                DisplayOrderLine();
+            }
+        }
+    }
+
+    void DisplayOrder()
+    {
+        clsOrderCollection OrderBook = new clsOrderCollection();
+        OrderBook.ThisOrder.Find(OrderID);
+        intOrderID.Text = OrderBook.ThisOrder.orderID.ToString();
+        intStaffID.Text = OrderBook.ThisOrder.staffID.ToString();
+        intCustomerID.Text = OrderBook.ThisOrder.customerID.ToString();
+        boolPaid.Checked = OrderBook.ThisOrder.paid;
+        stringAddress.Text = OrderBook.ThisOrder.deliveryAddress;
+        dateOrdered.Text = OrderBook.ThisOrder.dateOrdered.ToString();
+        floatPrice.Text = OrderBook.ThisOrder.totalPrice.ToString();
+    }
+    void DisplayOrderLine()
+    {
+        clsOrderLineCollection OrderLineBook = new clsOrderLineCollection();
+        OrderLineBook.ThisOrderLine.Find(OrderLineID);
+        intOrderLine.Text = OrderLineBook.ThisOrderLine.orderLineID.ToString();
+        OrderIDFind.Text = OrderLineBook.ThisOrderLine.orderID.ToString();
+        ProductIDFind.Text = OrderLineBook.ThisOrderLine.productID.ToString();
+        SelectionDescriptionFind.Text = OrderLineBook.ThisOrderLine.selectionDescription;
+        QuantityList.Text = OrderLineBook.ThisOrderLine.quantity.ToString();
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -21,22 +56,29 @@ public partial class AnOrder : System.Web.UI.Page
         string CustomerId = intCustomerID.Text;
         string Price = floatPrice.Text;
         string Address = stringAddress.Text;
-        string OrderID = intOrderID.Text;
         string Date = dateOrdered.Text;
         string Paid = boolPaid.Text;
         string Error = "";
         Error = AnOrder.Valid(Date, Paid, Price, StaffID, CustomerId, Address);
         if (Error == "")
         {
-            AnOrder.orderID = Convert.ToInt32(intOrderID.Text);
+            AnOrder.orderID = OrderID;
             AnOrder.staffID = Convert.ToInt32(intStaffID.Text);
             AnOrder.totalPrice = Convert.ToDouble(floatPrice.Text);
             AnOrder.deliveryAddress = stringAddress.Text;
             AnOrder.dateOrdered = Convert.ToDateTime(dateOrdered.Text);
             AnOrder.paid = boolPaid.Checked;
             clsOrderCollection OrderList = new clsOrderCollection();
-            OrderList.ThisOrder = AnOrder;
-            OrderList.Add();
+            if (OrderID == -1)
+            {
+                OrderList.ThisOrder = AnOrder;
+                OrderList.Add();
+            }
+            else{
+                OrderList.ThisOrder.Find(OrderID);
+                OrderList.ThisOrder = AnOrder;
+                OrderList.Update();
+            }
             Response.Redirect("OrderList.aspx");
         }
         else
@@ -47,7 +89,6 @@ public partial class AnOrder : System.Web.UI.Page
     protected void btnOKOrderLine_Click(object sender, EventArgs e)
     {
         clsOrderLine AnOrderLine = new clsOrderLine();
-        string orderLineID = intOrderLine.Text;
         string orderID = OrderIDFind.Text;
         string productID = ProductIDFind.Text;
         string selectionDescription = SelectionDescriptionFind.Text;
@@ -56,14 +97,23 @@ public partial class AnOrder : System.Web.UI.Page
         Error = AnOrderLine.Valid(orderID, productID, quantity, selectionDescription);
         if (Error == "")
         {
-            AnOrderLine.orderLineID = Convert.ToInt32(intOrderLine.Text);
+            AnOrderLine.orderLineID = OrderLineID;
             AnOrderLine.orderID = Convert.ToInt32(OrderIDFind.Text);
             AnOrderLine.productID = Convert.ToInt32(ProductIDFind.Text);
             AnOrderLine.selectionDescription = SelectionDescriptionFind.Text;
             AnOrderLine.quantity = Convert.ToInt32(QuantityList.Text);
             clsOrderLineCollection OrderLineList = new clsOrderLineCollection();
-            OrderLineList.ThisOrderLine = AnOrderLine;
-            OrderLineList.Add();
+            if (OrderLineID == -1)
+            {
+                OrderLineList.ThisOrderLine = AnOrderLine;
+                OrderLineList.Add();
+            }
+            else
+            {
+                OrderLineList.ThisOrderLine.Find(OrderLineID);
+                OrderLineList.ThisOrderLine = AnOrderLine;
+                OrderLineList.Update();
+            }
             Response.Redirect("OrderLineList.aspx");
         }
         else
