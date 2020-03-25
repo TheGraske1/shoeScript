@@ -9,14 +9,11 @@
         .col {
             width: 253px;
         }
-        .auto-style2 {
-            width: 10px;
-        }
         .col-sm-12 {
             width: 165px;
         }
         .container {
-            height: 194px;
+            height: 163px;
         }
         </style>
 </head>
@@ -53,6 +50,10 @@
             </div>
            </div>
                    
+                <div style="margin-left: 120px">
+                    <asp:Button ID="orderOK" runat="server" OnClick="btnOK_Click" Text="OK-ORDER" />
+                </div>
+                   
                 <p>Here you can test out the OrderLine.</p>
            <br />
                     <div class="container" >
@@ -82,6 +83,12 @@
                         </p>
             </div>
            </div>
+          
+               
+                <div style="margin-left: 120px">
+                    <asp:Button ID="Button1" runat="server" OnClick="btnOKOrderLine_Click" Text="OK - ORDERLINE" />
+                    <br />
+                </div>
           
                
 <asp:Button ID="btnAddOrder" runat="server" OnClick="btnOK_Click" Text="Add Order" Width="89px" />

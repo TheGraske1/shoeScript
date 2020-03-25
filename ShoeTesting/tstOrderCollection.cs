@@ -104,8 +104,76 @@ namespace ShoeTesting
             Assert.IsFalse(Found);
 
         }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrder TestItem = new clsOrder();
+            Int32 PrimaryKey = 1;
+            TestItem.customerID = 1;
+            TestItem.dateOrdered = DateTime.Now.Date;
+            TestItem.deliveryAddress = "Ellistown, Amazon BHX2, LE16 1GQ";
+            TestItem.paid = true;
+            TestItem.staffID = 1;
+            TestItem.totalPrice = 15.00;
+            AllOrders.ThisOrder = TestItem;
+            PrimaryKey = AllOrders.Add();
+            TestItem.orderID = PrimaryKey;
+            TestItem.customerID = 2;
+            TestItem.dateOrdered = DateTime.Now.Date;
+            TestItem.deliveryAddress = "Another Address, not Amazon";
+            TestItem.paid = false;
+            TestItem.staffID = 3;
+            TestItem.totalPrice = 18.15;
+            AllOrders.ThisOrder = TestItem;
+            AllOrders.Update();
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            Assert.AreEqual(AllOrders.ThisOrder, TestItem);
+
+        }
 
 
+        [TestMethod]
+        public void ReportByDeliveryAddressMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            FilteredOrders.ReportByDeliveryAddress(" ");
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByDeliveryAddressNoneFound()
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            FilteredOrders.ReportByDeliveryAddress("xxx xxx");
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
+
+        [TestMethod]
+        public void ReportByDeliveryAddressTestDataFound()
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            Boolean OK = true;
+            FilteredOrders.ReportByDeliveryAddress("Adidas");
+            if (FilteredOrders.Count == 2)
+            {
+                if (FilteredOrders.OrderList[0].orderID != 1)
+                {
+                    OK = false;
+                }
+                if (FilteredOrders.OrderList[1].orderID != 2)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
 
         /*    REMOVED AS PER TUTORIAL !!
          * public void ListAndCountOK()

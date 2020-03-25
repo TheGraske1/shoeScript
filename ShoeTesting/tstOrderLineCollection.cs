@@ -57,7 +57,7 @@ namespace ShoeTesting
             AllOrderLines.ThisOrderLine = TestOrderLine;
             Assert.AreEqual(AllOrderLines.ThisOrderLine, TestOrderLine);
         }
-
+        [TestMethod]
         public void AddMethodOK()
         {
             clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
@@ -75,6 +75,7 @@ namespace ShoeTesting
             Assert.AreEqual(AllOrderLines.ThisOrderLine, TestItem);
 
         }
+        [TestMethod]
         public void DeleteMethodOK()
         {
             clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
@@ -94,7 +95,70 @@ namespace ShoeTesting
             Assert.IsFalse(Found);
 
         }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
+            clsOrderLine TestItem = new clsOrderLine();
+            Int32 PrimaryKey = 1;
+            TestItem.orderID = 1;
+            TestItem.selectionDescription = "Jordan Air";
+            TestItem.productID = 1;
+            TestItem.quantity = 4;
+            AllOrderLines.ThisOrderLine = TestItem;
+            PrimaryKey = AllOrderLines.Add();
+            TestItem.orderID = 2;
+            TestItem.selectionDescription = "Jordan Air but different";
+            TestItem.productID = 2;
+            TestItem.quantity = 3;
+            AllOrderLines.ThisOrderLine = TestItem;
+            AllOrderLines.Update();
+            AllOrderLines.ThisOrderLine.Find(PrimaryKey);
+            Assert.AreEqual(AllOrderLines.ThisOrderLine, TestItem);
 
+        }
+
+        [TestMethod]
+        public void ReportBySelectionDescriptionMethodOK()
+        {
+            clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
+            clsOrderLineCollection FilteredOrderLines = new clsOrderLineCollection();
+            FilteredOrderLines.ReportBySelectionDescription(" ");
+            Assert.AreEqual(AllOrderLines.Count, FilteredOrderLines.Count);
+        }
+
+        [TestMethod]
+        public void ReportBySelectionDescriptionNoneFound()
+        {
+            clsOrderLineCollection FilteredOrderLines = new clsOrderLineCollection();
+            FilteredOrderLines.ReportBySelectionDescription("Nike");
+            Assert.AreEqual(0, FilteredOrderLines.Count);
+        }
+
+        [TestMethod]
+        public void ReportBySelectionDescriptionTestDataFound()
+        {
+            clsOrderLineCollection FilteredOrderLines = new clsOrderLineCollection();
+            Boolean OK = true;
+            FilteredOrderLines.ReportBySelectionDescription("Adidas");
+            if(FilteredOrderLines.Count == 2)
+            {
+                if(FilteredOrderLines.OrderLineList[0].orderLineID != 1)
+                {
+                    OK = false;
+                }
+                if(FilteredOrderLines.OrderLineList[1].orderLineID != 2)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
 
         /*REMOVED AS PER TUTORIAL!!
          *
