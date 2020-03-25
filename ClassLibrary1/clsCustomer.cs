@@ -139,6 +139,14 @@ namespace ShoeClasses
             {
                 Error = Error + "The name no must be less than 20 characters :";
             }
+            if (address.Length == 0)
+            {
+                Error = Error + "The address cannot be blank :  ";
+            }
+            if (address.Length > 50)
+            {
+                Error = Error + "The address no must be less than 50 characters : ";
+            }
             try
             {
 
