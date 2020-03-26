@@ -86,7 +86,7 @@ namespace ShoeTesting
         {
             clsCustomer ACustomer = new clsCustomer();
             Boolean Found = false;
-            Int32 CustomerID = 4;
+            Int32 CustomerID = 3;
             Found = ACustomer.Find(CustomerID);
             Assert.IsTrue(Found);
            

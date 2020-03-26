@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using ShoeClasses;
 
-namespace ClassLibrary1
+namespace ShoeClasses
 {
     public class clsCustomerCollection
     {
