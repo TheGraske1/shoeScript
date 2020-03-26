@@ -36,14 +36,7 @@ namespace ShoeTesting
 
         }
 
-        [TestMethod]
-        public void CountPropertyOK()
-        {
-            clsCustomerCollection AllCustomer = new clsCustomerCollection();
-            Int32 SomeCount = 2;
-            AllCustomer.Count = SomeCount;
-            Assert.AreEqual(AllCustomer.Count, SomeCount);
-        }
+       
 
         [TestMethod]
         public void ThisCustomerPropertyOK()

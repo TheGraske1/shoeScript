@@ -8,7 +8,7 @@ namespace ShoeClasses
     {
         public clsCustomerCollection()
         {
-            Int32 Index = 0;
+           /* Int32 Index = 0;
             Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblCustomer_SelectAll");
@@ -24,7 +24,7 @@ namespace ShoeClasses
                 ACustomer.Balance = Convert.ToDouble(DB.DataTable.Rows[Index]["Balance"]);
                 mCustomerList.Add(ACustomer);
                 Index++;
-            }
+            }*/
         }
 
         List<clsCustomer> mCustomerList = new List<clsCustomer>();

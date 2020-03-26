@@ -61,7 +61,7 @@ public partial class Customer : System.Web.UI.Page
 
 
         Session["ACustomer"] = ACustomer;
-        Response.Redirect("CustomerViewer.aspx");
+        Response.Write("CustomerViewer.aspx");
 
     }
 
