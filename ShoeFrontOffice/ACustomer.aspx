@@ -21,6 +21,9 @@
             <p>DateCreated:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtDatecreated" runat="server"></asp:TextBox>
                 </p>
+            <p>
+                <asp:CheckBox ID="chkRegistered" runat="server" Text="Registered" />
+                </p>
             <p>Registered:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtRegistered" runat="server"></asp:TextBox>
                 </p>
