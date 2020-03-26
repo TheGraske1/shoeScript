@@ -391,5 +391,98 @@ namespace ShoeTesting
             Assert.AreNotEqual(Error, "");
         }
 
+        [TestMethod]
+
+        public void AddressMinLessOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string Address = "";
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void AddressMin()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string Address = "a";
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void AddressMinPlusOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string Address = "aa";
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void AddressMaxLessOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string Address = "";
+            Address = Address.PadRight(49, 'a');
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void AddressMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string Address = "";
+            Address = Address.PadRight(50, 'a');
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void AddressMid()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string Address = "";
+            Address = Address.PadRight(25, 'a');
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void AddressMaxPlusOne()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string Address = "";
+            Address = Address.PadRight(51, 'a');
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void AddressExtremeMax()
+        {
+            clsCustomer ACustomer = new clsCustomer();
+            String Error = "";
+            string Address = "";
+            Address = Address.PadRight(500, 'a');
+            Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+            Assert.AreNotEqual(Error, "");
+        }
+
     }
 }

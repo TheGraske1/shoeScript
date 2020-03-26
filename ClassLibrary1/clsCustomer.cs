@@ -139,14 +139,30 @@ namespace ShoeClasses
             {
                 Error = Error + "The name no must be less than 20 characters :";
             }
-            DateTemp = Convert.ToDateTime(dateCreated);
-            if(DateTemp < DateTime.Now.Date)
+            if (address.Length == 0)
             {
-                Error = Error + "The date cannot be in the past : ";
+                Error = Error + "The address cannot be blank :  ";
             }
-            if (DateTemp > DateTime.Now.Date)
+            if (address.Length > 50)
             {
-                Error = Error + "The date cannot be in the future :";
+                Error = Error + "The address no must be less than 50 characters : ";
+            }
+            try
+            {
+
+                DateTemp = Convert.ToDateTime(dateCreated);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past : ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future :";
+                }
+            }
+            catch
+            {
+                Error = Error + "The date was not a valid date :";
             }
             return Error;
         }

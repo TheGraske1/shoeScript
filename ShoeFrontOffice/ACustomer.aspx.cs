@@ -19,21 +19,43 @@ public partial class Customer : System.Web.UI.Page
         
     }
 
+   
+
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsCustomer ACustomer = new clsCustomer();
 
-        ACustomer.CustomerID =Convert.ToInt32( txtCustomerID.Text);
+        string CustomerID = txtCustomerID.Text;
 
-        ACustomer.Name = txtName.Text;
+        string Name = txtName.Text;
 
-        ACustomer.Address = txtAddress.Text;
+        string Address = txtAddress.Text;
 
-        ACustomer.DateCreated = Convert.ToDateTime(txtDatecreated.Text);
+        string DateCreated = txtDatecreated.Text;
 
         ACustomer.Registered = chkRegistered.Checked;
 
-        ACustomer.Balance =Convert.ToDouble( txtBalance.Text);
+        string Registered = txtRegistered.Text;
+
+        string Balance =txtBalance.Text;
+
+        string Error = "";
+        Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+        if (Error == "")
+        {
+            ACustomer.Name = Name;
+            ACustomer.Address = Address;
+            ACustomer.DateCreated = Convert.ToDateTime(DateCreated);
+            ACustomer.Registered = Convert.ToBoolean(Registered);
+            ACustomer.Balance = Convert.ToDouble(Balance);
+
+            Session["ACustomer"] = ACustomer;
+            Response.Write("CustomerViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
 
 
 

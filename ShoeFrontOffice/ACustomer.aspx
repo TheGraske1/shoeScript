@@ -35,7 +35,9 @@
                 <asp:Button ID="btnFind" runat="server" Text="Find" Width="50px" />
                 <asp:Button ID="btnCancel" runat="server" Text="Cancel" Width="50px" />
             </p>
-
+            <p>
+            <asp:Label ID="lblError" runat="server"></asp:Label>
+            </p>
 
 
 
