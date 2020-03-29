@@ -21,7 +21,7 @@ public partial class OrderLineList : System.Web.UI.Page
         ShoeClasses.clsOrderLineCollection OrderLines = new ShoeClasses.clsOrderLineCollection();
         lstOrderLine.DataSource = OrderLines.OrderLineList;
         lstOrderLine.DataValueField = "orderLineID";
-        lstOrderLine.DataTextField = "orderID";
+        lstOrderLine.DataTextField = "selectionDescription";
         lstOrderLine.DataBind();
 
     }
@@ -39,7 +39,7 @@ public partial class OrderLineList : System.Web.UI.Page
         {
             OrderLineID = Convert.ToInt32(lstOrderLine.SelectedValue);
             Session["orderLineID"] = OrderLineID;
-            Response.Redirect("DeleteOrderLine.aspx");
+            Response.Redirect("DeleteOrderLines.aspx");
         }
         else
         {
@@ -57,7 +57,7 @@ public partial class OrderLineList : System.Web.UI.Page
             Response.Redirect("AnOrder.aspx");
         }
         else{
-            lblError.Text = "Please select a record to delete form the list";
+            lblError.Text = "Please select a record to edit form the list";
         }
     }
 

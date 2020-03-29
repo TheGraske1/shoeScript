@@ -19,7 +19,7 @@ public partial class AnOrder : System.Web.UI.Page
             {
                 DisplayOrder();
             }
-            else if (OrderLineID != -1)
+            if (OrderLineID != -1)
             {
                 DisplayOrderLine();
             }
@@ -49,7 +49,7 @@ public partial class AnOrder : System.Web.UI.Page
         QuantityList.Text = OrderLineBook.ThisOrderLine.quantity.ToString();
     }
 
-    protected void btnOK_Click(object sender, EventArgs e)
+    protected void btnOKOrder_Click(object sender, EventArgs e)
     {
         clsOrder AnOrder = new clsOrder();
         string StaffID = intStaffID.Text;

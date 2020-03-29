@@ -51,7 +51,7 @@
            </div>
                    
                 <div style="margin-left: 120px">
-                    <asp:Button ID="orderOK" runat="server" OnClick="btnOK_Click" Text="OK-ORDER" />
+                    <asp:Button ID="orderOK" runat="server" OnClick="btnOKOrder_Click" Text="OK-ORDER" />
                 </div>
                    
                 <p>Here you can test out the OrderLine.</p>
@@ -91,12 +91,6 @@
                 </div>
           
                
-<asp:Button ID="btnAddOrder" runat="server" OnClick="btnOK_Click" Text="Add Order" Width="89px" />
-        
-       
-<asp:Button ID="Line" runat="server" OnClick="btnOK_Click" Text="Add Order Line" Width="89px" />
-        
-       
             <p id="errorShow">
                 <asp:Label ID="Label2" runat="server" Text="No error"></asp:Label>
         
