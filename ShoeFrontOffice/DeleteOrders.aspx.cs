@@ -12,6 +12,7 @@ public partial class DeleteOrders : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         OrderID = Convert.ToInt32(Session["orderID"]);
+        TextBox1.Text = Convert.ToString(Session["orderID"]);
     }
 
 

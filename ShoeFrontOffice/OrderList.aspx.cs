@@ -51,11 +51,11 @@ public partial class OrderList : System.Web.UI.Page
     }
     protected void btnDelete_Click(object sender, EventArgs e)
     {
-        Int32 orderID;
+        Int32 OrderID;
         if (lstOrders.SelectedIndex != -1)
         {
-            orderID = Convert.ToInt32(lstOrders.SelectedValue);
-            Session["orderID"] = orderID;
+            OrderID = Convert.ToInt32(lstOrders.SelectedValue);
+            Session["orderID"] = OrderID;
             Response.Redirect("DeleteOrders.aspx");
         }
         else

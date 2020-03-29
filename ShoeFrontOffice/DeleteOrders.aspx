@@ -14,6 +14,7 @@
             <asp:Button ID="btnYes" runat="server" OnClick="btnYes_Click" Text="Yes" />
             <asp:Button ID="btnNo" runat="server" Text="No" />
         </div>
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
     </form>
 </body>
 </html>
