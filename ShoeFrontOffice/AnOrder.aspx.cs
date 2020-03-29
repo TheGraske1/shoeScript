@@ -57,9 +57,8 @@ public partial class AnOrder : System.Web.UI.Page
         string Price = floatPrice.Text;
         string Address = stringAddress.Text;
         string Date = dateOrdered.Text;
-        string Paid = boolPaid.Text;
         string Error = "";
-        Error = AnOrder.Valid(Date, Paid, Price, StaffID, CustomerId, Address);
+        Error = AnOrder.Valid(Date, Price, StaffID, CustomerId, Address);
         if (Error == "")
         {
             AnOrder.orderID = OrderID;

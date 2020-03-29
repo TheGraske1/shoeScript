@@ -81,8 +81,8 @@ namespace ShoeClasses
         public void Delete()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@orderLineID", mThisOrder.orderID);
-            DB.Execute("sproc_tblOrderLine_Delete");
+            DB.AddParameter("@orderID", mThisOrder.orderID);
+            DB.Execute("sproc_tblOrder_Delete");
         }
 
         public void Update()
