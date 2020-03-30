@@ -24,13 +24,13 @@ namespace ShoeClasses
             while (Index < RecordCount)
             {
                 clsOrder AnOrder = new clsOrder();
-                AnOrder.paid = Convert.ToBoolean(DB.DataTable.Rows[0]["paid"]);
-                AnOrder.customerID = Convert.ToInt32(DB.DataTable.Rows[0]["customerID"]);
-                AnOrder.dateOrdered = Convert.ToDateTime(DB.DataTable.Rows[0]["dateOrdered"]);
-                AnOrder.deliveryAddress = Convert.ToString(DB.DataTable.Rows[0]["deliveryAddress"]);
-                AnOrder.orderID = Convert.ToInt32(DB.DataTable.Rows[0]["orderID"]);
-                AnOrder.staffID = Convert.ToInt32(DB.DataTable.Rows[0]["staffID"]);
-                AnOrder.totalPrice = Convert.ToDouble(DB.DataTable.Rows[0]["totalPrice"]);
+                AnOrder.paid = Convert.ToBoolean(DB.DataTable.Rows[Index]["paid"]);
+                AnOrder.customerID = Convert.ToInt32(DB.DataTable.Rows[Index]["customerID"]);
+                AnOrder.dateOrdered = Convert.ToDateTime(DB.DataTable.Rows[Index]["dateOrdered"]);
+                AnOrder.deliveryAddress = Convert.ToString(DB.DataTable.Rows[Index]["deliveryAddress"]);
+                AnOrder.orderID = Convert.ToInt32(DB.DataTable.Rows[Index]["orderID"]);
+                AnOrder.staffID = Convert.ToInt32(DB.DataTable.Rows[Index]["staffID"]);
+                AnOrder.totalPrice = Convert.ToDouble(DB.DataTable.Rows[Index]["totalPrice"]);
                 mOrderList.Add(AnOrder);
                 Index++;
             }

@@ -42,7 +42,7 @@ namespace ShoeTesting
         public void CountPropertyOK()
         {
             clsOrderCollection AllOrders = new clsOrderCollection();
-            Int32 SomeCount = 2;
+            Int32 SomeCount = 5;
             AllOrders.Count = SomeCount;
             Assert.AreEqual(AllOrders.Count, SomeCount);
         }
@@ -68,10 +68,10 @@ namespace ShoeTesting
             clsOrderCollection AllOrders = new clsOrderCollection();
             clsOrder TestItem = new clsOrder();
             Int32 PrimaryKey = 0;
-            TestItem.customerID = 1;
+            TestItem.customerID = 4;
             TestItem.dateOrdered = DateTime.Today.Date;
             TestItem.deliveryAddress = "LE30HH";
-            TestItem.orderID = 1;
+            TestItem.orderID = 20;
             TestItem.paid = true;
             TestItem.staffID = 1;
             TestItem.totalPrice = 12.50;
@@ -110,7 +110,7 @@ namespace ShoeTesting
             clsOrderCollection AllOrders = new clsOrderCollection();
             clsOrder TestItem = new clsOrder();
             Int32 PrimaryKey = 1;
-            TestItem.customerID = 1;
+            TestItem.customerID = 3;
             TestItem.dateOrdered = DateTime.Now.Date;
             TestItem.deliveryAddress = "Ellistown, Amazon BHX2, LE16 1GQ";
             TestItem.paid = true;
@@ -119,7 +119,7 @@ namespace ShoeTesting
             AllOrders.ThisOrder = TestItem;
             PrimaryKey = AllOrders.Add();
             TestItem.orderID = PrimaryKey;
-            TestItem.customerID = 2;
+            TestItem.customerID = 4;
             TestItem.dateOrdered = DateTime.Now.Date;
             TestItem.deliveryAddress = "Another Address, not Amazon";
             TestItem.paid = false;

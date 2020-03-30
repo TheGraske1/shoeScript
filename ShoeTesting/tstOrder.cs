@@ -101,7 +101,7 @@ namespace ShoeTesting
             Boolean OK = true;
             Int32 orderID = 12;
             Found = anOrder.Find(orderID);
-            if(anOrder.dateOrdered != Convert.ToDateTime("16/02/2020"))
+            if(anOrder.dateOrdered != Convert.ToDateTime("30/03/2020"))
             {
                 OK = false;
             }

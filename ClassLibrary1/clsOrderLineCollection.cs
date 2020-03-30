@@ -22,11 +22,11 @@ namespace ShoeClasses
             while (Index < RecordCount)
             {
                 clsOrderLine AnOrderLine = new clsOrderLine();
-                AnOrderLine.orderLineID = Convert.ToInt32(DB.DataTable.Rows[0]["orderLineID"]);
-                AnOrderLine.orderID = Convert.ToInt32(DB.DataTable.Rows[0]["orderID"]);
-                AnOrderLine.productID = Convert.ToInt32(DB.DataTable.Rows[0]["productID"]);
-                AnOrderLine.quantity = Convert.ToInt32(DB.DataTable.Rows[0]["quantity"]);
-                AnOrderLine.selectionDescription = Convert.ToString(DB.DataTable.Rows[0]["selectionDescription"]);
+                AnOrderLine.orderLineID = Convert.ToInt32(DB.DataTable.Rows[Index]["orderLineID"]);
+                AnOrderLine.orderID = Convert.ToInt32(DB.DataTable.Rows[Index]["orderID"]);
+                AnOrderLine.productID = Convert.ToInt32(DB.DataTable.Rows[Index]["productID"]);
+                AnOrderLine.quantity = Convert.ToInt32(DB.DataTable.Rows[Index]["quantity"]);
+                AnOrderLine.selectionDescription = Convert.ToString(DB.DataTable.Rows[Index]["selectionDescription"]);
                 mOrderLineList.Add(AnOrderLine);
                 Index++;
             }
