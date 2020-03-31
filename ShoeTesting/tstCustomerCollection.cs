@@ -2,7 +2,7 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ClassLibrary1;
+
 using ShoeClasses;
 
 namespace ShoeTesting
@@ -24,12 +24,14 @@ namespace ShoeTesting
             clsCustomerCollection AllCustomer = new clsCustomerCollection();
             List<clsCustomer> TestList = new List<clsCustomer>();
             clsCustomer TestItem = new clsCustomer();
+
             TestItem.CustomerID = 3;
             TestItem.Name = "Jay";
             TestItem.Address = "131 Gateway Street LE3 1DW";
             TestItem.DateCreated = DateTime.Now.Date;
             TestItem.Registered = true;
             TestItem.Balance = 250.00;
+
             TestList.Add(TestItem);
             AllCustomer.CustomerList = TestList;
             Assert.AreEqual(AllCustomer.CustomerList, TestList);
@@ -43,6 +45,7 @@ namespace ShoeTesting
         {
             clsCustomerCollection AllCustomer = new clsCustomerCollection();
             clsCustomer TestCustomer = new clsCustomer();
+
             TestCustomer.CustomerID = 3;
             TestCustomer.Name = "Jay";
             TestCustomer.Address = "131 Gateway Street LE3 1DW";
@@ -61,6 +64,7 @@ namespace ShoeTesting
             clsCustomerCollection AllCustomers = new clsCustomerCollection();
             clsCustomer TestItem = new clsCustomer();
             Int32 PrimaryKey = 0;
+
             TestItem.CustomerID = 7;
             TestItem.Name = "Kyle";
             TestItem.Address = "234 New Walk Street LE1 2AD";
