@@ -19,6 +19,7 @@ public partial class Customer : System.Web.UI.Page
         
     }
 
+
    
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -37,7 +38,7 @@ public partial class Customer : System.Web.UI.Page
 
         string Registered = txtRegistered.Text;
 
-        string Balance =txtBalance.Text;
+        string Balance = txtBalance.Text;
 
         string Error = "";
         Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
@@ -46,7 +47,7 @@ public partial class Customer : System.Web.UI.Page
             ACustomer.Name = Name;
             ACustomer.Address = Address;
             ACustomer.DateCreated = Convert.ToDateTime(DateCreated);
-            ACustomer.Registered = Convert.ToBoolean(Registered);
+            ACustomer.Registered = chkRegistered.Checked;//Convert.ToBoolean(Registered);
             ACustomer.Balance = Convert.ToDouble(Balance);
 
             Session["ACustomer"] = ACustomer;
@@ -61,8 +62,7 @@ public partial class Customer : System.Web.UI.Page
 
 
         Session["ACustomer"] = ACustomer;
-        Response.Write("CustomerViewer.aspx");
-
+        Response.Redirect("CustomerViewer.aspx");
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -84,4 +84,51 @@ public partial class Customer : System.Web.UI.Page
         }
     }
 
+
+    protected void btnOk_Click(object sender, EventArgs e)
+    {
+        clsCustomer ACustomer = new clsCustomer();
+
+        string CustomerID = txtCustomerID.Text;
+
+        string Name = txtName.Text;
+
+        string Address = txtAddress.Text;
+
+        string DateCreated = txtDatecreated.Text;
+
+        ACustomer.Registered = chkRegistered.Checked;
+
+        string Registered = txtRegistered.Text;
+
+        string Balance = txtBalance.Text;
+
+        string Error = "";
+        Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
+        if (Error == "")
+        {
+            ACustomer.Name = Name;
+            ACustomer.Address = Address;
+            ACustomer.DateCreated = Convert.ToDateTime(DateCreated);
+            ACustomer.Registered = chkRegistered.Checked; //Convert.ToBoolean(Registered);
+            ACustomer.Balance = Convert.ToDouble(Balance);
+
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            CustomerList.ThisCustomer = ACustomer;
+            CustomerList.Add();
+
+            
+            Response.Write("CustomerList.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+
+
+
+
+        
+
+    }
 }

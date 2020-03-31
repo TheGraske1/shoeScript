@@ -31,7 +31,7 @@
             <asp:TextBox ID="txtBalance" runat="server"></asp:TextBox>
                 </p>
             <p>
-                <asp:Button ID="btnOk" runat="server" Text="OK" Width="50px" />
+                <asp:Button ID="btnOk" runat="server" Text="OK" Width="50px" OnClick="btnOk_Click" />
                 <asp:Button ID="btnFind" runat="server" Text="Find" Width="50px" />
                 <asp:Button ID="btnCancel" runat="server" Text="Cancel" Width="50px" />
             </p>

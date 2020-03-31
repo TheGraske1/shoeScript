@@ -28,6 +28,7 @@ namespace ShoeClasses
         }
 
         List<clsCustomer> mCustomerList = new List<clsCustomer>();
+        clsCustomer mThisCustomer = new clsCustomer();
         public List<clsCustomer> CustomerList {
             get
             {
@@ -48,6 +49,28 @@ namespace ShoeClasses
 
             }
         }
-        public clsCustomer ThisCustomer { get; set; }
+        public clsCustomer ThisCustomer
+        {
+            get
+            {
+                return mThisCustomer;
+            }
+            set
+            {
+                mThisCustomer = value;
+            }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Name", mThisCustomer.Name);
+            DB.AddParameter("@Address", mThisCustomer.Address);
+            DB.AddParameter("@DateCreated", mThisCustomer.DateCreated);
+            DB.AddParameter("@Registered", mThisCustomer.Registered);
+            DB.AddParameter("@Balance", mThisCustomer.Balance);
+            return DB.Execute("sproc_tblCustomer_Insert");
+        }
     }
+
 }
