@@ -39,12 +39,21 @@ namespace ShoeTesting
             
         }
         [TestMethod]
-        public void CountPropertyOK()
+        public void ListAndCountOK()
         {
             clsOrderCollection AllOrders = new clsOrderCollection();
-            Int32 SomeCount = 5;
-            AllOrders.Count = SomeCount;
-            Assert.AreEqual(AllOrders.Count, SomeCount);
+            List<clsOrder> TestList = new List<clsOrder>();
+            clsOrder TestItem = new clsOrder();
+            TestItem.paid = true;
+            TestItem.customerID = 1;
+            TestItem.dateOrdered = DateTime.Today.Date;
+            TestItem.deliveryAddress = "LE30HH";
+            TestItem.orderID = 2;
+            TestItem.staffID = 3;
+            TestItem.totalPrice = 12.50;
+            TestList.Add(TestItem);
+            AllOrders.OrderList = TestList;
+            Assert.AreEqual(AllOrders.Count, TestList.Count);
         }
 
         [TestMethod]
@@ -68,10 +77,11 @@ namespace ShoeTesting
             clsOrderCollection AllOrders = new clsOrderCollection();
             clsOrder TestItem = new clsOrder();
             Int32 PrimaryKey = 0;
+            TestItem.orderID = 1;
             TestItem.customerID = 4;
             TestItem.dateOrdered = DateTime.Today.Date;
             TestItem.deliveryAddress = "LE30HH";
-            TestItem.orderID = 20;
+            TestItem.orderID = 1;
             TestItem.paid = true;
             TestItem.staffID = 1;
             TestItem.totalPrice = 12.50;
@@ -82,6 +92,7 @@ namespace ShoeTesting
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
 
         }
+        
         [TestMethod]
         public void DeleteMethodOK()
         {
@@ -109,7 +120,7 @@ namespace ShoeTesting
         {
             clsOrderCollection AllOrders = new clsOrderCollection();
             clsOrder TestItem = new clsOrder();
-            Int32 PrimaryKey = 1;
+            Int32 PrimaryKey = 0;
             TestItem.customerID = 3;
             TestItem.dateOrdered = DateTime.Now.Date;
             TestItem.deliveryAddress = "Ellistown, Amazon BHX2, LE16 1GQ";
@@ -138,7 +149,7 @@ namespace ShoeTesting
         {
             clsOrderCollection AllOrders = new clsOrderCollection();
             clsOrderCollection FilteredOrders = new clsOrderCollection();
-            FilteredOrders.ReportByDeliveryAddress(" ");
+            FilteredOrders.ReportByDeliveryAddress("");
             Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
         }
 
@@ -155,14 +166,14 @@ namespace ShoeTesting
         {
             clsOrderCollection FilteredOrders = new clsOrderCollection();
             Boolean OK = true;
-            FilteredOrders.ReportByDeliveryAddress("Adidas");
+            FilteredOrders.ReportByDeliveryAddress("Test address");
             if (FilteredOrders.Count == 2)
             {
-                if (FilteredOrders.OrderList[0].orderID != 1)
+                if (FilteredOrders.OrderList[0].orderID != 12)
                 {
                     OK = false;
                 }
-                if (FilteredOrders.OrderList[1].orderID != 2)
+                if (FilteredOrders.OrderList[1].orderID != 20)
                 {
                     OK = false;
                 }
@@ -176,23 +187,14 @@ namespace ShoeTesting
         }
 
         /*    REMOVED AS PER TUTORIAL !!
-         * public void ListAndCountOK()
-         {
-             clsOrderCollection AllOrders = new clsOrderCollection();
-             List<clsOrder> TestList = new List<clsOrder>();
-             clsOrder TestItem = new clsOrder();
-             TestItem.paid = true;
-             TestItem.customerID = 1;
-             TestItem.dateOrdered = DateTime.Today.Date;
-             TestItem.deliveryAddress = "LE30HH";
-             TestItem.orderID = 2;
-             TestItem.staffID = 3;
-             TestItem.totalPrice = 12.50;
-             TestList.Add(TestItem);
-             AllOrders.OrderList = TestList;
-             Assert.AreEqual(AllOrders.Count, TestList.Count);
-         }
-        
+         *
+         public void CountPropertyOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            Int32 SomeCount = 5;
+            AllOrders.Count = SomeCount;
+            Assert.AreEqual(AllOrders.Count, SomeCount);
+        }
          * [TestMethod]
         public void TwoRecordsPresent()
         {
@@ -202,5 +204,5 @@ namespace ShoeTesting
         }
         */
     }
-    }
+}
 
