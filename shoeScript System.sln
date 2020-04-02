@@ -7,10 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "shoeBackOffice", "shoeBackO
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoeClasses", "ClassLibrary1\ShoeClasses.csproj", "{1AE570C9-C57B-4B59-BFE2-3B237BF6E338}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoeTesting", "ShoeTesting\ShoeTesting.csproj", "{E07D9309-5CFB-42DD-9CF9-ADB8F9668788}"
+EndProject
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ShoeFrontOffice", "ShoeFrontOffice\", "{FBA15F83-1115-48A0-A32D-5472FBC832E3}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.6.1"
-		ProjectReferences = "{1ae570c9-c57b-4b59-bfe2-3b237bf6e338}|ClassLibrary1.dll;"
+		ProjectReferences = "{1ae570c9-c57b-4b59-bfe2-3b237bf6e338}|ClassLibrary1.dll;{e07d9309-5cfb-42dd-9cf9-adb8f9668788}|ShoeTesting.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/localhost_2295"
 		Debug.AspNetCompiler.PhysicalPath = "ShoeFrontOffice\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_2295\"
@@ -30,8 +32,6 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "ShoeFrontOffice", "ShoeFron
 		DefaultWebSiteLanguage = "Visual C#"
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoeTesting", "ShoeTesting\ShoeTesting.csproj", "{E07D9309-5CFB-42DD-9CF9-ADB8F9668788}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -46,14 +46,14 @@ Global
 		{1AE570C9-C57B-4B59-BFE2-3B237BF6E338}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1AE570C9-C57B-4B59-BFE2-3B237BF6E338}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1AE570C9-C57B-4B59-BFE2-3B237BF6E338}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FBA15F83-1115-48A0-A32D-5472FBC832E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FBA15F83-1115-48A0-A32D-5472FBC832E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FBA15F83-1115-48A0-A32D-5472FBC832E3}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{FBA15F83-1115-48A0-A32D-5472FBC832E3}.Release|Any CPU.Build.0 = Debug|Any CPU
 		{E07D9309-5CFB-42DD-9CF9-ADB8F9668788}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E07D9309-5CFB-42DD-9CF9-ADB8F9668788}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E07D9309-5CFB-42DD-9CF9-ADB8F9668788}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E07D9309-5CFB-42DD-9CF9-ADB8F9668788}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBA15F83-1115-48A0-A32D-5472FBC832E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBA15F83-1115-48A0-A32D-5472FBC832E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBA15F83-1115-48A0-A32D-5472FBC832E3}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBA15F83-1115-48A0-A32D-5472FBC832E3}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
