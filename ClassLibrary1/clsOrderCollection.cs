@@ -68,7 +68,6 @@ namespace ShoeClasses
         public int Add()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@orderID", mThisOrder.orderID);
             DB.AddParameter("@customerID", mThisOrder.customerID);
             DB.AddParameter("@staffID", mThisOrder.staffID);
             DB.AddParameter("@totalPrice", mThisOrder.totalPrice);

@@ -69,7 +69,6 @@ namespace ShoeClasses
         public int Add()
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@orderLineID", mThisOrderLine.orderLineID);
             DB.AddParameter("@orderID", mThisOrderLine.orderID);
             DB.AddParameter("@productID", mThisOrderLine.productID);
             DB.AddParameter("@quantity", mThisOrderLine.quantity);
@@ -97,7 +96,7 @@ namespace ShoeClasses
         public void ReportBySelectionDescription(string SelectionDescription)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@SelectionDescription", SelectionDescription);
+            DB.AddParameter("@selectionDescription", SelectionDescription);
             DB.Execute("sproc_tblOrderLine_FilterBySelectionDescription");
             PopulateArray(DB);
         }
