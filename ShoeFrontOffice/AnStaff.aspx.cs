@@ -16,7 +16,6 @@ public partial class AnStaff : System.Web.UI.Page
     protected void btnOk_Click(object sender, EventArgs e)
     {
         clsStaff AnStaff = new clsStaff();
-        Int32 StaffId = Convert.ToInt32(txtStaffId.Text);
         string StaffName = txtStaffName.Text;
         string PhoneNumber = txtPhoneNum.Text;
         string Salary = txtSalary.Text;
@@ -26,14 +25,16 @@ public partial class AnStaff : System.Web.UI.Page
         Error = AnStaff.Valid(StaffName, PhoneNumber, Salary, JoinedDate);
         if(Error == "")
         {
-            AnStaff.staffid = StaffId;
             AnStaff.name = StaffName;
             AnStaff.phoneNumber = PhoneNumber;
             AnStaff.salary = Convert.ToDouble(Salary);
             AnStaff.joinedDate = Convert.ToDateTime(JoinedDate);
+            AnStaff.admin = chckAdmin.Checked;
 
-            Session["AnStaff"] = AnStaff;
-            Response.Write("StaffViewer.aspx");
+            clsStaffCollection StaffList = new clsStaffCollection();
+            StaffList.ThisStaff = AnStaff;
+            StaffList.Add();
+            Response.Redirect("StaffList.aspx");
         }
         else
         {

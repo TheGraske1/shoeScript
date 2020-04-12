@@ -7,6 +7,7 @@ namespace ShoeClasses
     public class clsStaffCollection
     {
         List<clsStaff> mStaffList = new List<clsStaff>();
+        clsStaff mThisStaff = new clsStaff();
 
         public clsStaffCollection()
         {
@@ -53,6 +54,31 @@ namespace ShoeClasses
                 //null
             }
         }
-        public clsStaff ThisStaff { get; set; }
+
+        public clsStaff ThisStaff
+        {
+            get
+            {
+                return mThisStaff;
+            }
+            set
+            {
+                mThisStaff = value;
+            }
+        }
+
+
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffName", mThisStaff.name);
+            DB.AddParameter("@PhoneNumber", mThisStaff.phoneNumber);
+            DB.AddParameter("@Salary", mThisStaff.salary);
+            DB.AddParameter("@JoinedDate", mThisStaff.joinedDate);
+            DB.AddParameter("@Admin", mThisStaff.admin);
+
+            return DB.Execute("sproc_tblStaff_Insert");
+        }
     }
 }

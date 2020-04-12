@@ -26,4 +26,10 @@ public partial class StaffList : System.Web.UI.Page
 
         lstStaffList.DataBind();
     }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["StaffId"] = -1;
+        Response.Redirect("AnStaff.aspx");
+    }
 }
