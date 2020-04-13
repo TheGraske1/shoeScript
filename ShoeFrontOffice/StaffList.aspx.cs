@@ -7,13 +7,13 @@ using System.Web.UI.WebControls;
 
 public partial class StaffList : System.Web.UI.Page
 {
+    Int32 StaffId;
     protected void Page_Load(object sender, EventArgs e)
     {
-        if(IsPostBack == false)
+        if (IsPostBack == false)
         {
             DisplayNames();
         }
-
     }
 
     void DisplayNames()
@@ -31,5 +31,35 @@ public partial class StaffList : System.Web.UI.Page
     {
         Session["StaffId"] = -1;
         Response.Redirect("AnStaff.aspx");
+    }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Int32 StaffId;
+        if(lstStaffList.SelectedIndex != -1)
+        {
+            StaffId = Convert.ToInt32(lstStaffList.SelectedValue);
+            Session["AnStaff"] = StaffId;
+            Response.Redirect("DeleteStaff.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record to delete from the list";
+        }
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 StaffId;
+        if(lstStaffList.SelectedIndex != -1)
+        {
+            StaffId = Convert.ToInt32(lstStaffList.SelectedValue);
+            Session["StaffId"] = StaffId;
+            Response.Redirect("AnStaff.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record to edit from the list";
+        }
     }
 }

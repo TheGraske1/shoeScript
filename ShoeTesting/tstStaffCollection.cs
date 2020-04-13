@@ -106,6 +106,63 @@ namespace ShoeTesting
             AllStaff.ThisStaff.Find(PrimaryKey);
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);
         }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+
+            //set properties
+            TestItem.staffid = 1;
+            TestItem.name = "Joe Bloggs";
+            TestItem.phoneNumber = "01234567891";
+            TestItem.salary = 25000.24;
+            TestItem.joinedDate = DateTime.Now.Date;
+            TestItem.admin = true;
+
+            AllStaff.ThisStaff = TestItem;
+            PrimaryKey = AllStaff.Add();
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            AllStaff.Delete();
+            Boolean Found = AllStaff.ThisStaff.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+
+            //set properties
+            TestItem.staffid = 1;
+            TestItem.name = "Joe Bloggs";
+            TestItem.phoneNumber = "01234567891";
+            TestItem.salary = 25000.24;
+            TestItem.joinedDate = DateTime.Now.Date;
+            TestItem.admin = true;
+
+            AllStaff.ThisStaff = TestItem;
+            PrimaryKey = AllStaff.Add();
+            TestItem.staffid = PrimaryKey;
+
+            //set properties (updated)
+            TestItem.staffid = 3;
+            TestItem.name = "Bloggs Joe";
+            TestItem.phoneNumber = "19876543210";
+            TestItem.salary = 15000.99;
+            TestItem.joinedDate = DateTime.Now.Date;
+            TestItem.admin = false;
+
+            AllStaff.ThisStaff = TestItem;
+            AllStaff.Update();
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+
+        }
     }
 
 }

@@ -80,5 +80,25 @@ namespace ShoeClasses
 
             return DB.Execute("sproc_tblStaff_Insert");
         }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffId", mThisStaff.staffid);
+            DB.Execute("sproc_tblStaff_Delete");
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffId", mThisStaff.staffid);
+            DB.AddParameter("@StaffName", mThisStaff.name);
+            DB.AddParameter("@PhoneNumber", mThisStaff.phoneNumber);
+            DB.AddParameter("@Salary", mThisStaff.salary);
+            DB.AddParameter("@JoinedDate", mThisStaff.joinedDate);
+            DB.AddParameter("@Admin", mThisStaff.admin);
+
+            DB.Execute("sproc_tblStaff_Update");
+        }
     }
 }
