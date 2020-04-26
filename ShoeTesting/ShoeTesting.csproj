@@ -49,11 +49,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsReview.cs" />
-    <Compile Include="tblReview.cs" />
     <Compile Include="tstOrderLineCollection.cs" />
     <Compile Include="tstOrderCollection.cs" />
     <Compile Include="tstCustomer.cs" />
+    <Compile Include="tstReview.cs" />
     <Compile Include="tstStaff.cs" />
     <Compile Include="tstOrder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
