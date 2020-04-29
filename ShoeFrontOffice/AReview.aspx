@@ -25,7 +25,7 @@
         <asp:TextBox ID="txtProductID" runat="server" style="z-index: 1; left: 148px; top: 109px; position: absolute"></asp:TextBox>
         <asp:TextBox ID="txtReview" runat="server" style="z-index: 1; left: 148px; top: 148px; position: absolute"></asp:TextBox>
         <asp:TextBox ID="txtReviewDate" runat="server" style="z-index: 1; left: 147px; top: 182px; position: absolute"></asp:TextBox>
-        <asp:TextBox ID="tctProductRating" runat="server" style="z-index: 1; left: 147px; top: 219px; position: absolute"></asp:TextBox>
+        <asp:TextBox ID="txtProductRating" runat="server" style="z-index: 1; left: 147px; top: 219px; position: absolute"></asp:TextBox>
         <asp:CheckBox ID="Yes" runat="server" style="z-index: 1; left: 142px; top: 262px; position: absolute" OnCheckedChanged="VerifiedCustomer_CheckedChanged" />
         <asp:Label ID="txtVerifiedCustomer" runat="server" style="z-index: 1; left: 10px; top: 262px; position: absolute" Text="Verified Cutomer?"></asp:Label>
         <asp:CheckBox ID="No" runat="server" style="z-index: 1; left: 227px; top: 262px; position: absolute" />
