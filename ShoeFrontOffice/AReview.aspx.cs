@@ -22,16 +22,14 @@ public partial class AReview : System.Web.UI.Page
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        clsReview AReview = new clsReview;
-        AReview.ReviewID = Convert.ToInt32(txtReviewID);
-        AReview.CustomerID = Convert.ToInt32(txtCustomerID);
-        AReview.ProductID = Convert.ToInt32(txtProductID);
-        AReview.Review = txtReview.Text;
-        AReview.ReviewDate = Convert.ToDateTime(txtReviewDate.Text);
-        AReview.ProductRating = Convert.ToInt32(txtProductRating);
-        AReview.VerifiedCustomer = Yes.Checked;
+        clsReview AReview = new clsReview();
+        {
+            AReview.ReviewID = Convert.ToInt32(txtReviewID);
+        }
+
         Session["AReview"] = AReview;
-        Response.Redirect("ReviewViewer.aspx"); ;
+
+        Response.Redirect("ReviewViewer.aspx")
     }
     protected void VerifiedCustomer_CheckedChanged(object sender, EventArgs e)
     {

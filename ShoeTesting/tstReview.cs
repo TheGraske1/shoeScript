@@ -1,6 +1,6 @@
 ﻿using System;
-using ShoeClasses;
-using Microsoft.VisualStudio.TestTools.UnitTesting; 
+using ClassLibrary1;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ShoeTesting
 {
@@ -13,7 +13,41 @@ namespace ShoeTesting
             clsReview AReview = new clsReview();
             Assert.IsNotNull(AReview);
         }
+        [TestMethod]
+        public void ReviewDateExists()
+        {
+            clsReview AReview = new clsReview();
+            DateTime TestData = DateTime.Now.Date;
+            AReview.ReviewDate = TestData;
+            Assert.AreEqual(AReview.ReviewDate, TestData);
+        }
+        [TestMethod]
+        public void  ProductID()
+        {
+            clsReview AReview = new clsReview();
+            Int32 TestData = 1;
+            AReview.ProductID = TestData;
+            Assert.AreEqual(AReview.ProductID, TestData);
+                       
+        }
+        [TestMethod]
+        public void CustomberID()
+        {
+            clsReview AReview = new clsReview();
+            Int32 TestData = 1;
+            AReview.CustomerID = TestData;
+            Assert.AreEqual(AReview.CustomerID, TestData);
 
+        }
+
+        [TestMethod]
+        public void Review()
+        {
+            clsReview AReview = new clsReview();
+            string TestData = "Unique approach to stability. Guide rails provide dynamic support that give a smooth ride. Breathable upper.Rediculously comfortable for running and walking.";
+            AReview.Review = TestData;
+            Assert.AreEqual(AReview.Review, TestData);
+        }
         [TestMethod]
         public void ReviewID()
         {
@@ -22,35 +56,6 @@ namespace ShoeTesting
             AReview.ReviewID = TestData;
             Assert.AreEqual(AReview.ReviewID, TestData);
         }
-
-        [TestMethod]
-        public void ProductID()
-        {
-            clsReview AReview = new clsReview();
-            Int32 TestData = 1;
-            AReview.ProductID = TestData;
-            Assert.AreEqual(AReview.ProductID, TestData);
-        }
-
-
-        [TestMethod]
-        public void Review()
-        {
-            clsReview AReview = new clsReview();
-            string TestData = "Unique approach to stability. Guide rails provide dynamic support that give a smooth ride. Breathable upper.Rediculously comfortable for running and walking.";
-            AReview.Review = TestDate;
-            Assert.AreEqual(AReview.Review, TestData);
-        }
-
-        [TestMethod]
-        public void ReviewDate()
-        {
-            clsReview AReview = new clsReview();
-            DateTime TestData = DateTime.Now.Date;
-            AReview.DateAdded = TestData;
-            Assert.AreEqual(AReview.DateAdded, TestData);
-        }
-
         [TestMethod]
         public void ProductRating()
         {
@@ -66,8 +71,20 @@ namespace ShoeTesting
             clsReview AReview = new clsReview();
             Boolean TestData = true;
             AReview.VerifiedCustomer = TestData;
-            Assert.AreEqual(AnAddress.Active, TestData);
+            Assert.AreEqual(AReview.VerifiedCustomer, TestData);
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsReview AReview = new clsReview();
+            Boolean Found = false;
+            Int32 ReviewID = 1;
+            Assert.IsTrue(Found);
+
+        }
+
+
     }
+
 }

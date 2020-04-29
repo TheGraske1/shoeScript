@@ -1,17 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ShoeClasses;
 
 namespace ClassLibrary1
 {
     public class clsReview
     {
-        public clsReview
-        {
-        }
-     
+        public DateTime ReviewDate { get; set; }
+        public int ProductID { get; set; }
+        public object Review { get; set; }
+        public int ReviewID { get; set; }
+        public int ProductRating { get; set; }
+        public bool VerifiedCustomer { get; set; }
+        public int CustomerID { get; set; }
     }
 }
