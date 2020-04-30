@@ -70,7 +70,6 @@ namespace ShoeTesting
             clsOrderLineCollection AllOrderLines = new clsOrderLineCollection();
             clsOrderLine TestItem = new clsOrderLine();
             Int32 PrimaryKey = 0;
-            TestItem.orderLineID = 1;
             TestItem.selectionDescription = "Nike Air";
             TestItem.orderID = 1;
             TestItem.productID = 1;
@@ -154,7 +153,7 @@ namespace ShoeTesting
                 {
                     OK = false;
                 }
-                if(FilteredOrderLines.OrderLineList[1].orderLineID != 13)
+                if(FilteredOrderLines.OrderLineList[1].orderLineID != 2)
                 {
                     OK = false;
                 }

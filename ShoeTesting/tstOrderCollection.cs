@@ -77,7 +77,6 @@ namespace ShoeTesting
             clsOrderCollection AllOrders = new clsOrderCollection();
             clsOrder TestItem = new clsOrder();
             Int32 PrimaryKey = 0;
-            TestItem.orderID = 1;
             TestItem.customerID = 4;
             TestItem.dateOrdered = DateTime.Today.Date;
             TestItem.deliveryAddress = "LE30HH";
@@ -99,7 +98,7 @@ namespace ShoeTesting
             clsOrderCollection AllOrders = new clsOrderCollection();
             clsOrder TestItem = new clsOrder();
             Int32 PrimaryKey = 0;
-            TestItem.customerID = 1;
+            TestItem.customerID = 4;
             TestItem.dateOrdered = DateTime.Today.Date;
             TestItem.deliveryAddress = "LE30HH";
             TestItem.orderID = 1;
@@ -125,7 +124,7 @@ namespace ShoeTesting
             TestItem.dateOrdered = DateTime.Now.Date;
             TestItem.deliveryAddress = "Ellistown, Amazon BHX2, LE16 1GQ";
             TestItem.paid = true;
-            TestItem.staffID = 1;
+            TestItem.staffID = 4;
             TestItem.totalPrice = 15.00;
             AllOrders.ThisOrder = TestItem;
             PrimaryKey = AllOrders.Add();
@@ -134,7 +133,7 @@ namespace ShoeTesting
             TestItem.dateOrdered = DateTime.Now.Date;
             TestItem.deliveryAddress = "Another Address, not Amazon";
             TestItem.paid = false;
-            TestItem.staffID = 3;
+            TestItem.staffID = 6;
             TestItem.totalPrice = 18.15;
             AllOrders.ThisOrder = TestItem;
             AllOrders.Update();
