@@ -153,7 +153,7 @@ namespace ShoeTesting
                 {
                     OK = false;
                 }
-                if (FilteredOrderLines.OrderLineList[1].orderLineID != 13)
+                if(FilteredOrderLines.OrderLineList[1].orderLineID != 2)
                 {
                     OK = false;
                 }
