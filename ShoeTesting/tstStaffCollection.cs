@@ -195,6 +195,7 @@ namespace ShoeTesting
             {
                 OK = false;
             }
+
             Assert.IsTrue(OK);
         }
 
