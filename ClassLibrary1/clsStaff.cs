@@ -146,8 +146,6 @@ namespace ShoeClasses
             {
                 Error = Error + "The phone number may not be left blank";
             }
-
- 
             return Error;
         }
     }

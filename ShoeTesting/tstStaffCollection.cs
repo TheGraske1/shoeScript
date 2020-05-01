@@ -163,6 +163,41 @@ namespace ShoeTesting
             Assert.AreEqual(AllStaff.ThisStaff, TestItem);
 
         }
+
+        [TestMethod]
+        public void ReportByPhoneNumber()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            FilteredStaff.ReportByPhoneNumber("54321098761");
+            Assert.AreEqual(0, FilteredStaff.Count);
+        }
+
+        [TestMethod]
+        public void ReportByPhoneNumberTestDataFound()
+        {
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            Boolean OK = true;
+            FilteredStaff.ReportByPhoneNumber("04684736285");
+
+            if (FilteredStaff.Count == 13)
+            {
+                if(FilteredStaff.StaffList[0].staffid != 1)
+                {
+                    OK = false;
+                }
+                if (FilteredStaff.StaffList[1].staffid != 4)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
     }
 
 }
