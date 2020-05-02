@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ShoeClasses;
 
 public partial class StaffList : System.Web.UI.Page
 {
@@ -61,5 +62,26 @@ public partial class StaffList : System.Web.UI.Page
         {
             lblError.Text = "Please select a record to edit from the list";
         }
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsStaffCollection Staff = new clsStaffCollection();
+        Staff.ReportByPhoneNumber(txtPhoneNum.Text);
+        lstStaffList.DataSource = Staff.StaffList;
+        lstStaffList.DataValueField = "StaffId";
+        lstStaffList.DataTextField = "PhoneNumber";
+        lstStaffList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsStaffCollection Staff = new clsStaffCollection();
+        Staff.ReportByPhoneNumber("");
+        txtPhoneNum.Text = "";
+        lstStaffList.DataSource = Staff.StaffList;
+        lstStaffList.DataValueField = "StaffId";
+        lstStaffList.DataTextField = "PhoneNumber";
+        lstStaffList.DataBind();
     }
 }
