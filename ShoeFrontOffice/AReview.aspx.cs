@@ -24,12 +24,20 @@ public partial class AReview : System.Web.UI.Page
     {
         clsReview AReview = new clsReview();
         {
-            AReview.ReviewID = Convert.ToInt32(txtReviewID);
+            AReview.ReviewID = Convert.ToInt32(txtReviewID.Text);
+            AReview.CustomerID = Convert.ToInt32(txtCustomerID.Text);
+            AReview.ProductID = Convert.ToInt32(txtProductID.Text);
+            AReview.ReviewDate = Convert.ToDateTime(txtReviewDate.Text);
+            AReview.Review = txtReview.Text;
+            // AReview.ProductRating = 
+            
+                   
+            
         }
 
         Session["AReview"] = AReview;
 
-        Response.Redirect("ReviewViewer.aspx")
+        Response.Redirect("ReviewViewer.aspx");
     }
     protected void VerifiedCustomer_CheckedChanged(object sender, EventArgs e)
     {

@@ -22,13 +22,13 @@ namespace ShoeTesting
             Assert.AreEqual(AReview.ReviewDate, TestData);
         }
         [TestMethod]
-        public void  ProductID()
+        public void ProductID()
         {
             clsReview AReview = new clsReview();
             Int32 TestData = 1;
             AReview.ProductID = TestData;
             Assert.AreEqual(AReview.ProductID, TestData);
-                       
+
         }
         [TestMethod]
         public void CustomberID()
@@ -80,11 +80,54 @@ namespace ShoeTesting
             clsReview AReview = new clsReview();
             Boolean Found = false;
             Int32 ReviewID = 1;
+            Found = AReview.Find(ReviewID);
             Assert.IsTrue(Found);
 
         }
 
+        [TestMethod]
+        public void ReviewIDFound()
+        {
+            clsReview AReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReviewID = 9;
+            if (AReview.ReviewID != 9)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ReviewDateFound()
+        {
+            clsReview AReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReviewID = 9;
+            if (AReview.ReviewDate != Convert.ToDateTime("01/01/2020"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ProductIDFound()
+        {
+            clsReview AReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductID = 2;
+            if (AReview.ProductID != 2)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+
 
     }
-
 }
