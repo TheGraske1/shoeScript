@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShoeClasses;
+using System;
 
 namespace ClassLibrary1
 {
@@ -96,8 +97,33 @@ namespace ClassLibrary1
         }
         public bool Find(int reviewID)
         {
-            mReviewID = 9;
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@ReviewID", ReviewID);
+            DB.Execute("sproc_tblReview_FilterByReviewID");
+
+            if (DB.Count == 1)
+            {
+
+                mReviewID = Convert.ToInt32(DB.DataTable.Rows[0]["ReviewID"]);
+                mReviewDate = Convert.ToDateTime(DB.DataTable.Rows[0]["ReviewData"]);
+                mProductID = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mReview = Convert.ToString(DB.DataTable.Rows[0]["Review"]);
+                mProductRating = Convert.ToInt32(DB.DataTable.Rows[0]["ProductRating"]);
+                mVerifiedCustomer = Convert.ToBoolean(DB.DataTable.Rows[0]["VerifiedCustomer"]);
+
+
+                return true;
+            }
+
+            else
+            {
+                return false; ;
+            }
+            
         }
+
+
     }
 }
