@@ -48,7 +48,7 @@ public partial class Customer : System.Web.UI.Page
         clsCustomer ACustomer = new clsCustomer();
         Int32 CustomerID;
         Boolean Found = false;
-        CustomerID = Convert.ToInt32(txtCustomerID.text);
+       CustomerID = Convert.ToInt32(txtCustomerID.text);
         Found = ACustomer.Find(Customer);
 
         if (Found == true)
@@ -57,7 +57,7 @@ public partial class Customer : System.Web.UI.Page
             txtName.text = ACustomer.Name;
             txtAddress = ACustomer.Address;
             txtDatecreated = ACustomer.DateCreated;
-            txtRegistered = ACustomer.Registered;
+           txtRegistered = ACustomer.Registered;
             txtBalance = ACustomer.Balance;
         }
     }
