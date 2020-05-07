@@ -22,13 +22,13 @@ namespace ShoeTesting
             Assert.AreEqual(AReview.ReviewDate, TestData);
         }
         [TestMethod]
-        public void  ProductID()
+        public void ProductID()
         {
             clsReview AReview = new clsReview();
             Int32 TestData = 1;
             AReview.ProductID = TestData;
             Assert.AreEqual(AReview.ProductID, TestData);
-                       
+
         }
         [TestMethod]
         public void CustomberID()
@@ -80,11 +80,122 @@ namespace ShoeTesting
             clsReview AReview = new clsReview();
             Boolean Found = false;
             Int32 ReviewID = 1;
+            Found = AReview.Find(ReviewID);
             Assert.IsTrue(Found);
 
         }
 
+        [TestMethod]
+        public void ReviewIDFound()
+        {
+            clsReview AReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReviewID = 9;
+            Found = AReview.Find(ReviewID);
+            if (AReview.ReviewID != 9)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
 
+        [TestMethod]
+        public void ReviewDateFound()
+        {
+            clsReview AReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReviewID = 9;
+            Found = AReview.Find(ReviewID);
+            if (AReview.ReviewDate != Convert.ToDateTime("03/02/2020"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ProductIDFound()
+        {
+            clsReview AReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReviewID = 9;
+            Found = AReview.Find(ReviewID);
+            if (AReview.ProductID != 3)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void CustomerIDFound()
+        {
+            clsReview AReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReviewID = 9;
+            Found = AReview.Find(ReviewID);
+            if (AReview.CustomerID != 4)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+
+            //review, product rating , verified customer
+
+
+        }
+
+        [TestMethod]
+        public void ReviewFound()
+        {
+            clsReview AReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReviewID = 9;
+            Found = AReview.Find(ReviewID);
+            if (AReview.Review != "Terrible Product")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void ProductRatingFound()
+        {
+            clsReview AReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReviewID = 9;
+            Found = AReview.Find(ReviewID);
+            if (AReview.ProductRating != 1)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void VerifiedCustomerFound()
+        {
+            clsReview AReview = new clsReview();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ReviewID = 9;
+            Found = AReview.Find(ReviewID);
+            if (AReview.VerifiedCustomer != false)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
-
 }
+
+
+
