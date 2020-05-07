@@ -61,7 +61,6 @@ public partial class AnOrder : System.Web.UI.Page
         Error = AnOrder.Valid(Date, Price, StaffID, CustomerId, Address);
         if (Error == "")
         {
-            AnOrder.orderID = Convert.ToInt32(intOrderID.Text);
             AnOrder.customerID = Convert.ToInt32(intCustomerID.Text);
             AnOrder.staffID = Convert.ToInt32(intStaffID.Text);
             AnOrder.totalPrice = Convert.ToDouble(floatPrice.Text);
@@ -97,7 +96,6 @@ public partial class AnOrder : System.Web.UI.Page
         Error = AnOrderLine.Valid(orderID, productID, quantity, selectionDescription);
         if (Error == "")
         {
-            AnOrderLine.orderLineID = Convert.ToInt32(intOrderLine.Text);
             AnOrderLine.orderID = Convert.ToInt32(OrderIDFind.Text);
             AnOrderLine.productID = Convert.ToInt32(ProductIDFind.Text);
             AnOrderLine.selectionDescription = SelectionDescriptionFind.Text;
