@@ -115,7 +115,7 @@ namespace ShoeClasses
                 return false;
             }
         }
-        public string Valid(string date, string paid, string price, string staff, string customer,string address)
+        public string Valid(string date, string price, string staff, string customer,string address)
         {
             String Error = "";
             if(Convert.ToInt32(customer) == 0)
@@ -159,22 +159,7 @@ namespace ShoeClasses
             {
                 Error = Error + "The address is too long : ";
             }
-            try
-            {
-                bool Temp = Convert.ToBoolean(paid);
-                if (paid == "")
-                {
-                    Error = Error + "Paid cannot be blank : ";
-                }
-                else if (paid != "True" && paid != "true" && paid != "TRUE" && paid != "False" && paid != "false" && paid != "FALSE")
-                {
-                    Error = Error + "Invalid string input : ";
-                }
-            }
-            catch
-            {
-                Error = Error + "Boolean has a wrong data type :  ";
-            }
+            
             return Error;
         }
     }

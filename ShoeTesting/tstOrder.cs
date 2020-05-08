@@ -101,7 +101,7 @@ namespace ShoeTesting
             Boolean OK = true;
             Int32 orderID = 12;
             Found = anOrder.Find(orderID);
-            if(anOrder.dateOrdered != Convert.ToDateTime("16/02/2020"))
+            if(anOrder.dateOrdered != Convert.ToDateTime("30/03/2020"))
             {
                 OK = false;
             }
@@ -185,12 +185,11 @@ namespace ShoeTesting
             String error = "";
             DateTime dateToday = DateTime.Today.Date;
             string date = Convert.ToString(dateToday);
-            string paid = "True";
             string price = "20.99";
             string staff = "3";
             string customer = "2";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            error = AnOrder.Valid(date, price, staff, customer, address);
                Assert.AreEqual(error, "");
         }
 
@@ -201,12 +200,11 @@ namespace ShoeTesting
             String Error = "";
             DateTime dateToday = DateTime.Today.Date;
             string date = Convert.ToString(dateToday);
-            string paid = "True";
             string price = "20.99";
             string staff = "3";
             string customer = "0";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreNotEqual(Error, "0");
 
         }
@@ -217,12 +215,11 @@ namespace ShoeTesting
             String Error = "";
             DateTime dateToday = DateTime.Today.Date;
             string date = Convert.ToString(dateToday);
-            string paid = "True";
             string price = "20.99";
             string staff = "3";
             string customer = "1";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreEqual(Error, "");
 
         }
@@ -234,12 +231,11 @@ namespace ShoeTesting
             String Error = "";
             DateTime dateToday = DateTime.Today.Date;
             string date = Convert.ToString(dateToday);
-            string paid = "True";
             string price = "20.99";
             string staff = "3";
             string customer = "2";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreEqual(Error, "");
 
         }
@@ -252,12 +248,11 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "3";
             string customer = "99998";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreEqual(Error, "");
 
         }
@@ -269,12 +264,11 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "3";
             string customer = "99999";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreEqual(Error, "");
 
         }
@@ -286,12 +280,11 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "3";
             string customer = "50000";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreEqual(Error, "");
 
         }
@@ -301,12 +294,11 @@ namespace ShoeTesting
             clsOrder AnOrder = new clsOrder();
             String Error = "";
             string date = "02/03/2020";
-            string paid = "True";
             string price = "20.99";
             string staff = "3";
             string customer = "100000";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -316,12 +308,11 @@ namespace ShoeTesting
             clsOrder AnOrder = new clsOrder();
             String Error = "";
             string date = "02/03/2020";
-            string paid = "True";
             string price = "20.99";
             string staff = "3";
             string customer = "500000";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreNotEqual(Error, "");
 
         }
@@ -335,12 +326,11 @@ namespace ShoeTesting
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(-100);
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "3";
             string customer = "1";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreNotEqual(Error, "");
         }
         
@@ -353,12 +343,11 @@ namespace ShoeTesting
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(-1);
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "3";
             string customer = "1";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -370,12 +359,11 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "3";
             string customer = "1";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreEqual(Error, "");
         }
         
@@ -388,12 +376,11 @@ namespace ShoeTesting
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(1);
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "3";
             string customer = "1";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -406,12 +393,11 @@ namespace ShoeTesting
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(100);
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "3";
             string customer = "1";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -422,12 +408,11 @@ namespace ShoeTesting
             clsOrder AnOrder = new clsOrder();
             String Error = "";
             string date = "This is not a date!";
-            string paid = "True";
             string price = "20.99";
             string staff = "3";
             string customer = "1";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -438,12 +423,11 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "0";
             string customer = "1";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -455,12 +439,11 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "1";
             string customer = "1";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -471,12 +454,11 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "2";
             string customer = "1";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreEqual(Error, "");
         }
 
@@ -488,12 +470,11 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "49";
             string customer = "1";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreEqual(Error, "");
         }
 
@@ -506,12 +487,11 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "50";
             string customer = "1";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreEqual(Error, "");
         }
 
@@ -523,12 +503,11 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "51";
             string customer = "1";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -539,12 +518,11 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "25";
             string customer = "1";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -555,12 +533,11 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "100";
             string customer = "1";
             string address = "14 Emerald, Leicester, LE3 5GA";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -572,12 +549,11 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "20";
             string customer = "1";
             string address = "";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -589,12 +565,11 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "20";
             string customer = "1";
             string address = "a";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -605,12 +580,11 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "20";
             string customer = "1";
             string address = "aa";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreEqual(Error, "");
         }
 
@@ -622,13 +596,12 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "20";
             string customer = "1";
             string address = "";
             address = address.PadRight(99, 'a');
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreEqual(Error, "");
         }
        
@@ -640,13 +613,12 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "20";
             string customer = "1";
             string address = "";
             address = address.PadRight(100, 'a');
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreEqual(Error, "");
         }
 
@@ -658,13 +630,12 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "20";
             string customer = "1";
             string address = "";
             address = address.PadRight(101, 'a');
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreNotEqual(Error, "");
         }
 
@@ -676,13 +647,12 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "20";
             string customer = "1";
             string address = "";
             address = address.PadRight(50, 'a');
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
@@ -693,96 +663,15 @@ namespace ShoeTesting
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string date = TestDate.ToString();
-            string paid = "True";
             string price = "20.99";
             string staff = "20";
             string customer = "1";
             string address = "";
             address = address.PadRight(200, 'a');
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
+            Error = AnOrder.Valid(date, price, staff, customer, address);
             Assert.AreNotEqual(Error, "");
         }
 
-        [TestMethod]
-        public void PaidMinMinusOne()
-        {
-            clsOrder AnOrder = new clsOrder();
-            String Error = "";
-            DateTime TestDate;
-            TestDate = DateTime.Now.Date;
-            string date = TestDate.ToString();
-            string paid = "";
-            string price = "20.99";
-            string staff = "20";
-            string customer = "1";
-            string address = "";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
-            Assert.AreNotEqual(Error, "");
-        }
-        [TestMethod]
-        public void PaidMin()
-        {
-            clsOrder AnOrder = new clsOrder();
-            String Error = "";
-            DateTime TestDate;
-            TestDate = DateTime.Now.Date;
-            string date = TestDate.ToString();
-            string paid = "True";
-            string price = "20.99";
-            string staff = "20";
-            string customer = "1";
-            string address = "a";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
-            Assert.AreEqual(Error, "");
-        }
-        [TestMethod]
-        public void PaidMax()
-        {
-            clsOrder AnOrder = new clsOrder();
-            String Error = "";
-            DateTime TestDate;
-            TestDate = DateTime.Now.Date;
-            string date = TestDate.ToString();
-            string paid = "False";
-            string price = "20.99";
-            string staff = "20";
-            string customer = "1";
-            string address = "a";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
-            Assert.AreEqual(Error, "");
-        }
-        [TestMethod]
-        public void PaidInvalidStringData()
-        {
-            clsOrder AnOrder = new clsOrder();
-            String Error = "";
-            DateTime TestDate;
-            TestDate = DateTime.Now.Date;
-            string date = TestDate.ToString();
-            string paid = "a";
-            string price = "20.99";
-            string staff = "20";
-            string customer = "1";
-            string address = "a";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
-            Assert.AreNotEqual(Error, "");
-        }
-        [TestMethod]
-        public void PaidInvalidData()
-        {
-            clsOrder AnOrder = new clsOrder();
-            String Error = "";
-            DateTime TestDate;
-            TestDate = DateTime.Now.Date;
-            string date = TestDate.ToString();
-            string paid = "I want to go home 52";
-            string price = "20.99";
-            string staff = "20";
-            string customer = "1";
-            string address = "a";
-            Error = AnOrder.Valid(date, paid, price, staff, customer, address);
-            Assert.AreNotEqual(Error, "");
-        }
        
     }
 }
