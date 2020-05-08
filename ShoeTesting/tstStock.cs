@@ -8,6 +8,10 @@ namespace ShoeTesting
     [TestClass]
     public class tstStock
     {
+        string StyleName = "testStyleName";
+        string BackInStockDate = DateTime.Now.Date.ToString();
+        double Price = 49.99;
+        Int32 QuantityAvailable = 10;
         [TestMethod]
         public void InstanceOK()
         {
@@ -182,7 +186,203 @@ namespace ShoeTesting
             Assert.AreEqual(Error, "");
         }
 
-         
+        [TestMethod]
+        public void StylenameMinLessOne()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string StyleName = "";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StylenameMin()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string StyleName = "a";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StylenameMinPlusOne()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string StyleName = "aa";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+        public void StylenameMaxLessOne()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string StyleName = "";
+            StyleName = StyleName.PadRight(49, 'a');
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StylenameMax()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string StyleName = "";
+            StyleName = StyleName.PadRight(50, 'a');
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StylenameMaxPlusOne()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string StyleName = "";
+            StyleName = StyleName.PadRight(51, 'a');
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StylenameMid()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string StyleName = "";
+            StyleName = StyleName.PadRight(25, 'a');
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StylenameMaxExtreme()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string StyleName = "";
+            StyleName = StyleName.PadRight(500, 'a');
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void BackInStockDateExtremeMin()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-50);
+            string BackInStockDate = TestDate.ToString();
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void BackInStockDateMinLessOne()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string BackInStockDate = TestDate.ToString();
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void BackInStockDateMin()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string BackInStockDate = TestDate.ToString();
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void BackInStockDateMinPlusOneDay()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string BackInStockDate = TestDate.ToString();
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void BackInStockDateMinPlusOneMonth()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddMonths(1);
+            string BackInStockDate = TestDate.ToString();
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void BackInStockDateMinPlusOneYear()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(1);
+            string BackInStockDate = TestDate.ToString();
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void BackInStockDateExtremeMax()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string BackInStockDate = TestDate.ToString();
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void BackInStockDateInvalidData()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string BackInStockDate = "This is not valid date!";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     }
 }
