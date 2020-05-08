@@ -79,7 +79,7 @@ namespace ShoeTesting
         {
             clsReview AReview = new clsReview();
             Boolean Found = false;
-            Int32 ReviewID = 1;
+            Int32 ReviewID = 9;
             Found = AReview.Find(ReviewID);
             Assert.IsTrue(Found);
 
@@ -93,7 +93,7 @@ namespace ShoeTesting
             Boolean OK = true;
             Int32 ReviewID = 9;
             Found = AReview.Find(ReviewID);
-            if (AReview.ReviewID != 9)
+            if (AReview.ReviewID != 5)
             {
                 OK = false;
             }
