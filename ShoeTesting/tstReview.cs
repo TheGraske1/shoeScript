@@ -78,11 +78,14 @@ namespace ShoeTesting
         public void FindMethodOK()
         {
             clsReview AReview = new clsReview();
-            Boolean Found = false;
-            Int32 ReviewID = 9;
-            Found = AReview.Find(ReviewID);
-            Assert.IsTrue(Found);
 
+            Boolean Found = false;
+
+            Int32 ReviewID = 9;
+
+            Found = AReview.Find(ReviewID);
+
+            Assert.IsTrue(Found);
         }
 
         [TestMethod]
@@ -93,12 +96,13 @@ namespace ShoeTesting
             Boolean OK = true;
             Int32 ReviewID = 9;
             Found = AReview.Find(ReviewID);
-            if (AReview.ReviewID != 5)
+            if (AReview.ReviewID != 9)
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
+
 
         [TestMethod]
         public void ReviewDateFound()
@@ -143,11 +147,7 @@ namespace ShoeTesting
                 OK = false;
             }
             Assert.IsTrue(OK);
-
-
-            //review, product rating , verified customer
-
-
+                                 
         }
 
         [TestMethod]
@@ -194,7 +194,11 @@ namespace ShoeTesting
             }
             Assert.IsTrue(OK);
         }
+
+
+
     }
+
 }
 
 

@@ -95,34 +95,33 @@ namespace ClassLibrary1
                 mCustomerID = value;
             }
         }
+
         public bool Find(int reviewID)
         {
             clsDataConnection DB = new clsDataConnection();
 
             DB.AddParameter("@ReviewID", ReviewID);
+
             DB.Execute("sproc_tblReview_FilterByReviewID");
 
             if (DB.Count == 1)
             {
-
                 mReviewID = Convert.ToInt32(DB.DataTable.Rows[0]["ReviewID"]);
-                mReviewDate = Convert.ToDateTime(DB.DataTable.Rows[0]["ReviewData"]);
+                mReviewDate = Convert.ToDateTime(DB.DataTable.Rows[0]["ReviewDate"]);
                 mProductID = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
-                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CutomerID"]);
                 mReview = Convert.ToString(DB.DataTable.Rows[0]["Review"]);
                 mProductRating = Convert.ToInt32(DB.DataTable.Rows[0]["ProductRating"]);
-                mVerifiedCustomer = Convert.ToBoolean(DB.DataTable.Rows[0]["VerifiedCustomer"]);
-
+                mVerifiedCustomer = Convert.ToBoolean(DB.DataTable.Rows[0]["VerfifiedCustomer"]);
 
                 return true;
             }
-
             else
             {
-                return false; ;
+                return false;
             }
-            
         }
+
 
 
     }
