@@ -19,14 +19,33 @@ public partial class AStock : System.Web.UI.Page
     protected void Submit_Click(object sender, EventArgs e)
     {
         clsStock AProduct = new clsStock();
-        AProduct.ProductId = Convert.ToInt32(txtProductId);
-        AProduct.StyleName = txtStyleName.Text;
-        AProduct.QuantityAvailable = Convert.ToInt32(txtQuantityAvailable.Text);
-        AProduct.Price = Convert.ToDouble(txtPrice.Text);
-        AProduct.BackInStockDate = Convert.ToDateTime(txtBackInStockDate.Text);
+        Int32 ProductID = Convert.ToInt32(txtProductId);
+        string StyleName = txtStyleName.Text;
+        string BackInStockDate = txtBackInStockDate.Text;
+        string Price = txtPrice.Text;
+        string QuantityAvailable = txtQuantityAvailable.Text;
         AProduct.LimitedEdition = Yes.Checked;
-        Session["AProduct"] = AProduct;
-        Response.Redirect("StockViewer.aspx");
+
+        string Error = "";
+        Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+        if (Error == "")
+        {
+            AProduct.ProductId = ProductID;
+            AProduct.StyleName = StyleName;
+            AProduct.Price = Convert.ToDouble(Price);
+            AProduct.QuantityAvailable = Convert.ToInt32(QuantityAvailable);
+            AProduct.BackInStockDate = Convert.ToDateTime(BackInStockDate);
+
+            Session["AProduct"] = AProduct;
+            Response.Redirect("StockViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+        
+       
+        
         
     }
 

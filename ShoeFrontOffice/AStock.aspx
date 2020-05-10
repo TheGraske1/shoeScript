@@ -28,7 +28,8 @@
         <asp:RadioButton ID="No" runat="server" style="z-index: 1; left: 269px; top: 311px; position: absolute" />
         <asp:Button ID="btnSubmit" runat="server" OnClick="Submit_Click" style="z-index: 1; left: 26px; top: 364px; position: absolute" Text="Submit" />
         <asp:Button ID="btnCancle" runat="server" style="z-index: 1; left: 143px; top: 364px; position: absolute" Text="Cancle" />
-        <asp:Button ID="btnFind" runat="server" OnClick="Find_Click" style="z-index: 1; left: 368px; top: 86px; position: absolute" Text="Find" />
+        <asp:Button ID="btnFind" runat="server" OnClick="Find_Click" style="z-index: 1; left: 387px; top: 87px; position: absolute" Text="Find" />
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 31px; top: 406px; position: absolute" Text="[lblError]"></asp:Label>
     </form>
 </body>
 </html>

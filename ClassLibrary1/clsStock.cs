@@ -104,13 +104,14 @@ namespace ClassLibrary1
             }
         }
 
-        public string Valid(string styleName, string backInStockDate, double price, Int32 quantityAvailable)
+        public string Valid(string styleName, string backInStockDate, string price, string quantityAvailable)
         {
             String Error = "";
             DateTime DateTemp;
+
             if (styleName.Length == 0)
             {
-                Error = Error + "The Style Name may not be blank : ";
+                Error = Error + "The Style Name may not be blank";
             }
             if (styleName.Length > 50)
             {
@@ -121,7 +122,7 @@ namespace ClassLibrary1
                 DateTemp = Convert.ToDateTime(backInStockDate);
                 if (DateTemp < DateTime.Now.Date)
                 {
-                    Error = Error + "The Back In Stock Date can not be in the past : ";
+                    Error = Error + "The Back In Stock Date can not be in the past ";
                 }
                 if (DateTemp > DateTime.Now.Date.AddDays(31))
                 {
@@ -130,7 +131,26 @@ namespace ClassLibrary1
             }
             catch
             {
-                Error = Error + "The Back In Stock was not valid Date : ";
+                Error = Error + "The Back In Stock was not valid Date";
+            }
+
+            if (price.Length == 0)
+            {
+                Error = Error + "Price can not be left blank";
+            }
+            if(price.Length > 9)
+            {
+                Error = Error + "Price can not be grether then 9 charecter including decimal";
+            }
+
+            if(quantityAvailable.Length == 0)
+            {
+                Error = Error + "Quantity Available may not be blank";
+            }
+            
+            if(quantityAvailable.Length > 4)
+            {
+                Error = Error + "Quantity Available can not be more then 4 charecter";
             }
            
 

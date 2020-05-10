@@ -10,8 +10,9 @@ namespace ShoeTesting
     {
         string StyleName = "testStyleName";
         string BackInStockDate = DateTime.Now.Date.ToString();
-        double Price = 49.99;
-        Int32 QuantityAvailable = 10;
+        string Price = "49.99";
+        string QuantityAvailable = "10";
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -182,7 +183,7 @@ namespace ShoeTesting
         {
             clsStock AProduct = new clsStock();
             String Error = "";
-            //Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
             Assert.AreEqual(Error, "");
         }
 
@@ -370,6 +371,162 @@ namespace ShoeTesting
             Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
             Assert.AreNotEqual(Error, "");
         }
+
+        [TestMethod]
+        public void PriceMinLessOne()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string Price = "";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMin()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string Price = "1";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PriceMinPlusOne()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string Price = "10";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMax()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string Price = "999999.99";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMaxPlusOne()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string Price = "9999999.99";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMaxLessOne()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string Price = "99999.99";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMid()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string Price = "99.99";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void PriceExterm()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string Price = "";
+            Price = Price.PadRight(250, '9');
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityAvailableMinLessOne()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string QuantityAvailable = "";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void QuantityAvailableMin()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string QuantityAvailable = "1";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void QuantityAvailablePlusOne()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string QuantityAvailable = "10";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityAvailableMaxLessOne()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string QuantityAvailable = "999";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void QuantityAvailableMax()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string QuantityAvailable = "9999";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void QuantityAvailableMaxPlusOne()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string QuantityAvailable = "10000";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void QuantityAvailableMid()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string QuantityAvailable = "499";
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityAvailableExtrem()
+        {
+            clsStock AProduct = new clsStock();
+            String Error = "";
+            string QuantityAvailable = "";
+            QuantityAvailable = QuantityAvailable.PadRight(500, '9');
+            Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
+            Assert.AreNotEqual(Error, "");
+        }
+
 
 
 
