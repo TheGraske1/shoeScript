@@ -16,11 +16,11 @@ public partial class Customer : System.Web.UI.Page
         ACustomer = (clsCustomer)Session["ACustomer"];
 
         Response.Write(ACustomer.Name);
-        
+
     }
 
 
-   
+
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
@@ -34,8 +34,6 @@ public partial class Customer : System.Web.UI.Page
 
         string DateCreated = txtDatecreated.Text;
 
-        ACustomer.Registered = chkRegistered.Checked;
-
         string Registered = txtRegistered.Text;
 
         string Balance = txtBalance.Text;
@@ -47,9 +45,9 @@ public partial class Customer : System.Web.UI.Page
             ACustomer.Name = Name;
             ACustomer.Address = Address;
             ACustomer.DateCreated = Convert.ToDateTime(DateCreated);
-            ACustomer.Registered = chkRegistered.Checked;//Convert.ToBoolean(Registered);
+            ACustomer.Registered = chkRegistered.Checked;
+            ACustomer.Registered = Convert.ToBoolean(Registered);//chkRegistered.Checked;
             ACustomer.Balance = Convert.ToDouble(Balance);
-
             Session["ACustomer"] = ACustomer;
             Response.Write("CustomerViewer.aspx");
         }
@@ -65,6 +63,7 @@ public partial class Customer : System.Web.UI.Page
         Response.Redirect("CustomerViewer.aspx");
     }
 
+
     protected void btnFind_Click(object sender, EventArgs e)
     {
         clsCustomer ACustomer = new clsCustomer();
@@ -79,6 +78,7 @@ public partial class Customer : System.Web.UI.Page
             txtName.Text = ACustomer.Name;
             txtAddress.Text = ACustomer.Address;
             txtDatecreated.Text = ACustomer.DateCreated.ToString();
+            chkRegistered.Checked = ACustomer.Registered;
             txtRegistered.Text = ACustomer.Registered.ToString();
             txtBalance.Text = ACustomer.Balance.ToString();
         }
@@ -97,8 +97,6 @@ public partial class Customer : System.Web.UI.Page
 
         string DateCreated = txtDatecreated.Text;
 
-        ACustomer.Registered = chkRegistered.Checked;
-
         string Registered = txtRegistered.Text;
 
         string Balance = txtBalance.Text;
@@ -110,14 +108,15 @@ public partial class Customer : System.Web.UI.Page
             ACustomer.Name = Name;
             ACustomer.Address = Address;
             ACustomer.DateCreated = Convert.ToDateTime(DateCreated);
-            ACustomer.Registered = chkRegistered.Checked; //Convert.ToBoolean(Registered);
+            ACustomer.Registered = chkRegistered.Checked;
+            ACustomer.Registered = Convert.ToBoolean(Registered);
             ACustomer.Balance = Convert.ToDouble(Balance);
 
             clsCustomerCollection CustomerList = new clsCustomerCollection();
             CustomerList.ThisCustomer = ACustomer;
             CustomerList.Add();
 
-            
+
             Response.Write("CustomerList.aspx");
         }
         else
@@ -126,9 +125,6 @@ public partial class Customer : System.Web.UI.Page
         }
 
 
-
-
-        
 
     }
 }

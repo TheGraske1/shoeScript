@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+
 using ShoeClasses;
 
 namespace ShoeTesting
 {
+    
     [TestClass]
     public class tstCustomerCollection
     {
@@ -35,7 +38,7 @@ namespace ShoeTesting
 
         }
 
-
+       
 
         [TestMethod]
         public void ThisCustomerPropertyOK()
@@ -75,6 +78,10 @@ namespace ShoeTesting
             AllCustomers.ThisCustomer.Find(PrimaryKey);
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
+
+        
+
+       
 
     }
 }

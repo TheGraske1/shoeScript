@@ -1,4 +1,5 @@
 ﻿using System;
+using ShoeTesting;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ShoeClasses;
 
@@ -7,7 +8,7 @@ namespace ShoeTesting
     [TestClass]
     public class tstCustomer
     {
-
+        
 
         string Name = "Jay";
         string Address = "48 Apple Street LE1 8DS";
@@ -24,7 +25,7 @@ namespace ShoeTesting
 
             Assert.IsNotNull(ACustomer);
         }
-
+       
         [TestMethod]
         public void CustomerIDPropertyOK()
         {
@@ -88,8 +89,8 @@ namespace ShoeTesting
             Int32 CustomerID = 3;
             Found = ACustomer.Find(CustomerID);
             Assert.IsTrue(Found);
-
-        }
+           
+        } 
 
         [TestMethod]
 
@@ -101,7 +102,7 @@ namespace ShoeTesting
             Int32 CustomerID = 6;
             Found = ACustomer.Find(CustomerID);
 
-            if (ACustomer.CustomerID != 6)
+            if (ACustomer.CustomerID != 6 )
             {
                 OK = true;
             }
@@ -143,7 +144,7 @@ namespace ShoeTesting
 
             if (ACustomer.Name != "Jay")
             {
-
+                
                 OK = false;
             }
 
