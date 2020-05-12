@@ -7,16 +7,35 @@ using ShoeClasses;
 
 public partial class AnStaff : System.Web.UI.Page
 {
+    Int32 StaffId;
+
     protected void Page_Load(object sender, EventArgs e)
     {
-        clsStaff AnStaff = new clsStaff();
-        AnStaff = (clsStaff)Session["AnStaff"];
-        Response.Write(AnStaff.name);
+        StaffId = Convert.ToInt32(Session["StaffId"]);
+        if(IsPostBack == false)
+        {
+            if(StaffId != -1)
+            {
+                DisplayStaff();
+            }
+        }
     }
+
+    void DisplayStaff()
+    {
+        clsStaffCollection StaffBook = new clsStaffCollection();
+        StaffBook.ThisStaff.Find(StaffId);
+        txtStaffId.Text = StaffBook.ThisStaff.staffid.ToString();
+        txtStaffName.Text = StaffBook.ThisStaff.name;
+        txtPhoneNum.Text = StaffBook.ThisStaff.phoneNumber;
+        txtSalary.Text = StaffBook.ThisStaff.salary.ToString();
+        txtJoinedDate.Text = StaffBook.ThisStaff.joinedDate.ToString();
+        chckAdmin.Checked = StaffBook.ThisStaff.admin;
+    }
+
     protected void btnOk_Click(object sender, EventArgs e)
     {
         clsStaff AnStaff = new clsStaff();
-        Int32 StaffId = Convert.ToInt32(txtStaffId.Text);
         string StaffName = txtStaffName.Text;
         string PhoneNumber = txtPhoneNum.Text;
         string Salary = txtSalary.Text;
@@ -31,9 +50,21 @@ public partial class AnStaff : System.Web.UI.Page
             AnStaff.phoneNumber = PhoneNumber;
             AnStaff.salary = Convert.ToDouble(Salary);
             AnStaff.joinedDate = Convert.ToDateTime(JoinedDate);
+            AnStaff.admin = chckAdmin.Checked;
 
-            Session["AnStaff"] = AnStaff;
-            Response.Write("StaffViewer.aspx");
+            clsStaffCollection StaffList = new clsStaffCollection();
+            if(StaffId == -1)
+            {
+                StaffList.ThisStaff = AnStaff;
+                StaffList.Add();
+            }
+            else
+            {
+                StaffList.ThisStaff.Find(StaffId);
+                StaffList.ThisStaff = AnStaff;
+                StaffList.Update();
+            }
+            Response.Redirect("StaffList.aspx");
         }
         else
         {
