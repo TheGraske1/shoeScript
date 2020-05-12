@@ -14,11 +14,6 @@ namespace ShoeTesting
     public class testStaffCollection
     {
         [TestMethod]
-        public void TestMethod1()
-        {
-        }
-
-        [TestMethod]
         public void InstanceOK()
         {
             clsStaffCollection AllStaff = new clsStaffCollection();
@@ -178,15 +173,15 @@ namespace ShoeTesting
         {
             clsStaffCollection FilteredStaff = new clsStaffCollection();
             Boolean OK = true;
-            FilteredStaff.ReportByPhoneNumber("04684736285");
+            FilteredStaff.ReportByPhoneNumber("01234567891");
 
-            if (FilteredStaff.Count == 13)
+            if (FilteredStaff.Count == 2)
             {
-                if(FilteredStaff.StaffList[0].staffid != 1)
+                if(FilteredStaff.StaffList[0].staffid != 9)
                 {
                     OK = false;
                 }
-                if (FilteredStaff.StaffList[1].staffid != 4)
+                if (FilteredStaff.StaffList[1].staffid != 10)
                 {
                     OK = false;
                 }
