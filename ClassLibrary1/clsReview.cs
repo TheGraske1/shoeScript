@@ -13,16 +13,16 @@ namespace ClassLibrary1
         private String mReview;
         private Int32 mProductRating;
         private Boolean mVerifiedCustomer;
-        
+
         public DateTime ReviewDate
-        {        
+        {
             get
             {
                 return mReviewDate;
             }
             set
             {
-                mReviewDate = value; 
+                mReviewDate = value;
             }
         }
 
@@ -96,7 +96,7 @@ namespace ClassLibrary1
             }
         }
 
-        public bool Find(int reviewID)
+        public bool Find(int ReviewID)
         {
             clsDataConnection DB = new clsDataConnection();
 
@@ -109,10 +109,10 @@ namespace ClassLibrary1
                 mReviewID = Convert.ToInt32(DB.DataTable.Rows[0]["ReviewID"]);
                 mReviewDate = Convert.ToDateTime(DB.DataTable.Rows[0]["ReviewDate"]);
                 mProductID = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
-                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CutomerID"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
                 mReview = Convert.ToString(DB.DataTable.Rows[0]["Review"]);
                 mProductRating = Convert.ToInt32(DB.DataTable.Rows[0]["ProductRating"]);
-                mVerifiedCustomer = Convert.ToBoolean(DB.DataTable.Rows[0]["VerfifiedCustomer"]);
+                mVerifiedCustomer = Convert.ToBoolean(DB.DataTable.Rows[0]["VerifiedCustomer"]);
 
                 return true;
             }

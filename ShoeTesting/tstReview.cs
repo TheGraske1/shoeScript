@@ -147,7 +147,7 @@ namespace ShoeTesting
                 OK = false;
             }
             Assert.IsTrue(OK);
-                                 
+
         }
 
         [TestMethod]
@@ -195,11 +195,19 @@ namespace ShoeTesting
             Assert.IsTrue(OK);
         }
 
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsReview AReview = new clsReview();
+            String Error = "";
+
+        }
 
 
     }
 
 }
+
 
 
 

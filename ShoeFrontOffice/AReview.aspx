@@ -11,6 +11,7 @@
         <div>
         </div>
         <asp:Label ID="lblReviewID" runat="server" style="z-index: 1; left: 10px; top: 34px; position: absolute; height: 22px; width: 67px" Text="ReviewID"></asp:Label>
+        <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" style="z-index: 1; left: 328px; top: 29px; position: absolute" Text="Find" />
         <p>
             &nbsp;</p>
         <asp:Label ID="lblProductID" runat="server" style="z-index: 1; left: 9px; top: 109px; position: absolute; bottom: 734px" Text="ProductID"></asp:Label>
