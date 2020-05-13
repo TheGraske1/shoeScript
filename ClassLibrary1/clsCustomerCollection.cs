@@ -83,6 +83,20 @@ namespace ShoeClasses
             DB.Execute("sproc_tblCustomer_Delete");
         }
 
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
+            DB.AddParameter("@Name", mThisCustomer.Name);
+            DB.AddParameter("@Address", mThisCustomer.Address);
+            DB.AddParameter("@DateCreated", mThisCustomer.DateCreated);
+            DB.AddParameter("@Registered", mThisCustomer.Registered);
+            DB.AddParameter("@Balance", mThisCustomer.Balance);
+
+            DB.Execute("sproc_tblCustomer_Update");
+        }
+
        
 
     }

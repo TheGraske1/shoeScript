@@ -9,17 +9,37 @@ using ShoeClasses;
 
 public partial class Customer : System.Web.UI.Page
 {
+    Int32 CustomerID;
     protected void Page_Load(object sender, EventArgs e)
     {
-        clsCustomer ACustomer = new clsCustomer();
+        /* clsCustomer ACustomer = new clsCustomer();
+         ACustomer = (clsCustomer)Session["ACustomer"];
+         Response.Write(ACustomer.Name);*/
 
-        ACustomer = (clsCustomer)Session["ACustomer"];
-
-        Response.Write(ACustomer.Name);
+        CustomerID = Convert.ToInt32(Session["CustomerID"]);
+        if (IsPostBack == false)
+        {
+            if(CustomerID != -1)
+            {
+                DisplayCustomer();
+            }
+        }
 
     }
 
+    void DisplayCustomer()
+    {
+        clsCustomerCollection Customer = new clsCustomerCollection();
+        Customer.ThisCustomer.Find(CustomerID);
+        txtName.Text = Customer.ThisCustomer.Name.ToString();
+        txtAddress.Text = Customer.ThisCustomer.Address.ToString();
+        txtDatecreated.Text = Customer.ThisCustomer.DateCreated.ToString();
+        chkRegistered.Checked = Customer.ThisCustomer.Registered;
+        txtRegistered.Text = Customer.ThisCustomer.Registered.ToString();
+        txtBalance.Text = Customer.ThisCustomer.Balance.ToString();
 
+
+    }
 
 
     protected void btnOK_Click(object sender, EventArgs e)
@@ -56,9 +76,6 @@ public partial class Customer : System.Web.UI.Page
             lblError.Text = Error;
         }
 
-
-
-
         Session["ACustomer"] = ACustomer;
         Response.Redirect("CustomerViewer.aspx");
     }
@@ -89,7 +106,7 @@ public partial class Customer : System.Web.UI.Page
     {
         clsCustomer ACustomer = new clsCustomer();
 
-        string CustomerID = txtCustomerID.Text;
+        //string CustomerID = txtCustomerID.Text;
 
         string Name = txtName.Text;
 
@@ -105,6 +122,7 @@ public partial class Customer : System.Web.UI.Page
         Error = ACustomer.Valid(Name, Address, DateCreated, Registered, Balance);
         if (Error == "")
         {
+            ACustomer.CustomerID = CustomerID;
             ACustomer.Name = Name;
             ACustomer.Address = Address;
             ACustomer.DateCreated = Convert.ToDateTime(DateCreated);
@@ -113,11 +131,21 @@ public partial class Customer : System.Web.UI.Page
             ACustomer.Balance = Convert.ToDouble(Balance);
 
             clsCustomerCollection CustomerList = new clsCustomerCollection();
-            CustomerList.ThisCustomer = ACustomer;
-            CustomerList.Add();
 
+            if(CustomerID == -1)
+            {
+                CustomerList.ThisCustomer = ACustomer;
+                CustomerList.Add();
 
-            Response.Write("CustomerList.aspx");
+            }
+            else
+            {
+                CustomerList.ThisCustomer.Find(CustomerID);
+                CustomerList.ThisCustomer = ACustomer;
+                CustomerList.Update();
+            }
+            
+            Response.Redirect("CustomerList.aspx");
         }
         else
         {

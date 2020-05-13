@@ -47,4 +47,19 @@ public partial class CustomerList : System.Web.UI.Page
             lblError.Text = "Please select a record to delete from the list";
         }
     }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 CustomerID;
+        if(lstCustomerList.SelectedIndex != -1)
+        {
+            CustomerID = Convert.ToInt32(lstCustomerList.SelectedValue);
+            Session["CustomerID"] = CustomerID;
+            Response.Redirect("ACustomer.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record to delete from the list";
+        }
+    }
 }

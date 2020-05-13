@@ -13,6 +13,7 @@
         </div>
          <p>
                 <asp:Button ID="btnAdd" runat="server" Text="Add" Width="50px" OnClick="btnAdd_Click" />
+             <asp:Button ID="btnEdit" runat="server" Text="Edit" Width="50px" OnClick="btnEdit_Click" />
              <asp:Button ID="btnDelete" runat="server" Text="Delete" Width="50px" OnClick="btnDelete_Click" />  
          </p>
          <p>

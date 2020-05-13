@@ -100,5 +100,32 @@ namespace ShoeTesting
 
         }
 
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomer TestItem = new clsCustomer();
+            Int32 PrimaryKey = 0;
+            TestItem.Name = "Kyle";
+            TestItem.Address = "234 New Walk Street LE1 2AD";
+            TestItem.DateCreated = DateTime.Now.Date;
+            TestItem.Registered = true;
+            TestItem.Balance = 500.00;
+            AllCustomers.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomers.Add();
+            TestItem.CustomerID = PrimaryKey;
+
+            TestItem.Name = "Kate";
+            TestItem.Address = "2 Newarke Street LE1 2AD";
+            TestItem.DateCreated = DateTime.Now.Date;
+            TestItem.Registered = false;
+            TestItem.Balance = 100.00;
+
+            AllCustomers.ThisCustomer = TestItem;
+            AllCustomers.Update();
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
+
+        }
     }
 }
