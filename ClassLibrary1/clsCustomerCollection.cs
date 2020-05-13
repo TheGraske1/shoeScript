@@ -57,23 +57,10 @@ namespace ShoeClasses
 
         public clsCustomerCollection()
         {
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblCustomer_SelectAll");
-            RecordCount = DB.Count;
-            while (Index < RecordCount)
-            {
-                clsCustomer ACustomer = new clsCustomer();
-                ACustomer.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
-                ACustomer.Name = Convert.ToString(DB.DataTable.Rows[Index]["Name"]);
-                ACustomer.Address = Convert.ToString(DB.DataTable.Rows[Index]["Address"]);
-                ACustomer.DateCreated = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateCreated"]);
-                ACustomer.Registered = Convert.ToBoolean(DB.DataTable.Rows[Index]["Registered"]);
-                ACustomer.Balance = Convert.ToDouble(DB.DataTable.Rows[Index]["Balance"]);
-                mCustomerList.Add(ACustomer);
-                Index++;
-            }
+            PopulateArray(DB);
+            
         }
 
         public void Delete()
@@ -97,8 +84,33 @@ namespace ShoeClasses
             DB.Execute("sproc_tblCustomer_Update");
         }
 
-       
+        public void ReportByName(string Name)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Name", Name);
+            DB.Execute("sproc_tblCustomer_FilterByName");
+            PopulateArray(DB);
+        }
 
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mCustomerList = new List<clsCustomer>();
+            while (Index < RecordCount)
+            {
+                clsCustomer ACustomer = new clsCustomer();
+                ACustomer.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
+                ACustomer.Name = Convert.ToString(DB.DataTable.Rows[Index]["Name"]);
+                ACustomer.Address = Convert.ToString(DB.DataTable.Rows[Index]["Address"]);
+                ACustomer.DateCreated = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateCreated"]);
+                ACustomer.Registered = Convert.ToBoolean(DB.DataTable.Rows[Index]["Registered"]);
+                ACustomer.Balance = Convert.ToDouble(DB.DataTable.Rows[Index]["Balance"]);
+                mCustomerList.Add(ACustomer);
+                Index++;
+            }
+        }
     }
 
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ShoeClasses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -61,5 +62,26 @@ public partial class CustomerList : System.Web.UI.Page
         {
             lblError.Text = "Please select a record to delete from the list";
         }
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        clsCustomerCollection Customers = new clsCustomerCollection();
+        Customers.ReportByName(txtName.Text);
+        lstCustomerList.DataSource = Customers.CustomerList;
+        lstCustomerList.DataValueField = "CustomerID";
+        lstCustomerList.DataTextField = "Name";
+        lstCustomerList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        clsCustomerCollection Customers = new clsCustomerCollection();
+        Customers.ReportByName("");
+        txtName.Text = "";
+        lstCustomerList.DataSource = Customers.CustomerList;
+        lstCustomerList.DataValueField = "CustomerID";
+        lstCustomerList.DataTextField = "Name";
+        lstCustomerList.DataBind();
     }
 }

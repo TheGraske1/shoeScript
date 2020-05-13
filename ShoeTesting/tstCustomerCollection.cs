@@ -115,8 +115,8 @@ namespace ShoeTesting
             PrimaryKey = AllCustomers.Add();
             TestItem.CustomerID = PrimaryKey;
 
-            TestItem.Name = "Kate";
-            TestItem.Address = "2 Newarke Street LE1 2AD";
+            TestItem.Name = "kate";
+            TestItem.Address = "234 Newarke Street LE1 2AD";
             TestItem.DateCreated = DateTime.Now.Date;
             TestItem.Registered = false;
             TestItem.Balance = 100.00;
@@ -126,6 +126,59 @@ namespace ShoeTesting
             AllCustomers.ThisCustomer.Find(PrimaryKey);
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
 
+        }
+
+        [TestMethod]
+        public void ReportByNameMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            FilteredCustomers.ReportByName("");
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByNameNoneFound()
+        {
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            FilteredCustomers.ReportByName("Rebecca");
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+        public void ReportByNameTestDataFound()
+        {
+            clsCustomerCollection FilteredCustomer = new clsCustomerCollection();
+            Boolean OK = true;
+            FilteredCustomer.ReportByName("kate");
+            if (FilteredCustomer.Count == 5)
+            {
+                if (FilteredCustomer.CustomerList[0].CustomerID != 12)
+                {
+                    OK = false;
+                }
+                if (FilteredCustomer.CustomerList[1].CustomerID != 15)
+                {
+                    OK = false;
+                }
+                if (FilteredCustomer.CustomerList[2].CustomerID != 18)
+                {
+                    OK = false;
+                }
+                if (FilteredCustomer.CustomerList[3].CustomerID != 21)
+                {
+                    OK = false;
+                }
+                if (FilteredCustomer.CustomerList[4].CustomerID != 24)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
         }
     }
 }
