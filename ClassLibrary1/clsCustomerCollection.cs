@@ -76,6 +76,13 @@ namespace ShoeClasses
             }
         }
 
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
+            DB.Execute("sproc_tblCustomer_Delete");
+        }
+
        
 
     }

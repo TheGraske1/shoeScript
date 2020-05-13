@@ -76,5 +76,29 @@ namespace ShoeTesting
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
 
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomer TestItem = new clsCustomer();
+            Int32 PrimaryKey = 0;
+
+            
+            TestItem.Name = "Kyle";
+            TestItem.Address = "234 New Walk Street LE1 2AD";
+            TestItem.DateCreated = DateTime.Now.Date;
+            TestItem.Registered = true;
+            TestItem.Balance = 500.00;
+
+            AllCustomers.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomers.Add();
+            TestItem.CustomerID = PrimaryKey;
+            AllCustomers.ThisCustomer.Find(PrimaryKey);
+            AllCustomers.Delete();
+            Boolean Found = AllCustomers.ThisCustomer.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+
+        }
+
     }
 }
