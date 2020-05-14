@@ -7,6 +7,12 @@ namespace ShoeTesting
     [TestClass]
     public class tstReview
     {
+        string reviewdate = DateTime.Now.Date.ToString();
+        string product = "3";
+        string customer = "4";
+        string review = "Terrible Product";
+        string productrating = "1";
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -200,7 +206,8 @@ namespace ShoeTesting
         {
             clsReview AReview = new clsReview();
             String Error = "";
-
+            Error = AReview.Valid(reviewdate, product, customer, review, productrating);
+            Assert.AreEqual(Error, "");
         }
 
 

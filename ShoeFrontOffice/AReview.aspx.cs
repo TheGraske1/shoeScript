@@ -49,4 +49,24 @@ public partial class AReview : System.Web.UI.Page
     {
 
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+
+        clsReview AReview = new clsReview();
+        Int32 ReviewID;
+        Boolean Found = false;
+        ReviewID = Convert.ToInt32(txtReviewID.Text);
+        Found = AReview.Find(ReviewID);
+
+        if (Found == true)
+        {
+            txtReviewID.Text = AReview.ReviewID.ToString();
+            txtProductID.Text = AReview.ProductID.ToString();
+            txtCustomerID.Text = AReview.CustomerID.ToString();
+            txtReviewDate.Text = AReview.ReviewDate.ToString();
+            txtProductRating.Text = AReview.ProductRating.ToString();
+            txtReview.Text = AReview.Review;
+        }
+    }
 }
