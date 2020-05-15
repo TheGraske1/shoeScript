@@ -122,6 +122,7 @@ namespace ClassLibrary1
             }
         }
 
+        //public string Valid(string reviewdate, string product, string customerid, string review, string productrating)
         public string Valid(string reviewdate, string product, string customer, string review, string productrating)
 
         {
@@ -140,14 +141,49 @@ namespace ClassLibrary1
                 {
                     Error = Error + "The date cannot be in the future : ";
                 }
-
-                return Error;
+                
             }
 
             catch
             {
-                Error = Error + "The date was not a valid   date : ";
+                Error = Error + "The date was not a valid date : ";
             }
+
+            if (review.Length == 0)
+            {
+                Error = Error + "The review may not be blank : ";
+            }                                        
+                       
+            if (Convert.ToInt32(customer) == 0)
+            {
+                Error = Error + "CustomerID cannot be 0";
+            }
+            if (Convert.ToInt32(customer) > 99999)
+            {
+                Error = Error + "CustomerID cannot be over 100000";
+            }
+
+            if (Convert.ToInt32(productrating) < 0)
+            {
+                Error = Error + "Product Rating cannot less than 0";
+            }
+            if (Convert.ToInt32(productrating) > 5)
+            {
+                Error = Error + "Product Rating cannot be over 5";
+            }
+
+            if (Convert.ToInt32(product) == 0)
+            {
+                Error = Error + "ProductID cannot be 0";
+            }
+            if (Convert.ToInt32(product) > 99999)
+            {
+                Error = Error + "ProductID cannot be over 100000";
+            }
+            
+            return Error;
+
+
         }
 
 
