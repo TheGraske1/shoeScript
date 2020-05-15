@@ -125,8 +125,36 @@ namespace ClassLibrary1
         public string Valid(string reviewdate, string product, string customer, string review, string productrating)
 
         {
-            return "";
+            String Error = "";
+            DateTime DateTemp;
+
+            try
+            {
+                DateTemp = Convert.ToDateTime(reviewdate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The  date cannot be in the past : ";
+                }
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the future : ";
+                }
+
+                return Error;
+            }
+
+            catch
+            {
+                Error = Error + "The date was not a valid   date : ";
+            }
         }
+
+
+
+        
+                       
+      
 
            
 

@@ -210,6 +210,83 @@ namespace ShoeTesting
             Assert.AreEqual(Error, "");
         }
 
+        [TestMethod]
+        public void ReviewDateExtremeMin()
+        {
+            clsReview AReview = new clsReview();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string reviewdate = TestDate.ToString();
+            Error = AReview.Valid(reviewdate, product, customer, review, productrating);
+            Assert.AreNotEqual(Error, ""); 
+        }
+
+        [TestMethod]
+        public void ReviewDateMinLessOne()
+        {
+            clsReview AReview = new clsReview();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string reviewdate = TestDate.ToString();
+            Error = AReview.Valid(reviewdate, product, customer, review, productrating);
+            Assert.AreNotEqual(Error, ""); 
+        }
+
+        [TestMethod]
+        public void ReviewDateMin()
+        {
+            clsReview AReview = new clsReview();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            
+            string reviewdate = TestDate.ToString();
+            Error = AReview.Valid(reviewdate, product, customer, review, productrating);
+            Assert.AreEqual(Error, ""); 
+
+        }
+
+        [TestMethod]
+        public void ReviewDateMinPlusOne()
+        {
+            clsReview AReview = new clsReview();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string reviewdate = TestDate.ToString();
+            Error = AReview.Valid(reviewdate, product, customer, review, productrating);
+            Assert.AreNotEqual(Error, ""); 
+
+        }
+
+        [TestMethod]
+        public void ReviewDateExtremeMax()
+        {
+            clsReview AReview = new clsReview();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string reviewdate = TestDate.ToString();
+            Error = AReview.Valid(reviewdate, product, customer, review, productrating);
+            Assert.AreNotEqual(Error, ""); 
+
+        }
+
+        [TestMethod]
+        public void ReviewDateInvalidData()
+        {
+            clsReview AReview = new clsReview();
+            String Error = "";
+            string reviewdate = "this is not a date!";
+            Error = AReview.Valid(reviewdate, product, customer, review, productrating);
+            Assert.AreNotEqual(Error, "");
+        }
 
     }
 
