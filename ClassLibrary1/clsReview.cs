@@ -122,7 +122,7 @@ namespace ClassLibrary1
             }
         }
 
-        //public string Valid(string reviewdate, string product, string customerid, string review, string productrating)
+
         public string Valid(string reviewdate, string product, string customer, string review, string productrating)
 
         {
