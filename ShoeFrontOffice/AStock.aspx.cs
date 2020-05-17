@@ -9,35 +9,64 @@ using ClassLibrary1;
 
 public partial class AStock : System.Web.UI.Page
 {
+    Int32 ProductId;
     protected void Page_Load(object sender, EventArgs e)
     {
-        clsStock AProduct = new clsStock();
-        AProduct = (clsStock)Session["AProduct"];
-        Response.Write(AProduct.ProductId);
+        ProductId = Convert.ToInt32(Session["ProductId"]);
+        if (IsPostBack == false)
+        {
+            if(ProductId != -1)
+            {
+                DisplayProduct();
+            }
+        }
+    }
+    void DisplayProduct()
+    {
+        clsStockCollection Products = new clsStockCollection();
+        Products.ThisProduct.Find(ProductId);
+        txtProductId.Text = Products.ThisProduct.ProductId.ToString();
+        txtStyleName.Text = Products.ThisProduct.StyleName;
+        txtQuantityAvailable.Text = Products.ThisProduct.QuantityAvailable.ToString();
+        txtPrice.Text = Products.ThisProduct.Price.ToString();
+        txtBackInStockDate.Text = Products.ThisProduct.BackInStockDate.ToString();
+        chkLimitedEdition.Checked = Products.ThisProduct.LimitedEdition;
     }
 
     protected void Submit_Click(object sender, EventArgs e)
     {
         clsStock AProduct = new clsStock();
-        Int32 ProductID = Convert.ToInt32(txtProductId);
+        string ProductID = txtProductId.Text;
         string StyleName = txtStyleName.Text;
         string BackInStockDate = txtBackInStockDate.Text;
         string Price = txtPrice.Text;
         string QuantityAvailable = txtQuantityAvailable.Text;
-        AProduct.LimitedEdition = Yes.Checked;
+       
 
         string Error = "";
         Error = AProduct.Valid(StyleName, BackInStockDate, Price, QuantityAvailable);
         if (Error == "")
         {
-            AProduct.ProductId = ProductID;
+            AProduct.ProductId = Convert.ToInt32(ProductID);
             AProduct.StyleName = StyleName;
             AProduct.Price = Convert.ToDouble(Price);
             AProduct.QuantityAvailable = Convert.ToInt32(QuantityAvailable);
             AProduct.BackInStockDate = Convert.ToDateTime(BackInStockDate);
-
-            Session["AProduct"] = AProduct;
-            Response.Redirect("StockViewer.aspx");
+            AProduct.LimitedEdition = chkLimitedEdition.Checked;
+            clsStockCollection ProductList = new clsStockCollection();
+            if(Convert.ToInt32(ProductID) == -1)
+            {
+                ProductList.ThisProduct = AProduct;
+                ProductList.Add();
+            }
+            else
+            {
+                ProductList.ThisProduct.Find(ProductId);
+                ProductList.ThisProduct = AProduct;
+                ProductList.Update();
+            }
+            
+            Response.Redirect("ProductList.aspx");
         }
         else
         {
@@ -69,4 +98,6 @@ public partial class AStock : System.Web.UI.Page
 
         }
     }
+
+    
 }

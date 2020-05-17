@@ -83,4 +83,9 @@ public partial class OrderList : System.Web.UI.Page
         lstOrders.DataTextField = "deliveryAddress";
         lstOrders.DataBind();
     }
+
+    protected void lstOrders_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
 }

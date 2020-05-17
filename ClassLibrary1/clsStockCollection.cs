@@ -7,14 +7,21 @@ namespace ClassLibrary1
     public class clsStockCollection
     {
         List<clsStock> mProductList = new List<clsStock>();
-
+        clsStock mThisProduct = new clsStock();
         public clsStockCollection()
+        {
+            
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_ProductTable_SelectAll");
+            PopulateArray(DB);
+            
+        }
+        void PopulateArray(clsDataConnection DB)
         {
             Int32 Index = 0;
             Int32 RecordCount = 0;
-            clsDataConnection DB = new clsDataConnection();
-            DB.Execute("sproc_ProductTable_SelectAll");
             RecordCount = DB.Count;
+            mProductList = new List<clsStock>();
             while (Index < RecordCount)
             {
                 clsStock AProduct = new clsStock();
@@ -51,6 +58,57 @@ namespace ClassLibrary1
                 
             }
         }
-        public clsStock ThisProduct { get; set; }
+        public clsStock ThisProduct
+        {
+            get
+            {
+                return mThisProduct;
+            }
+            set
+            {
+                mThisProduct = value;
+            }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StyleName", mThisProduct.StyleName);
+            DB.AddParameter("@QuantityAvailable", mThisProduct.QuantityAvailable);
+            DB.AddParameter("@BackInStockDate", mThisProduct.BackInStockDate);
+            DB.AddParameter("@LimitedEdition", mThisProduct.LimitedEdition);
+            DB.AddParameter("@Price", mThisProduct.Price);
+            return DB.Execute("sproc_ProductTable_Insert");
+
+
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductId", mThisProduct.ProductId);
+            DB.Execute("sproc_ProductTable_Delete");
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductId", mThisProduct.ProductId);
+            DB.AddParameter("@StyleName", mThisProduct.StyleName);
+            DB.AddParameter("@QuantityAvailable", mThisProduct.QuantityAvailable);
+            DB.AddParameter("@BackInStockDate", mThisProduct.BackInStockDate);
+            DB.AddParameter("@LimitedEdition", mThisProduct.LimitedEdition);
+            DB.AddParameter("@Price", mThisProduct.Price);
+            DB.Execute("sproc_ProductTable_Update");
+        }
+
+        public void ReportByStyleName(string StyleName)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StyleName", StyleName);
+            DB.Execute("sproc_PtoductTable_FilterByStyleName");
+            PopulateArray(DB);
+        }
+
     }
 }
