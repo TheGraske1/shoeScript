@@ -119,7 +119,7 @@ namespace ShoeTesting
             Boolean OK = true;
             int StaffId = 1;
             Found = AnStaff.Find(StaffId);
-            if(AnStaff.phoneNumber != "01234567891")
+            if(AnStaff.phoneNumber != "01234563891")
             {
                 OK = false;
             }
@@ -345,7 +345,7 @@ namespace ShoeTesting
         {
             clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string Salary = "";
+            string Salary = "-1";
             Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
             Assert.AreNotEqual(Error, "");
         }
@@ -476,8 +476,11 @@ namespace ShoeTesting
         {
             clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string PhoneNum = "012345678912";
-            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
+            string name = "Cal Lockley";
+            string phonenum = "012345678912";
+            string salary = "250";
+            string joineddate = "17/05/2020";
+            Error = AnStaff.Valid(name, phonenum, salary, joineddate);
             Assert.AreNotEqual(Error, "");
         }
 

@@ -167,21 +167,23 @@ namespace ShoeTesting
             FilteredStaff.ReportByPhoneNumber("54321098761");
             Assert.AreEqual(0, FilteredStaff.Count);
         }
-
+        [TestMethod]
+        public void ReportByPhoneNumberNoneFound()
+        {
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            FilteredStaff.ReportByPhoneNumber("11111111111");
+            Assert.AreEqual(0, FilteredStaff.Count);
+        }
+        
         [TestMethod]
         public void ReportByPhoneNumberTestDataFound()
         {
             clsStaffCollection FilteredStaff = new clsStaffCollection();
             Boolean OK = true;
-            FilteredStaff.ReportByPhoneNumber("01234567891");
-
-            if (FilteredStaff.Count == 2)
+            FilteredStaff.ReportByPhoneNumber("01235546846");
+            if(FilteredStaff.Count == 1)
             {
-                if(FilteredStaff.StaffList[0].staffid != 9)
-                {
-                    OK = false;
-                }
-                if (FilteredStaff.StaffList[1].staffid != 10)
+                if(FilteredStaff.StaffList[0].staffid != 7)
                 {
                     OK = false;
                 }
@@ -190,11 +192,8 @@ namespace ShoeTesting
             {
                 OK = false;
             }
-
             Assert.IsTrue(OK);
         }
-
     }
-
 }
 
