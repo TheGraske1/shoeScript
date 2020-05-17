@@ -1,4 +1,4 @@
-﻿using ClassLibrary1;
+﻿using ShoeClasses;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +17,7 @@ public partial class DeleteReview : System.Web.UI.Page
 
 
 
-    protected void btnYes_Click(object sender, EventArgs e)
+    protected void btnyes_Click(object sender, EventArgs e)
     {
         clsReviewCollection Reviews = new clsReviewCollection();
         Reviews.ThisReview.Find(ReviewID);
@@ -28,6 +28,8 @@ public partial class DeleteReview : System.Web.UI.Page
 
     protected void btnNo_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("ReviewList.aspx");
     }
+
+   
 }

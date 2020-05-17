@@ -1,5 +1,5 @@
 ﻿using System;
-using ClassLibrary1;
+using ShoeClasses;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 
@@ -178,9 +178,10 @@ namespace ShoeTesting
 
             clsReviewCollection FilteredReviews = new clsReviewCollection();
 
-            FilteredReviews.ReportByReviewDate("");
+            FilteredReviews.ReportByReview("");
 
             Assert.AreEqual(AllReviews.Count, FilteredReviews.Count);
+           
         }
     }
 }
