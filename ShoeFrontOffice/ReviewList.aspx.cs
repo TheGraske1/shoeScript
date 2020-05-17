@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ShoeClasses;
-using ClassLibrary1;
+
 
 public partial class ReviewList : System.Web.UI.Page
 {
@@ -19,11 +19,11 @@ public partial class ReviewList : System.Web.UI.Page
 
     void DisplayReviews()
     {
-        ClassLibrary1.clsReviewCollection Reviews = new ClassLibrary1.clsReviewCollection();
-        lstReviews.DataSource = Reviews.ReviewList;
-        lstReviews.DataValueField = "ReviewID";
-        lstReviews.DataTextField = "ReviewDate";
-        lstReviews.DataBind();
+        ShoeClasses.clsReviewCollection Reviews = new ShoeClasses.clsReviewCollection();
+        lstReviewList.DataSource = Reviews.ReviewList;
+        lstReviewList.DataValueField = "ReviewID";
+        lstReviewList.DataTextField = "ReviewDate";
+        lstReviewList.DataBind();
 
     }
 

@@ -135,7 +135,8 @@ public partial class AnOrder : System.Web.UI.Page
             floatPrice.Text = Convert.ToString(AnOrder.totalPrice);
             stringAddress.Text = AnOrder.deliveryAddress;
             dateOrdered.Text = Convert.ToString(AnOrder.dateOrdered.Date);
-            boolPaid.Text = Convert.ToString(AnOrder.paid);
+            boolPaid.Checked = Convert.ToBoolean(AnOrder.paid);
+            
         }
     }
         protected void FindOrderLine_Click(object sender, EventArgs e)

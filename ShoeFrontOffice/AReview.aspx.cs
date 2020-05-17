@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using ClassLibrary1;
 using ShoeClasses;
+
 
 
 public partial class AReview : System.Web.UI.Page
@@ -46,7 +46,6 @@ public partial class AReview : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsReview AReview = new clsReview();
-        string ReviewID = txtReviewID.Text;
         string ProductID = txtProductID.Text;
         string CustomerID = txtCustomerID.Text;
         string Review = txtReview.Text;
@@ -57,7 +56,6 @@ public partial class AReview : System.Web.UI.Page
         Error = AReview.Valid(ReviewDate, ProductID, CustomerID, Review, ProductRating);
         if (Error == "")
         {
-            AReview.ReviewID = Convert.ToInt32(ReviewID);
             AReview.Review = Review;
             AReview.ReviewDate = Convert.ToDateTime(ReviewDate);
             AReview.ProductID = Convert.ToInt32(ProductID);
@@ -67,7 +65,7 @@ public partial class AReview : System.Web.UI.Page
 
             clsReviewCollection ReviewList = new clsReviewCollection();
 
-            if(ReviewID == -1)
+            if(Convert.ToInt32(ReviewID) == -1)
             {
                 ReviewList.ThisReview = AReview;
                 ReviewList.Add();
@@ -75,7 +73,7 @@ public partial class AReview : System.Web.UI.Page
 
             else
             {
-                ReviewList.ThisReview.Find(ReviewID);
+                ReviewList.ThisReview.Find(Convert.ToInt32(ReviewID));
                 ReviewList.ThisReview = AReview;
                 ReviewList.Update();
             }
@@ -89,11 +87,6 @@ public partial class AReview : System.Web.UI.Page
             lblError.Text = Error;
         }
     }
-    protected void VerifiedCustomer_CheckedChanged(object sender, EventArgs e)
-    {
-
-    }
-
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
@@ -117,7 +110,12 @@ public partial class AReview : System.Web.UI.Page
             txtReviewDate.Text = AReview.ReviewDate.ToString();
             txtProductRating.Text = AReview.ProductRating.ToString();
             txtReview.Text = AReview.Review;
+            Yes.Checked = Convert.ToBoolean(AReview.VerifiedCustomer);
         }
     }
-    
+
+
+
+
+
 }

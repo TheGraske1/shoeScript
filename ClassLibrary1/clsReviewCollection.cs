@@ -1,14 +1,42 @@
 ﻿using System.Collections.Generic;
 using System;
-using ClassLibrary1;
-using ShoeClasses;
 
-namespace ClassLibrary1
+
+namespace ShoeClasses
 {
     public class clsReviewCollection
     {
         List<clsReview> mReviewList = new List<clsReview>();
         clsReview mThisReview = new clsReview();
+
+
+        public clsReviewCollection()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblReview_SelectAll");
+            PopulateArray(DB);
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mReviewList = new List<clsReview>();
+            while (Index < RecordCount)
+            {
+                clsReview AReview = new clsReview();
+                
+                AReview.ReviewID = Convert.ToInt32(DB.DataTable.Rows[Index]["ReviewID"]);
+                AReview.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
+                AReview.ProductID = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductID"]);
+                AReview.ReviewDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["ReviewDate"]);
+                AReview.ProductRating = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductRating"]);
+                
+                mReviewList.Add(AReview);
+                Index++;
+            }
+        }
 
         public List<clsReview> ReviewList
         {
@@ -46,36 +74,11 @@ namespace ClassLibrary1
             }
         }
 
-        public clsReviewCollection()
-        {
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
-            clsDataConnection DB = new clsDataConnection();
-            DB.Execute("sproc_tblReview_SelectAll");
-            RecordCount = DB.Count;
-            while (Index < RecordCount)
-            {
-                clsReview AReview = new clsReview();
-
-                AReview.ReviewID = Convert.ToInt32(DB.DataTable.Rows[Index]["ReviewID"]);
-                AReview.ReviewDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["ReviewDate"]);
-                AReview.ProductID = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductID"]);
-                AReview.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
-                AReview.Review = Convert.ToString(DB.DataTable.Rows[Index]["Review"]);
-                AReview.ProductRating = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductRating"]);
-                AReview.VerifiedCustomer = Convert.ToBoolean(DB.DataTable.Rows[Index]["VerifiedCustomer"]);
-
-                mReviewList.Add(AReview);
-                Index++;
-            }
-
-        }
-
         public int Add()
         {
             clsDataConnection DB = new clsDataConnection();
 
-            DB.AddParameter("CustomerID", mThisReview.CustomerID);
+            DB.AddParameter("CustomerID", mThisReview.CustomerID); 
             DB.AddParameter("ProductID", mThisReview.ProductID);
             DB.AddParameter("ReviewDate", mThisReview.ReviewDate);
             DB.AddParameter("Review", mThisReview.Review);
@@ -107,9 +110,12 @@ namespace ClassLibrary1
             DB.Execute("sproc_tblReview_Update"); 
         }
 
-        public void ReportByReviewDate(DateTime ReviewDate)
+        public void ReportByReview(string Review)
         {
-            //Filters the records based on the Review Date
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Review", Review);
+            DB.Execute("sproc_tblReview_FilterByReview");
+            PopulateArray(DB);
         }
     }
 }

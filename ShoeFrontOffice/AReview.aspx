@@ -27,13 +27,13 @@
         <asp:TextBox ID="txtReview" runat="server" style="z-index: 1; left: 148px; top: 148px; position: absolute"></asp:TextBox>
         <asp:TextBox ID="txtReviewDate" runat="server" style="z-index: 1; left: 147px; top: 182px; position: absolute"></asp:TextBox>
         <asp:TextBox ID="txtProductRating" runat="server" style="z-index: 1; left: 147px; top: 219px; position: absolute"></asp:TextBox>
-        <asp:CheckBox ID="Yes" runat="server" style="z-index: 1; left: 142px; top: 262px; position: absolute" OnCheckedChanged="VerifiedCustomer_CheckedChanged" />
         <asp:Label ID="txtVerifiedCustomer" runat="server" style="z-index: 1; left: 10px; top: 262px; position: absolute; right: 892px;" Text="Verified Customer?"></asp:Label>
         <p>
             &nbsp;</p>
         <p>
             &nbsp;</p>
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 14px; top: 345px; position: absolute" Text="lbl Error"></asp:Label>
+        <asp:CheckBox ID="Yes" runat="server" style="z-index: 1; left: 149px; top: 276px; position: absolute; height: 21px" />
     </form>
 </body>
 </html>
