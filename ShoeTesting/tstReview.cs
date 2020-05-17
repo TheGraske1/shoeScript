@@ -118,7 +118,7 @@ namespace ShoeTesting
             Boolean OK = true;
             Int32 ReviewID = 9;
             Found = AReview.Find(ReviewID);
-            if (AReview.ReviewDate != Convert.ToDateTime("03/02/2020"))
+            if (AReview.ReviewDate != Convert.ToDateTime("17/05/2020"))
             {
                 OK = false;
             }
@@ -148,7 +148,7 @@ namespace ShoeTesting
             Boolean OK = true;
             Int32 ReviewID = 9;
             Found = AReview.Find(ReviewID);
-            if (AReview.CustomerID != 4)
+            if (AReview.CustomerID != 5)
             {
                 OK = false;
             }
@@ -164,7 +164,7 @@ namespace ShoeTesting
             Boolean OK = true;
             Int32 ReviewID = 9;
             Found = AReview.Find(ReviewID);
-            if (AReview.Review != "Terrible Product")
+            if (AReview.Review != "P")
             {
                 OK = false;
             }
@@ -179,7 +179,7 @@ namespace ShoeTesting
             Boolean OK = true;
             Int32 ReviewID = 9;
             Found = AReview.Find(ReviewID);
-            if (AReview.ProductRating != 1)
+            if (AReview.ProductRating != 5)
             {
                 OK = false;
             }
