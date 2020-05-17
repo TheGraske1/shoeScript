@@ -10,20 +10,43 @@ using ShoeClasses;
 
 public partial class AReview : System.Web.UI.Page
 {
-    //Int32 ReviewID;
+    Int32 ReviewID;
 
     protected void Page_Load(object sender, EventArgs e)
     {
-        clsReview AReview = new clsReview();
+        /*clsReview AReview = new clsReview();
         AReview = (clsReview)Session["AReview"];
         Response.Write(AReview.ReviewID);              
+        */
 
+        ReviewID = Convert.ToInt32(Session["ReviewID"]);
+        if(IsPostBack == false)
+        {
+            if(ReviewID != -1)
+            {
+                DisplayReview();
+            }
+        }
+    }
+
+    void DisplayReview()
+    {
+        clsReviewCollection Reviews = new clsReviewCollection();
+        Reviews.ThisReview.Find(ReviewID);
+
+        txtReviewID.Text = Reviews.ThisReview.ReviewID.ToString();
+        txtProductID.Text = Reviews.ThisReview.ProductID.ToString();
+        txtCustomerID.Text = Reviews.ThisReview.CustomerID.ToString();
+        txtReviewDate.Text = Reviews.ThisReview.ReviewDate.ToString();
+        txtProductRating.Text = Reviews.ThisReview.ProductRating.ToString();
+        txtReview.Text = Reviews.ThisReview.Review;
+        Yes.Checked = Reviews.ThisReview.VerifiedCustomer;
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsReview AReview = new clsReview();
-        //string ReviewID = txtReviewID.Text;
+        string ReviewID = txtReviewID.Text;
         string ProductID = txtProductID.Text;
         string CustomerID = txtCustomerID.Text;
         string Review = txtReview.Text;
@@ -34,15 +57,31 @@ public partial class AReview : System.Web.UI.Page
         Error = AReview.Valid(ReviewDate, ProductID, CustomerID, Review, ProductRating);
         if (Error == "")
         {
-            //AReview.ReviewID = Convert.ToInt32(ReviewID);
+            AReview.ReviewID = Convert.ToInt32(ReviewID);
             AReview.Review = Review;
             AReview.ReviewDate = Convert.ToDateTime(ReviewDate);
             AReview.ProductID = Convert.ToInt32(ProductID);
             AReview.CustomerID = Convert.ToInt32(CustomerID);
             AReview.ProductRating = Convert.ToInt32(ProductRating);
-                        
-            Session["AReview"] = AReview;
-            Response.Write("ReviewViewer.aspx");                    
+            AReview.VerifiedCustomer = Yes.Checked;
+
+            clsReviewCollection ReviewList = new clsReviewCollection();
+
+            if(ReviewID == -1)
+            {
+                ReviewList.ThisReview = AReview;
+                ReviewList.Add();
+            }
+
+            else
+            {
+                ReviewList.ThisReview.Find(ReviewID);
+                ReviewList.ThisReview = AReview;
+                ReviewList.Update();
+            }
+
+            Response.Redirect("ReviewList.aspx");
+                         
         }
 
         else
@@ -80,4 +119,5 @@ public partial class AReview : System.Web.UI.Page
             txtReview.Text = AReview.Review;
         }
     }
+    
 }
