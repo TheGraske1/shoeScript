@@ -150,29 +150,14 @@ namespace ShoeTesting
         {
             clsCustomerCollection FilteredCustomer = new clsCustomerCollection();
             Boolean OK = true;
-            FilteredCustomer.ReportByName("kate");
-            if (FilteredCustomer.Count == 5)
+            FilteredCustomer.ReportByName("Jay");
+            if (FilteredCustomer.Count == 1)
             {
-                if (FilteredCustomer.CustomerList[0].CustomerID != 12)
+                if (FilteredCustomer.CustomerList[0].CustomerID != 3)
                 {
                     OK = false;
                 }
-                if (FilteredCustomer.CustomerList[1].CustomerID != 15)
-                {
-                    OK = false;
-                }
-                if (FilteredCustomer.CustomerList[2].CustomerID != 18)
-                {
-                    OK = false;
-                }
-                if (FilteredCustomer.CustomerList[3].CustomerID != 21)
-                {
-                    OK = false;
-                }
-                if (FilteredCustomer.CustomerList[4].CustomerID != 24)
-                {
-                    OK = false;
-                }
+               
             }
             else
             {
