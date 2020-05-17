@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System;
+using ClassLibrary1;
 using ShoeClasses;
-
 
 namespace ClassLibrary1
 {
     public class clsReviewCollection
     {
         List<clsReview> mReviewList = new List<clsReview>();
-        //clsReview mThisReview = new clsReview();
+        clsReview mThisReview = new clsReview();
 
         public List<clsReview> ReviewList
         {
@@ -30,11 +30,21 @@ namespace ClassLibrary1
             }
             set
             {
-                //chal we'll see
+                //Waheguru
             }
         }
 
-        public clsReview ThisReview { get; set; }
+        public clsReview ThisReview
+        {
+            get
+            {
+                return mThisReview;
+            }
+            set
+            {
+                mThisReview = value;
+            }
+        }
 
         public clsReviewCollection()
         {
@@ -43,22 +53,63 @@ namespace ClassLibrary1
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_tblReview_SelectAll");
             RecordCount = DB.Count;
-            while (Index <  RecordCount)
+            while (Index < RecordCount)
             {
                 clsReview AReview = new clsReview();
 
-               AReview.ReviewID = Convert.ToInt32(DB.DataTable.Rows[Index]["ReviewID"]);
-               AReview.ReviewDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["ReviewDate"]);
-               AReview.ProductID = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductID"]);
-               AReview.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
-               AReview.Review = Convert.ToString(DB.DataTable.Rows[Index]["Review"]);
-               AReview.ProductRating = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductRating"]);
-               AReview.VerifiedCustomer = Convert.ToBoolean(DB.DataTable.Rows[Index]["VerifiedCustomer"]);
+                AReview.ReviewID = Convert.ToInt32(DB.DataTable.Rows[Index]["ReviewID"]);
+                AReview.ReviewDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["ReviewDate"]);
+                AReview.ProductID = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductID"]);
+                AReview.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
+                AReview.Review = Convert.ToString(DB.DataTable.Rows[Index]["Review"]);
+                AReview.ProductRating = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductRating"]);
+                AReview.VerifiedCustomer = Convert.ToBoolean(DB.DataTable.Rows[Index]["VerifiedCustomer"]);
 
                 mReviewList.Add(AReview);
                 Index++;
             }
 
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("CustomerID", mThisReview.CustomerID);
+            DB.AddParameter("ProductID", mThisReview.ProductID);
+            DB.AddParameter("ReviewDate", mThisReview.ReviewDate);
+            DB.AddParameter("Review", mThisReview.Review);
+            DB.AddParameter("ProductRating", mThisReview.ProductRating);
+            DB.AddParameter("VerifiedCustomer", mThisReview.VerifiedCustomer);
+
+            return DB.Execute("sproc_tblReview_Insert"); ;
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ReviewID", mThisReview.ReviewID);
+            DB.Execute("sproc_tblReview_Delete"); 
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("ReviewID", mThisReview.ReviewID);
+            DB.AddParameter("CustomerID", mThisReview.CustomerID);
+            DB.AddParameter("ProductID", mThisReview.ProductID);
+            DB.AddParameter("ReviewDate", mThisReview.ReviewDate);
+            DB.AddParameter("Review", mThisReview.Review);
+            DB.AddParameter("ProductRating", mThisReview.ProductRating);
+            DB.AddParameter("VerifiedCustomer", mThisReview.VerifiedCustomer);
+
+            DB.Execute("sproc_tblReview_Update"); 
+        }
+
+        public void ReportByReviewDate(DateTime ReviewDate)
+        {
+            //Filters the records based on the Review Date
         }
     }
 }
