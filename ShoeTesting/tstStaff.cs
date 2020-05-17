@@ -250,10 +250,11 @@ namespace ShoeTesting
             clsStaff AnStaff = new clsStaff();
             String Error = "";
             string StaffName = "";
-            StaffName = StaffName.PadRight(26, 'a');
+            StaffName.PadRight(26, 'a');
             Error = AnStaff.Valid(StaffName, PhoneNum, Salary, JoinedDate);
             Assert.AreNotEqual(Error, "");
         }
+      
 
         [TestMethod]
         public void StaffNameExtremeMax()
@@ -261,9 +262,9 @@ namespace ShoeTesting
             clsStaff AnStaff = new clsStaff();
             String Error = "";
             string StaffName = "";
-            StaffName = StaffName.PadRight(500, 'a');
+            StaffName.PadRight(500, 'a');
             Error = AnStaff.Valid(StaffName, PhoneNum, Salary, JoinedDate);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -339,16 +340,6 @@ namespace ShoeTesting
             Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
             Assert.AreNotEqual(Error, "");
         }
-
-        [TestMethod]
-        public void SalaryMinLessOne()
-        {
-            clsStaff AnStaff = new clsStaff();
-            String Error = "";
-            string Salary = "-1";
-            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
-            Assert.AreNotEqual(Error, "");
-        }
         
         [TestMethod]
         public void SalaryMin()
@@ -415,10 +406,9 @@ namespace ShoeTesting
         {
             clsStaff AnStaff = new clsStaff();
             String Error = "";
-            string Salary = "";
-            Salary.PadRight(500, '1');
-            Error = AnStaff.Valid(Name, PhoneNum, Salary, JoinedDate);
-            Assert.AreEqual(Error, "");
+            string salary = "12345678911";
+            Error = AnStaff.Valid(Name, PhoneNum, salary, JoinedDate);
+            Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
@@ -451,6 +441,8 @@ namespace ShoeTesting
             Assert.AreEqual(Error, "");
         }
 
+  
+
         [TestMethod]
         public void PhoneNumMaxLessOne()
         {
@@ -477,7 +469,8 @@ namespace ShoeTesting
             clsStaff AnStaff = new clsStaff();
             String Error = "";
             string name = "Cal Lockley";
-            string phonenum = "012345678912";
+            string phonenum = "";
+            phonenum.PadRight(12, '1');
             string salary = "250";
             string joineddate = "17/05/2020";
             Error = AnStaff.Valid(name, phonenum, salary, joineddate);
