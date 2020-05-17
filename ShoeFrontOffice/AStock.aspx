@@ -21,11 +21,9 @@
         <asp:Label ID="lblQuantityAvailable" runat="server" style="z-index: 1; left: 27px; top: 174px; position: absolute" Text="Quantity Available"></asp:Label>
         <asp:Label ID="lblPrice" runat="server" style="z-index: 1; left: 32px; top: 267px; position: absolute" Text="Price"></asp:Label>
         <asp:TextBox ID="txtQuantityAvailable" runat="server" style="z-index: 1; left: 205px; top: 177px; position: absolute"></asp:TextBox>
-        <asp:TextBox ID="txtBackInStockDate" runat="server" style="z-index: 1; left: 205px; top: 224px; position: absolute; bottom: 316px;"></asp:TextBox>
+        <asp:TextBox ID="txtBackInStockDate" runat="server" style="z-index: 1; left: 205px; top: 224px; position: absolute;"></asp:TextBox>
         <asp:TextBox ID="txtPrice" runat="server" style="z-index: 1; left: 205px; top: 270px; position: absolute"></asp:TextBox>
-        <asp:Label ID="lblLimitedEdition" runat="server" style="z-index: 1; left: 30px; top: 310px; position: absolute" Text="Limited Edition"></asp:Label>
-        <asp:RadioButton ID="Yes" runat="server" style="z-index: 1; left: 205px; top: 311px; position: absolute" />
-        <asp:RadioButton ID="No" runat="server" style="z-index: 1; left: 269px; top: 311px; position: absolute" />
+        <asp:CheckBox ID="chkLimitedEdition" runat="server" style="z-index: 1; left: 33px; top: 316px; position: absolute" Text="Limited Edition" />
         <asp:Button ID="btnSubmit" runat="server" OnClick="Submit_Click" style="z-index: 1; left: 26px; top: 364px; position: absolute" Text="Submit" />
         <asp:Button ID="btnCancle" runat="server" style="z-index: 1; left: 143px; top: 364px; position: absolute" Text="Cancle" />
         <asp:Button ID="btnFind" runat="server" OnClick="Find_Click" style="z-index: 1; left: 387px; top: 87px; position: absolute" Text="Find" />
